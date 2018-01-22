@@ -6,14 +6,14 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/18 14:23:00 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/18 17:49:07 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/22 16:33:17 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-# include "ft_printf.h"
-# include <wchar.h>
-# include <unistd.h>
+#include "ft_printf.h"
+#include <wchar.h>
+#include <unistd.h>
 
 int			ft_putwchar(wchar_t c)
 {
