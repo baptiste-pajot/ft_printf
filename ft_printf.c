@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:02:23 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 08:20:19 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 08:30:52 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,6 +19,7 @@ int		ft_printf(const char *format, ...)
 	va_list		ap;
 	char		*p;
 	char		*str;
+	wchar_t		*wstr;
 	char		c;
 	wchar_t		wc;
 	int			i;
@@ -58,6 +59,11 @@ int		ft_printf(const char *format, ...)
 				str = va_arg(ap, char*);
 				ret += ft_strlen(str) - 2;
 				ft_putchar_size(str, ft_strlen(str));
+			}
+			if (*p == 'S')
+			{
+				wstr = va_arg(ap, int*);
+				ret += ft_putwstr(wstr) - 2;
 			}
 		}
 		p++;

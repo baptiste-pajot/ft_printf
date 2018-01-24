@@ -6,7 +6,7 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/12/21 14:37:00 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/01/24 08:16:19 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/24 08:31:10 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -23,7 +23,8 @@ PATH_SRCS = ./
 PATH_OBJS = ./
 PATH_LIBFT = ./libft/
 PATH_INCS = ./
-FILES = ft_printf.c ft_putwchar.c ft_putchar_size.c ft_putchar_int.c
+FILES = ft_printf.c ft_putwchar.c ft_putchar_size.c ft_putchar_int.c \
+		ft_putwstr.c
 FILES_LIBFT = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 	   ft_isdigit.c ft_isprint.c ft_itoa.c ft_memalloc.c ft_memccpy.c \
 	   ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memdel.c ft_memchr.c ft_memcmp.c \
@@ -56,11 +57,11 @@ $(NAME): $(OBJS) $(OBJS_LIBFT)
 #	libtool -static -o $(NAME) $(NAME) $(LIBS)
 	@echo "👍  COMPILATION REUSSIE 👍\ "
 
-#$(TEST): $(OBJS) $(OBJS_TEST)
-#	make -C libft
-#	@echo "CREATION DE L'EXECUTABLE TEST "
-#	@$(CC) $(CC_FLAGS) $(LFT_FLAGS) -o $@ $^
-#	@echo "👍  COMPILATION REUSSIE 👍\ "
+$(TEST): $(OBJS) $(OBJS_TEST)
+	make -C libft
+	@echo "CREATION DE L'EXECUTABLE TEST "
+	@$(CC) $(CC_FLAGS) $(LFT_FLAGS) -o $@ $^
+	@echo "👍  COMPILATION REUSSIE 👍\ "
 
 $(PATH_OBJ)%.o: $(PATH_SRCS)%.c $(INCS)
 	@echo "CREATION $@ "
