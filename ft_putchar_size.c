@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_printf.h                                      .::    .:/ .      .::   */
+/*   ft_putchar_size.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 07:39:56 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/24 07:35:35 by bpajot       #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/24 07:40:05 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include "libft/libft.h"
-# include <stdarg.h>
-# include <wchar.h>
+#include <unistd.h>
 
-int			ft_printf(const char *format, ...);
-int			ft_putwchar(wchar_t c);
-void		ft_putchar_size(char *str, size_t size);
-
-#endif
+void	ft_putchar_size(char *str, size_t size)
+{
+	if (size > 0)
+		write(1, str, size);
+}

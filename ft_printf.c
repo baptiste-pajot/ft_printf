@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:02:23 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/18 17:34:36 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 07:40:12 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -57,7 +57,7 @@ int		ft_printf(const char *format, ...)
 			{
 				str = va_arg(ap, char*);
 				ret += ft_strlen(str) - 2;
-				ft_putstr(str);
+				ft_putchar_size(str, ft_strlen(str));
 			}
 		}
 		p++;
