@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:02:23 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 08:15:05 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 08:20:19 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,7 +30,7 @@ int		ft_printf(const char *format, ...)
 	while (*p)
 	{
 		if (*p != '%')
-			ft_putchar(*p);
+			ft_putchar_int((unsigned char)*p);
 		else
 		{
 			p++;
@@ -46,7 +46,7 @@ int		ft_printf(const char *format, ...)
 			{
 				c = va_arg(ap, int);
 				ret--;
-				ft_putchar(c);
+				ft_putchar_int((unsigned char)c);
 			}
 			if (*p == 'C')
 			{
