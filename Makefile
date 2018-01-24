@@ -6,7 +6,7 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/24 07:44:51 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/01/24 07:44:54 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/24 07:53:37 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -48,15 +48,15 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	make -C libft
 	@echo "CREATION DE LA LIBFTPRINTF.A "
-	@ar rcs $@ $^
-	@libtool -static -o $(NAME) $(NAME) $(LIBS)
+	ar rcs $@ $^
+	libtool -static -o $(NAME) $(NAME) $(LIBS)
 	@echo "👍  COMPILATION REUSSIE 👍\ "
 
-$(TEST): $(OBJS) $(OBJS_TEST)
-	make -C libft
-	@echo "CREATION DE L'EXECUTABLE TEST "
-	@$(CC) $(CC_FLAGS) $(LFT_FLAGS) -o $@ $^
-	@echo "👍  COMPILATION REUSSIE 👍\ "
+#$(TEST): $(OBJS) $(OBJS_TEST)
+#	make -C libft
+#	@echo "CREATION DE L'EXECUTABLE TEST "
+#	@$(CC) $(CC_FLAGS) $(LFT_FLAGS) -o $@ $^
+#	@echo "👍  COMPILATION REUSSIE 👍\ "
 
 $(PATH_OBJ)%.o: $(PATH_SRCS)%.c $(INCS)
 	@echo "CREATION $@ "
