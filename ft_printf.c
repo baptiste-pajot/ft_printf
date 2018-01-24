@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:02:23 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 07:40:12 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 08:15:05 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,7 +35,7 @@ int		ft_printf(const char *format, ...)
 		{
 			p++;
 			if (*p == '%')
-				ft_putchar(*p);
+				ft_putchar_int((unsigned char)*p);
 			if (*p == 'd')
 			{
 				i = va_arg(ap, int);
