@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 08:32:30 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 09:52:38 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -68,9 +68,11 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|to%%sto|\\n\", \"z123a\")\n", i);
-	a = printf("|to%sto|\n", "z123a");
-	b = ft_printf("|to%sto|\n", "z123a");
+	printf("Test %d : printf(\"|to%%s  \", \"z123a\")\n", i);
+	a = printf("|to%s  ", "z123a");
+	printf("\n");
+	b = ft_printf("|to%s  ", "z123a");
+	printf("\n");
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -128,5 +130,36 @@ int		main(void)
 	else
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|to%%cto|\\n\", 0)\n", i);
+	a = printf("|to%cto|\n", 0);
+	b = ft_printf("|to%cto|\n", 0);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|to%%sto|\\n\", NULL)\n", i);
+	a = printf("|to%sto|\n", NULL);
+	b = ft_printf("|to%sto|\n", NULL);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	return (0);
 	return (0);
 }

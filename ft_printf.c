@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:02:23 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 08:30:52 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 09:52:15 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,42 +28,53 @@ int		ft_printf(const char *format, ...)
 	ret = ft_strlen(format);
 	va_start(ap, format);
 	p = (char*)format;
+	ret = 0;
 	while (*p)
 	{
 		if (*p != '%')
-			ft_putchar_int((unsigned char)*p);
+			ret += ft_putchar_int((unsigned char)*p);
 		else
 		{
 			p++;
-			if (*p == '%')
-				ft_putchar_int((unsigned char)*p);
-			if (*p == 'd')
+			while (*p && *p != '%' && *p != 'd' && *p != 'c' && *p != 'C'
+					&& *p != 's' && *p != 'S')
+				p++;
+			if (*p)
 			{
-				i = va_arg(ap, int);
-				ret += ft_strlen(ft_itoa(i)) - 2;
-				ft_putnbr(i);
-			}
-			if (*p == 'c')
-			{
-				c = va_arg(ap, int);
-				ret--;
-				ft_putchar_int((unsigned char)c);
-			}
-			if (*p == 'C')
-			{
-				wc = va_arg(ap, int);
-				ret += ft_putwchar(wc) - 2;
-			}
-			if (*p == 's')
-			{
-				str = va_arg(ap, char*);
-				ret += ft_strlen(str) - 2;
-				ft_putchar_size(str, ft_strlen(str));
-			}
-			if (*p == 'S')
-			{
-				wstr = va_arg(ap, int*);
-				ret += ft_putwstr(wstr) - 2;
+				if (*p == '%')
+					ret += ft_putchar_int((unsigned char)*p);
+				else if (*p == 'd')
+				{
+					i = va_arg(ap, int);
+					ret += ft_strlen(ft_itoa(i));
+					ft_putnbr(i);
+				}
+				else if (*p == 'c')
+				{
+					c = va_arg(ap, int);
+					ret += ft_putchar_int((unsigned char)c);
+				}
+				else if (*p == 'C')
+				{
+					wc = va_arg(ap, int);
+					ret += ft_putwchar(wc);
+				}
+				else if (*p == 's')
+				{
+					str = va_arg(ap, char*);
+					if (str)
+						ret += ft_putstr_size(str);
+					else
+						ret += ft_putstr_size("(null)");
+				}
+				else if (*p == 'S')
+				{
+					wstr = va_arg(ap, int*);
+					if (wstr)
+						ret += ft_putwstr(wstr);
+					else
+						ret += ft_putstr_size("(null)");
+				}
 			}
 		}
 		p++;
