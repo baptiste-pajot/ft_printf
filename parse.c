@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_printf.c                                      .::    .:/ .      .::   */
+/*   parse.c                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/26 10:37:00 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/26 14:33:43 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/26 14:27:00 by bpajot       #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/26 14:33:39 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_printf(const char *format, ...)
+t_field		parse(const char *format)
 {
-	t_field		field;
 
-	field = parse(format);
-
-
-	return (0);
+	return ();
 }

@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/26 14:24:42 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/26 14:33:33 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -71,6 +71,7 @@ typedef struct		s_field
 	struct s_list	*next;
 }					t_field;
 
+t_field		parse(const char *format);
 int			ft_printf(const char *format, ...);
 int			ft_putwchar(wchar_t c);
 int			ft_putstr_size(char *str);
