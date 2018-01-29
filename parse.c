@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/26 14:27:00 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/29 17:52:15 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/29 18:21:51 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,30 +15,30 @@
 
 static t_field	*ft_flags(t_field *current, const char *str, int i)
 {
-	if (str[i] == '#')
-		current->flag += 0x1 ;
-	if (str[i] == '0')
-		current->flag += 0x2 ;
-	if (str[i] == '-')
-		current->flag += 0x4;
-	if (str[i] == '+')
-		current->flag += 0x8;
-	if (str[i] == ' ')
-		current->flag += 0x10;
-	if (str[i] == '*')
-		current->flag += 0x20;
-	if (str[i] == '$')
-		current->flag += 0x40;
-	if (str[i] == 'L')
-		current->flag += 0x80;
-	if (str[i] == '\'')
-		current->flag += 0x100;
-	if (str[i] == 'b')
-		current->flag += 0x200;
-	if (str[i] == 'r')
-		current->flag += 0x400;
-	if (str[i] == 'k')
-		current->flag += 0x800;
+	if (str[i] == '#' && !(current->flag & SHARP))
+		current->flag += SHARP;
+	if (str[i] == '0' && !(current->flag & ZERO))
+		current->flag += ZERO;
+	if (str[i] == '-' && !(current->flag & MINUS))
+		current->flag += MINUS;
+	if (str[i] == '+' && !(current->flag & PLUS))
+		current->flag += PLUS;
+	if (str[i] == ' ' && !(current->flag & SPACE))
+		current->flag += SPACE;
+	if (str[i] == '*' && !(current->flag & ASTERIX))
+		current->flag += ASTERIX;
+	if (str[i] == '$' && !(current->flag & DOLLAR))
+		current->flag += DOLLAR;
+	if (str[i] == 'L' && !(current->flag & L_FLAG))
+		current->flag += L_FLAG;
+	if (str[i] == '\'' && !(current->flag & APOSTROPHE))
+		current->flag += APOSTROPHE;
+	if (str[i] == 'b' && !(current->flag & B_FLAG))
+		current->flag += B_FLAG;
+	if (str[i] == 'r' && !(current->flag & R_FLAG))
+		current->flag += R_FLAG;
+	if (str[i] == 'k' && !(current->flag & K_FLAG))
+		current->flag += K_FLAG;
 	current->nb = 1;
 	return (current);
 }
@@ -60,17 +60,17 @@ static t_field	*ft_preci(t_field *current, const char *str, int i)
 static t_field	*ft_sizem(t_field *current, const char *str, int i)
 {
 	if (str[i] == 'h' && current->nb < 4)
-		current->conv = 0x2;
+		current->conv = H_FLAG;
 	if (str[i] == 'h' && current->nb == 4)
-		current->conv = 0x1;
+		current->conv = HH_FLAG;
 	if (str[i] == 'l' && current->nb < 4)
-		current->conv = 0x4;
+		current->conv = L_FLAG;
 	if (str[i] == 'l' && current->nb == 4)
-		current->conv = 0x8;
+		current->conv = LL_FLAG;
 	if (str[i] == 'j')
-		current->conv = 0x10 ;
+		current->conv = J_FLAG;
 	if (str[i] == 'z')
-		current->conv = 0x20 ;
+		current->conv = Z_FLAG;
 	current->nb = 4;
 	return (current);
 }
@@ -78,51 +78,51 @@ static t_field	*ft_sizem(t_field *current, const char *str, int i)
 static t_field	*ft_type(t_field *current, const char *str, int i)
 {
 	if (str[i] == '%')
-		current->type = 0x1;
+		current->type = PERCENT;
 	if (str[i] == 'c')
-		current->type = 0x2;
+		current->type = C_MIN;
 	if (str[i] == 'C')
-		current->type = 0x4;
+		current->type = C_MAJ;
 	if (str[i] == 's')
-		current->type = 0x8;
+		current->type = S_MIN;
 	if (str[i] == 'S')
-		current->type = 0x10;
+		current->type = S_MAJ;
 	if (str[i] == 'd' || str[i] == 'i')
-		current->type = 0x20;
+		current->type = D_MIN;
 	if (str[i] == 'D')
-		current->type = 0x40;
+		current->type = D_MAJ;
 	if (str[i] == 'u')
-		current->type = 0x80;
+		current->type = U_MIN;
 	if (str[i] == 'U')
-		current->type = 0x100;
+		current->type = U_MAJ;
 	if (str[i] == 'o')
-		current->type = 0x200;
+		current->type = O_MIN;
 	if (str[i] == 'O')
-		current->type = 0x400;
+		current->type = O_MAJ;
 	if (str[i] == 'x')
-		current->type = 0x800;
+		current->type = X_MIN;
 	if (str[i] == 'X')
-		current->type = 0x1000;
+		current->type = X_MAJ;
 	if (str[i] == 'p')
-		current->type = 0x2000;
+		current->type = POINTER;
 	if (str[i] == 'e')
-		current->type = 0x4000;
+		current->type = E_MIN;
 	if (str[i] == 'E')
-		current->type = 0x8000;
+		current->type = E_MAJ;
 	if (str[i] == 'f')
-		current->type = 0x10000;
+		current->type = F_MIN;
 	if (str[i] == 'F')
-		current->type = 0x20000;
+		current->type = F_MAJ;
 	if (str[i] == 'g')
-		current->type = 0x40000;
+		current->type = G_MIN;
 	if (str[i] == 'G')
-		current->type = 0x80000;
+		current->type = G_MAJ;
 	if (str[i] == 'a')
-		current->type = 0x100000;
+		current->type = A_MIN;
 	if (str[i] == 'A')
-		current->type = 0x200000;
+		current->type = A_MAJ;
 	if (str[i] == 'n')
-		current->type = 0x400000;
+		current->type = N_FLAG;
 	current->nb = 5;
 	return (current);
 }
@@ -146,7 +146,7 @@ static t_field	*ft_parse2(const char *str, int i, t_field *current)
 			current = ft_type(current, str, i);
 		len++;
 	}
-	current->len = len; 
+	current->len = len;
 	return (current);
 }
 
@@ -181,8 +181,9 @@ t_field			*ft_parse(const char *str)
 				begin = current;
 			current = ft_parse2(str, i, current);
 			i += current->len;
-			//printf("%d\n%d\n%d\n%d\n%d\n", current->flag, current->width,
-			//	current->preci, current->conv, current->type);
+			printf("flags : %d\nwidth : %d\npreci : %d\nconv : %d\ntype : %d\n",
+				current->flag, current->width, current->preci, current->conv,
+				current->type);
 			current = current->next;
 		}
 		i++;
