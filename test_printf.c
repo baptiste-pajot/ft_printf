@@ -1,22 +1,39 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_printf.c                                      .::    .:/ .      .::   */
+/*   test_printf.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/26 10:37:00 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/29 17:32:31 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/29 14:24:59 by bpajot       #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/29 15:40:53 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <stdio.h>
 
-int		ft_printf(const char *format, ...)
+int		main(void)
 {
-	t_field		*field;
-
-	field = ft_parse(format);
+	printf("test : %s\n", "\"%c\", 0");
+	printf("-->");
+	printf("%c", 0);
+	printf("<--\n");
+	printf("test : %s\n", "\"%c\", 32");
+	printf("-->");
+	printf("%c", 32);
+	printf("<--\n");
+	printf("test : %s\n", "\"%c\", 'a'");
+	printf("-->");
+	printf("%c", 'a');
+	printf("<--\n");
+	printf("test : %s\n", "\"%c\", 132");
+	printf("-->");
+	printf("%c", 132);
+	printf("<--\n");
+	printf("test : %s\n", "\"%c\", -32");
+	printf("-->");
+	printf("%c", -32);
+	printf("<--\n");
 	return (0);
 }

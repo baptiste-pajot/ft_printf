@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/26 14:33:33 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/29 17:33:19 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,6 +16,7 @@
 # include "libft/libft.h"
 # include <stdarg.h>
 # include <wchar.h>
+# include <stdlib.h>
 
 # define SHARP		0x1
 # define ZERO		0x2
@@ -64,14 +65,16 @@
 typedef struct		s_field
 {
 	int				flag;
-	int				wdth;
-	int				prec;
+	int				width;
+	int				preci;
 	int				conv;
 	int				type;
-	struct s_list	*next;
+	int				len;
+	int				nb;
+	struct s_field	*next;
 }					t_field;
 
-t_field		parse(const char *format);
+t_field		*ft_parse(const char *format);
 int			ft_printf(const char *format, ...);
 int			ft_putwchar(wchar_t c);
 int			ft_putstr_size(char *str);
