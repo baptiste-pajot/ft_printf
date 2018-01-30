@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/29 18:24:31 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/30 12:10:44 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,6 +17,13 @@
 # include <stdarg.h>
 # include <wchar.h>
 # include <stdlib.h>
+
+
+
+# define FLAG		"#0-+ *$L'brk"
+# define WIDTH		"123456789"
+# define CONV		"hljz"
+# define TYPE		"sSpdDioOuUxXcCeEfFgGaAn%"
 
 # define SHARP		0x1
 # define ZERO		0x2
@@ -74,7 +81,13 @@ typedef struct		s_field
 	struct s_field	*next;
 }					t_field;
 
-t_field				*ft_parse(const char *format);
+t_field				*ft_parse(const char *str, t_field *field);
+t_field				*ft_init(t_field *current);
+t_field				*ft_flags(t_field *current, const char *str, int i);
+t_field				*ft_width(t_field *current, const char *str, int i);
+t_field				*ft_preci(t_field *current, const char *str, int i);
+t_field				*ft_sizem(t_field *current, const char *str, int i);
+t_field				*ft_type(t_field *current, const char *str, int i);
 int					ft_printf(const char *format, ...);
 int					ft_putwchar(wchar_t c);
 int					ft_putstr_size(char *str);
