@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/29 17:50:58 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/30 17:25:28 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,6 +22,8 @@ int		main(void)
 	int		i;
 
 	i = 0;
+	a = 0;
+	b = 0;
 	i++;
 	printf("Test %d : printf(\"|toto|\\n\")\n", i);
 	a = printf("|toto|\n");
@@ -160,6 +162,25 @@ int		main(void)
 	else
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
-	return (0);
+	printf("test : %s\n", "\"%c\", 0");
+	printf("-->");
+	printf("%c", 0);
+	printf("<--\n");
+	printf("test : %s\n", "\"%c\", 32");
+	printf("-->");
+	printf("%c", 32);
+	printf("<--\n");
+	printf("test : %s\n", "\"%c\", 'a'");
+	printf("-->");
+	printf("%c", 'a');
+	printf("<--\n");
+	printf("test : %s\n", "\"%c\", 132");
+	printf("-->");
+	printf("%c", 132);
+	printf("<--\n");
+	printf("test : %s\n", "\"%c\", -32");
+	printf("-->");
+	printf("%c", -32);
+	printf("<--\n");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/21 14:27:35 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/21 14:27:38 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/30 14:44:33 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -104,6 +104,7 @@ int				ft_atoi(const char *str)
 			i++;
 		}
 		result = ft_atoi_long(str, i, neg);
+		ft_memdel((void**)&str);
 		return ((int)result);
 	}
 	return (0);

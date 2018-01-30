@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 12:10:44 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/30 16:03:53 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,8 +17,7 @@
 # include <stdarg.h>
 # include <wchar.h>
 # include <stdlib.h>
-
-
+# include <unistd.h>
 
 # define FLAG		"#0-+ *$L'brk"
 # define WIDTH		"123456789"
@@ -71,6 +70,7 @@
 
 typedef struct		s_field
 {
+	int				text;
 	int				flag;
 	int				width;
 	int				preci;
@@ -81,8 +81,7 @@ typedef struct		s_field
 	struct s_field	*next;
 }					t_field;
 
-t_field				*ft_parse(const char *str, t_field *field);
-t_field				*ft_init(t_field *current);
+t_field				*ft_parse(const char *str);
 t_field				*ft_flags(t_field *current, const char *str, int i);
 t_field				*ft_width(t_field *current, const char *str, int i);
 t_field				*ft_preci(t_field *current, const char *str, int i);

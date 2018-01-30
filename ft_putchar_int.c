@@ -6,12 +6,12 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 08:13:17 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 08:41:16 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/30 15:00:11 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_printf.h"
 
 int		ft_putchar_int(int c)
 {

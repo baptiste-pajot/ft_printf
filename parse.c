@@ -6,17 +6,27 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/26 14:27:00 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 12:13:59 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/30 16:35:58 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_field			*ft_init(t_field *current)
+static t_field		*ft_add(t_field *current, int i)
 {
-	if ((current = (t_field*)malloc(sizeof(t_field))) == NULL)
-		return (NULL);
+	if (current == NULL)
+	{
+		if ((current = (t_field*)malloc(sizeof(t_field))) == NULL)
+			return (NULL);
+	}
+	else
+	{
+		if ((current->next = (t_field*)malloc(sizeof(t_field))) == NULL)
+			return (NULL);
+		current = current->next;
+	}
+	current->text = i - 1;
 	current->flag = 0;
 	current->width = 0;
 	current->preci = 0;
@@ -28,7 +38,7 @@ t_field			*ft_init(t_field *current)
 	return (current);
 }
 
-static t_field	*ft_parse2(const char *str, int i, t_field *current)
+static t_field		*ft_parse2(const char *str, int i, t_field *current)
 {
 	int		len;
 
@@ -51,26 +61,33 @@ static t_field	*ft_parse2(const char *str, int i, t_field *current)
 	return (current);
 }
 
-t_field			*ft_parse(const char *str, t_field *field)
+t_field				*ft_parse(const char *str)
 {
 	t_field		*current;
-	size_t		i;
+	t_field		*begin;
+	int			i;
 
-	i = 0;
-	current = field;
-	while (str[i])
+	i = -1;
+	begin = NULL;
+	current = NULL;
+	while (str[++i])
 	{
 		if (str[i] == '%')
 		{
-			current = ft_init(current);
+			if (begin == NULL)
+			{
+				if ((begin = ft_add(begin, i)) == NULL)
+					return (NULL);
+				current = begin;
+			}
+			else if ((current = ft_add(current, i)) == NULL)
+				return (NULL);
 			current = ft_parse2(str, i, current);
 			i += current->len;
-			printf("flags : %d\nwidth : %d\npreci : %d\nconv : %d\ntype : %d\n",
-				current->flag, current->width, current->preci, current->conv,
-				current->type);
-			current = current->next;
 		}
-		i++;
 	}
-	return (field);
+	return (begin);
 }
+//			printf("flags : %d\nwidth : %d\npreci : %d\nconv : %d\ntype : %d\n",
+//					current->flag, current->width, current->preci, current->conv,
+//					current->type);
