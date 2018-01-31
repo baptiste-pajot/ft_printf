@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 15:08:42 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 17:40:36 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -164,13 +164,62 @@ int		main(void)
 	else
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
-	printf("test : %s\n", "\"%c\", 0");
+	i++;
+	printf("Test %d : printf(\"|to%%oto|\\n\", -32)\n", i);
+	a = printf("|to%oto|\n", -32);
+	b = ft_printf("|to%oto|\n", -32);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|to%%oto|\\n\", -2147483648)\n", i);
+	a = printf("|to%oto|\n", 2147483647);
+	b = ft_printf("|to%oto|\n", 2147483647);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|to%%oto|\\n\", 0)\n", i);
+	a = printf("|to%oto|\n", 0);
+	b = ft_printf("|to%oto|\n", 0);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	printf("test : %s\n", "\"%o\", 0");
 	printf("-->");
-	printf("%c", 0);
+	printf("%o", 0);
 	printf("<--\n");
-	printf("test : %s\n", "\"%c\", 32");
+	printf("test : %s\n", "\"%o\", 32");
 	printf("-->");
-	printf("%c", 32);
+	printf("%o", 32);
+	printf("<--\n");
+	printf("test : %s\n", "\"%o\", -32");
+	printf("-->");
+	printf("%o", -32);
 	printf("<--\n");
 	printf("test : %s\n", "\"%c\", 'a'");
 	printf("-->");

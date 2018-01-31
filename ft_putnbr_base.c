@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_putnbr_size.c                                 .::    .:/ .      .::   */
+/*   ft_putnbr_base.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/31 14:53:54 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 17:06:19 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/31 17:06:48 by bpajot       #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/31 17:38:16 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_putnbr_size(int n)
+int		ft_putnbr_base(unsigned int n, unsigned int base)
 {
 	int		ret;
 
 	ret = 0;
-	if (n != -2147483648)
+	if (n >= base)
 	{
-		if (n < 0)
-		{
-			ft_putchar('-');
-			n = -n;
-			ret++;
-		}
-		if (n >= 10)
-		{
-			ret += ft_putnbr_size(n / 10);
-			ret += ft_putnbr_size(n % 10);
-		}
-		else
-			ret += ft_putchar_int(n + 48);
+		ret += ft_putnbr_base(n / base, base);
+		ret += ft_putnbr_base(n % base, base);
 	}
+	else if (n < 10)
+		ret += ft_putchar_int(n + '0');
 	else
-		ret = ft_putstr_size("-2147483648");
+		ret += ft_putchar_int(n + 'A' - 10);
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 15:04:23 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 17:37:47 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -88,11 +88,36 @@ t_field				*ft_preci(t_field *current, const char *str, int i);
 t_field				*ft_sizem(t_field *current, const char *str, int i);
 t_field				*ft_type(t_field *current, const char *str, int i);
 int					ft_printf(const char *format, ...);
+int					ft_printf_type(t_field *current, va_list *va);
+int					ft_printf_percent(t_field *current);
+int					ft_printf_c(t_field *current, va_list *va);
+int					ft_printf_C(t_field *current, va_list *va);
+int					ft_printf_s(t_field *current, va_list *va);
+int					ft_printf_S(t_field *current, va_list *va);
+int					ft_printf_d(t_field *current, va_list *va);
+int					ft_printf_D(t_field *current, va_list *va);
+int					ft_printf_u(t_field *current, va_list *va);
+int					ft_printf_U(t_field *current, va_list *va);
+int					ft_printf_o(t_field *current, va_list *va);
+int					ft_printf_O(t_field *current, va_list *va);
+int					ft_printf_x(t_field *current, va_list *va);
+int					ft_printf_X(t_field *current, va_list *va);
+int					ft_printf_p(t_field *current, va_list *va);
+int					ft_printf_e(t_field *current, va_list *va);
+int					ft_printf_E(t_field *current, va_list *va);
+int					ft_printf_f(t_field *current, va_list *va);
+int					ft_printf_F(t_field *current, va_list *va);
+int					ft_printf_g(t_field *current, va_list *va);
+int					ft_printf_G(t_field *current, va_list *va);
+int					ft_printf_a(t_field *current, va_list *va);
+int					ft_printf_A(t_field *current, va_list *va);
+int					ft_printf_n(t_field *current, va_list *va);
 int					ft_putwchar(wchar_t c);
 int					ft_putstr_size(char *str);
 int					ft_putstr_sizel(char *str, int i);
 int					ft_putchar_int(int c);
 int					ft_putwstr(wchar_t *wstr);
 int					ft_putnbr_size(int n);
+int					ft_putnbr_base(unsigned int n, unsigned int base);
 
 #endif

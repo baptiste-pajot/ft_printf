@@ -1,40 +1,48 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_putnbr_size.c                                 .::    .:/ .      .::   */
+/*   ft_printf_s.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/31 14:53:54 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 17:06:19 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/31 16:26:36 by bpajot       #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/31 16:26:44 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_putnbr_size(int n)
+int		ft_printf_s(t_field *current, va_list *va)
 {
-	int		ret;
+	char		*str;
+	int			ret;
 
 	ret = 0;
-	if (n != -2147483648)
+	if (current)
 	{
-		if (n < 0)
-		{
-			ft_putchar('-');
-			n = -n;
-			ret++;
-		}
-		if (n >= 10)
-		{
-			ret += ft_putnbr_size(n / 10);
-			ret += ft_putnbr_size(n % 10);
-		}
+		str = va_arg(*va, char*);
+		if (str)
+			ret += ft_putstr_size(str);
 		else
-			ret += ft_putchar_int(n + 48);
+			ret += ft_putstr_size("(null)");
 	}
-	else
-		ret = ft_putstr_size("-2147483648");
+	return (ret);
+}
+
+int		ft_printf_S(t_field *current, va_list *va)
+{
+	wchar_t		*wstr;
+	int			ret;
+
+	ret = 0;
+	if (current)
+	{
+		wstr = va_arg(*va, int*);
+		if (wstr)
+			ret += ft_putwstr(wstr);
+		else
+			ret += ft_putstr_size("(null)");
+	}
 	return (ret);
 }
