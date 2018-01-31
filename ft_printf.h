@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 16:03:53 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 15:04:23 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -90,7 +90,9 @@ t_field				*ft_type(t_field *current, const char *str, int i);
 int					ft_printf(const char *format, ...);
 int					ft_putwchar(wchar_t c);
 int					ft_putstr_size(char *str);
+int					ft_putstr_sizel(char *str, int i);
 int					ft_putchar_int(int c);
 int					ft_putwstr(wchar_t *wstr);
+int					ft_putnbr_size(int n);
 
 #endif

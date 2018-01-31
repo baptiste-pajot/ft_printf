@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/26 10:37:00 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 17:12:20 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 15:04:00 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,7 +28,7 @@ static int		clean(t_field *field)
 	return (0);
 }
 
-static int		ft_printf2(t_field *current, va_list *va)
+static int		ft_printf_type(t_field *current, va_list *va)
 {
 	char		*p;
 	char		*str;
@@ -45,8 +45,9 @@ static int		ft_printf2(t_field *current, va_list *va)
 	if (current->type & D_MIN)
 	{
 		i = va_arg(*va, int);
-		ret += ft_strlen(ft_itoa(i));
-		ft_putnbr(i);
+	//	ret += ft_strlen(ft_itoa(i));
+	//	ft_putnbr(i);
+		ret += ft_putnbr_size(i);
 	}
 	if (current->type & C_MIN)
 	{
@@ -77,6 +78,13 @@ static int		ft_printf2(t_field *current, va_list *va)
 	return (ret);
 }
 
+static t_field	*ft_printf_arg(t_field *current, va_list *va, int *i, int *ret)
+{
+	*ret += ft_printf_type(current, va);
+	*i += current->len;
+	current = current->next;
+	return (current);
+}
 
 int				ft_printf(const char *format, ...)
 {
@@ -91,32 +99,17 @@ int				ft_printf(const char *format, ...)
 	va_start(va, format);
 	field = ft_parse(format);
 	current = field;
-	if (field == NULL)
-		ret += ft_putstr_size((char*)format);
-	else
+	while (format[++i])
 	{
-		while (format[++i])
+		if (format[i] == '%')
+			current = ft_printf_arg(current, &va, &i, &ret);
+		else
 		{
-			if (format[i] == '%')
-			{
-				ret += ft_printf2(current, &va);
-				i += current->len;
-				current = current->next;
-			}
-			else
-			{
-				if (current)
-				{
-					ret += ft_putstr_size((char*)ft_strsub(format, i,
-							current->text - i + 1));
-					i += current->text - i;
-				}
-				else
-				{
-					ret += ft_putstr_size((char*)&format[i]);
-					i += ft_strlen(&format[i]);
-				}
-			}
+			ret += (current) ? ft_putstr_sizel((char*)&(format[i]),
+				current->text - i + 1) : ft_putstr_size((char*)&format[i]);
+		//	ret += (current) ? ft_putstr_size((char*)ft_strsub(format, i,
+		//		current->text - i + 1)) : ft_putstr_size((char*)&format[i]);
+			i = (current) ? current->text : ft_strlen(format) - 1;
 		}
 	}
 	clean(field);

@@ -6,10 +6,12 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 17:25:28 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 15:08:42 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
+
+//make && gcc -g main_test.c libftprintf.a && valgrind --leak-check=full ./test
 
 #include <stdio.h>
 #include "ft_printf.h"
