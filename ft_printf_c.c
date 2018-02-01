@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:15:01 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 17:11:39 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 18:25:34 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,8 +21,8 @@ int		ft_printf_c(t_field *current, va_list *va)
 	ret = 0;
 	if (current)
 	{
-		c = va_arg(*va, int);
-		ret = ft_putchar_int((unsigned char)c);
+		c = (char)va_arg(*va, int);
+		ret = ft_putchar_size(c);
 	}
 	return (ret);
 }

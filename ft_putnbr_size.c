@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 14:53:54 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 17:17:05 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 18:26:25 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,7 +32,7 @@ int		ft_putnbr_size(int n)
 			ret += ft_putnbr_size(n % 10);
 		}
 		else
-			ret += ft_putchar_int(n + 48);
+			ret += ft_putchar_size(n + 48);
 	}
 	else
 		ret = ft_putstr_size("-2147483648");
@@ -56,7 +56,7 @@ int		ft_putnbr_long_size(long int n)
 		ret += ft_putnbr_long_size(n % 10);
 	}
 	else
-		ret += ft_putchar_int(n + 48);
+		ret += ft_putchar_size(n + 48);
 	return (ret);
 }
 
@@ -71,7 +71,7 @@ int		ft_putnbr_u_size(unsigned int n)
 		ret += ft_putnbr_u_size(n % 10);
 	}
 	else
-		ret += ft_putchar_int(n + 48);
+		ret += ft_putchar_size(n + 48);
 	return (ret);
 }
 
@@ -86,6 +86,6 @@ int		ft_putnbr_u_long_size(unsigned long int n)
 		ret += ft_putnbr_u_long_size(n % 10);
 	}
 	else
-		ret += ft_putchar_int(n + 48);
+		ret += ft_putchar_size(n + 48);
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:12:01 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 16:14:19 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 18:25:53 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,7 +20,7 @@ int			ft_printf_percent(t_field *current)
 	ret = 0;
 	if (current)
 	{
-		ret = ft_putchar_int('%');
+		ret = ft_putchar_size('%');
 	}
 	return (ret);
 }
