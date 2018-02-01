@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:34:11 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 16:48:49 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 17:15:33 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,28 +15,30 @@
 
 int		ft_printf_x(t_field *current, va_list *va)
 {
-	char		c;
-	int			ret;
+	unsigned int		x;
+	int					ret;
 
 	ret = 0;
+	x = 0;
 	if (current)
 	{
-		c = va_arg(*va, int);
-//		ret = ft_putchar_int((unsigned char)c);
+		x = va_arg(*va, unsigned int);
+		ret += ft_putnbr_base(x, 16, 0);
 	}
 	return (ret);
 }
 
-int		ft_printf_X(t_field *current, va_list *va)
+int		ft_printf_xx(t_field *current, va_list *va)
 {
-	wchar_t		wc;
-	int			ret;
+	unsigned int		xx;
+	int					ret;
 
 	ret = 0;
+	xx = 0;
 	if (current)
 	{
-		wc = va_arg(*va, int);
-//		ret = ft_putwchar(wc);
+		xx = va_arg(*va, unsigned int);
+		ret += ft_putnbr_base(xx, 16, 1);
 	}
 	return (ret);
 }

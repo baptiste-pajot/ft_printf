@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:30:13 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 16:30:52 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 17:11:57 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,7 +27,7 @@ int		ft_printf_f(t_field *current, va_list *va)
 	return (ret);
 }
 
-int		ft_printf_F(t_field *current, va_list *va)
+int		ft_printf_ff(t_field *current, va_list *va)
 {
 	wchar_t		wc;
 	int			ret;
