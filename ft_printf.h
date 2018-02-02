@@ -6,14 +6,14 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 18:23:16 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 20:04:12 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# include "libft/libft.h"
+# include "./libft/libft.h"
 # include <stdarg.h>
 # include <wchar.h>
 # include <stdlib.h>

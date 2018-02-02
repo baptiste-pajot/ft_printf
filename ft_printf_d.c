@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:13:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 17:13:53 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/02 08:47:54 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,13 +18,13 @@ int			ft_printf_d(t_field *current, va_list *va)
 	int			d;
 	int			ret;
 
-	d = 0;
 	ret = 0;
-	if (current)
-	{
-		d = va_arg(*va, int);
-		ret += ft_putnbr_size(d);
-	}
+	d = va_arg(*va, int);
+	if ((current->flag & PLUS) && d >= 0)
+		ret+= ft_putchar_size('+');
+	if ((current->flag & SPACE) && !(current->flag & PLUS) && d >= 0)
+		ret+= ft_putchar_size(' ');
+	ret += ft_putnbr_size(d);
 	return (ret);
 }
 

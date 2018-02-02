@@ -6,7 +6,7 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/12/21 14:37:00 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/02/01 18:24:01 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/02 08:58:47 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -61,9 +61,8 @@ $(NAME): $(OBJS) $(OBJS_LIBFT)
 	@echo "👍  COMPILATION REUSSIE 👍\ "
 
 $(TEST): $(OBJS) $(OBJS_TEST)
-	make -C libft
 	@echo "CREATION DE L'EXECUTABLE TEST "
-	@$(CC) $(LFT_FLAGS) -o $@ $^
+	$(CC) $(CC_FLAGS) $(LFT_FLAGS) -o $@ $^
 	@echo "👍  COMPILATION REUSSIE 👍\ "
 
 $(PATH_OBJ)%.o: $(PATH_SRCS)%.c $(INCS)
