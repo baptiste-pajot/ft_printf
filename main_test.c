@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/02 08:59:06 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/02 10:04:58 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -494,21 +494,62 @@ int		main(void)
 	else
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%+-5d|\\n\", -42)\n", i);
+	a = printf("|%+-5d|\n", -42);
+	b = ft_printf("|%+-5d|\n", -42);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%+05d|\\n\", 42)\n", i);
+	a = printf("|%+05d|\n", 42);
+	b = ft_printf("|%+05d|\n", 42);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%-05d|\\n\", 42)\n", i);
+	a = printf("|%-5d|\n", 42);
+	b = ft_printf("|%-5d|\n", 42);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
 
 
 
 
-	printf("test : %s\n", "\"%c\", 'a'");
+	printf("test : %s\n", "\"%05.5d\", 32");
 	printf("-->");
-	printf("%c", 'a');
+	printf("%05.5d", 32);
 	printf("<--\n");
-	printf("test : %s\n", "\"%c\", 132");
+	printf("test : %s\n", "\"%2d\", 4321");
 	printf("-->");
-	printf("%c", 132);
-	printf("<--\n");
-	printf("test : %s\n", "\"%c\", -32");
-	printf("-->");
-	printf("%c", -32);
+	printf("%2d", 4321);
 	printf("<--\n");
 	return (0);
 }

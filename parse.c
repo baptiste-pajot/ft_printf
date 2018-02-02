@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/26 14:27:00 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/02 08:50:19 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/02 10:53:24 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,7 +29,7 @@ static t_field		*ft_add(t_field *current, int i)
 	current->text = i - 1;
 	current->flag = 0;
 	current->width = 0;
-	current->preci = 0;
+	current->preci = -1;
 	current->conv = 0;
 	current->type = 0;
 	current->len = 0;
