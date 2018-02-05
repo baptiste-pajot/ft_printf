@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 16:30:16 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 18:23:18 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -570,9 +570,9 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%D|\\n\", LONG_MIN)\n", i);
-	a = printf("|%D|\n", LONG_MIN);
-	b = ft_printf("|%D|\n", LONG_MIN);
+	printf("Test %d : printf(\"|%%#o|\\n\", 0)\n", i);
+	a = printf("|%#o|\n", 0);
+	b = ft_printf("|%#o|\n", 0);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
