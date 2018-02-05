@@ -6,7 +6,7 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/12/21 14:37:00 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/02/02 09:49:21 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/05 14:02:29 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -69,7 +69,7 @@ $(TEST): $(OBJS) $(OBJS_TEST)
 
 $(PATH_OBJ)%.o: $(PATH_SRCS)%.c $(INCS)
 	@echo "CREATION $@ "
-	@$(CC) $(CC_FLAGS) -o $@ -c $<
+	$(CC) $(CC_FLAGS) -o $@ -c $<
 	@echo "👍  COMPILATION REUSSIE 👍\ "
 
 clean:

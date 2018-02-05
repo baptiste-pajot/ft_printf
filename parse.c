@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/26 14:27:00 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/02 12:39:53 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 15:35:38 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,6 +32,7 @@ static t_field		*ft_add(t_field *current, int i)
 	current->preci = -1;
 	current->conv = 0;
 	current->type = 0;
+	current->letter = 0;
 	current->len = 0;
 	current->nb = 0;
 	current->next = NULL;
@@ -40,9 +41,6 @@ static t_field		*ft_add(t_field *current, int i)
 
 static t_field		*ft_parse2(const char *str, int i, t_field *current)
 {
-	int		len;
-
-	len = 0;
 	while (str[++i] && current->nb != 5)
 	{
 		if (ft_strchr(FLAG, str[i]) != NULL && current->nb < 2)
@@ -57,10 +55,15 @@ static t_field		*ft_parse2(const char *str, int i, t_field *current)
 			current = ft_type(current, str, i);
 		else if (str[i] == '+')
 			current->flag += PLUS;
-
-		len++;
+		else if (!ft_strchr(FLAG, str[i])  && !ft_strchr(WIDTH, str[i]) &&
+			str[i] != '.' && !ft_strchr(CONV, str[i]) &&
+			!ft_strchr(TYPE, str[i]))
+		{
+			current->letter = str[i];
+			current->nb = 5;
+		}
+		current->len++;
 	}
-	current->len = len;
 	return (current);
 }
 
