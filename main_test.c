@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 15:52:36 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 16:30:16 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -456,7 +456,7 @@ int		main(void)
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
-	ft_putstr("return value ft_printf : ");
+	ft_putstr("ggreturn value ft_printf : ");
 	ft_putnbr(b);
 	ft_putendl("");
 	if (a == b)
@@ -558,6 +558,21 @@ int		main(void)
 	printf("Test %d : printf(\"|%%.3%%|\\n\")\n", i);
 	a = printf("|%.3%|\n");
 	b = ft_printf("|%.3%|\n");
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%D|\\n\", LONG_MIN)\n", i);
+	a = printf("|%D|\n", LONG_MIN);
+	b = ft_printf("|%D|\n", LONG_MIN);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
