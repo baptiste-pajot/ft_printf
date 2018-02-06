@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:34:11 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 18:13:52 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/06 15:01:44 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,7 +30,7 @@ int		ft_printf_x(t_field *cur, va_list *va)
 	if (cur->preci == 0 && x == 0)
 		len = 0;
 	else
-		len = ft_nbr_size(x);
+		len = ft_nbr_size_base(x, 16);
 	if (cur->flag & SHARP)
 		len += 2;
 	if (cur->preci > len)
@@ -49,7 +49,7 @@ int		ft_printf_x(t_field *cur, va_list *va)
 	if (cur->flag & SHARP && x)
 		ret += ft_putstr_size("0x");
 	ret += ft_putchar_sizel('0', zero);
-	if (cur->preci != 0 || x != 0)
+	if (cur->preci != 0 || x)
 		ret += ft_putnbr_base(x, 16, 0);
 	ret += ft_putchar_sizel(' ', spc_aft);
 	return (ret);
@@ -72,7 +72,7 @@ int		ft_printf_xx(t_field *cur, va_list *va)
 	if (cur->preci == 0 && xx == 0)
 		len = 0;
 	else
-		len = ft_nbr_size(xx);
+		len = ft_nbr_long_size_base(xx, 16L);
 	if (cur->flag & SHARP)
 		len += 2;
 	if (cur->preci > len)
@@ -91,7 +91,7 @@ int		ft_printf_xx(t_field *cur, va_list *va)
 	if (cur->flag & SHARP && xx)
 		ret += ft_putstr_size("0X");
 	ret += ft_putchar_sizel('0', zero);
-	if (cur->preci != 0 || xx != 0)
+	if (cur->preci != 0 || xx)
 		ret += ft_putnbr_base(xx, 16, 1);
 	ret += ft_putchar_sizel(' ', spc_aft);
 	return (ret);

@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:32:39 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 18:52:13 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/06 14:51:15 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,7 +30,7 @@ int		ft_printf_o(t_field *cur, va_list *va)
 	if (cur->preci == 0 && o == 0)
 		len = 0;
 	else
-		len = ft_nbr_size(o);
+		len = ft_nbr_size_base(o, 8);
 	if (cur->flag & SHARP)
 		len++;
 	if (cur->preci > len)
@@ -72,7 +72,7 @@ int		ft_printf_oo(t_field *cur, va_list *va)
 	if (cur->preci == 0 && oo == 0)
 		len = 0;
 	else
-		len = ft_nbr_size(oo);
+		len = ft_nbr_long_size_base(oo, 8L);
 	if (cur->flag & SHARP)
 		len++;
 	if (cur->preci > len)
