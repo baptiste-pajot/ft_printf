@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 18:23:18 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/06 12:30:44 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -573,6 +573,51 @@ int		main(void)
 	printf("Test %d : printf(\"|%%#o|\\n\", 0)\n", i);
 	a = printf("|%#o|\n", 0);
 	b = ft_printf("|%#o|\n", 0);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%5Y|\\n\")\n", i);
+	a = printf("|%5Y|\n");
+	b = ft_printf("|%5Y|\n");
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%.2c|\\n\", 0)\n", i);
+	a = printf("|%.2c|\n", 0);
+	b = ft_printf("|%.2c|\n", 0);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%.2c|\\n\", 10)\n", i);
+	a = printf("|%.2c|\n", 10);
+	b = ft_printf("|%.2c|\n", 10);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
