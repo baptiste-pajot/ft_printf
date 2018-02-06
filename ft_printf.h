@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/06 14:49:53 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/06 17:17:38 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -94,6 +94,7 @@ int					ft_printf_type(t_field *current, va_list *va);
 int					ft_printf_percent(t_field *current);
 int					ft_printf_c(t_field *current, va_list *va);
 int					ft_printf_cc(t_field *current, va_list *va);
+int					ft_printf_z(t_field *cur);
 int					ft_printf_s(t_field *current, va_list *va);
 int					ft_printf_ss(t_field *current, va_list *va);
 int					ft_printf_d(t_field *current, va_list *va);
@@ -115,11 +116,15 @@ int					ft_printf_a(t_field *current, va_list *va);
 int					ft_printf_aa(t_field *current, va_list *va);
 int					ft_printf_n(t_field *current, va_list *va);
 int					ft_putwchar(wchar_t c);
+int					ft_wcharlen(wchar_t c);
 int					ft_putstr_size(char *str);
 int					ft_putstr_sizel(char *str, int i);
 int					ft_putchar_size(char c);
 int					ft_putchar_sizel(char c, int i);
 int					ft_putwstr(wchar_t *wstr);
+int					ft_putwstrl(wchar_t *wstr, int l);
+int					ft_wstrlen(wchar_t *wc);
+int					ft_wstrlenl(wchar_t *wc, int l);
 int					ft_putnbr_size(int n);
 int					ft_putnbr_long_size(long int n);
 int					ft_putnbr_u_size(unsigned int n);

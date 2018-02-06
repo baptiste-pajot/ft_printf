@@ -6,22 +6,19 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/02/06 12:09:16 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/02/06 15:31:28 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/06 21:10:37 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
 Nb erreurs restantes :
-- basic tests			34
-- undefined beh tests	6
-- moulitest				17
+- basic tests			24
+- undefined beh tests	4
+- moulitest				13
 - corky test			
 
 Reste a faire :
 - prefix resize hh h l ll j z
-- flags non existanit Z Y ...
-- char*
-- wchar *
 - float double e E f F g G a A
 - flag n
 - flags bonus * $ L '

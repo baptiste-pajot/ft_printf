@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/06 15:24:47 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/06 17:26:47 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -134,21 +134,6 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|to%%s|\", \"z123a\")\n", i);
-	a = printf("|to%s|\n", "z123a");
-	b = ft_printf("|to%s|\n", "z123a");
-	ft_putstr("return value printf : ");
-	ft_putnbr(a);
-	ft_putendl("");
-	ft_putstr("return value ft_printf : ");
-	ft_putnbr(b);
-	ft_putendl("");
-	if (a == b)
-		printf("Test %d : return value OK\n", i);
-	else
-		printf("Test %d : return value NOK !!!\n", i);
-	ft_putendl("");
-	i++;
 	printf("Test %d : printf(\"|to%%Cto|\\n\", L'ø')\n", i);
 	setlocale(LC_ALL, "");
 	a = printf("|to%Cto|\n", L'ø');
@@ -183,21 +168,6 @@ int		main(void)
 	printf("Test %d : printf(\"|to%%Ct&&Co|\\n\", L'🏄', L'🏂')\n", i);
 	a = printf("|to%Ct%Co|\n", L'🏄', L'🏂');
 	b = ft_printf("|to%Ct%Co|\n", L'🏄', L'🏂');
-	ft_putstr("return value printf : ");
-	ft_putnbr(a);
-	ft_putendl("");
-	ft_putstr("return value ft_printf : ");
-	ft_putnbr(b);
-	ft_putendl("");
-	if (a == b)
-		printf("Test %d : return value OK\n", i);
-	else
-		printf("Test %d : return value NOK !!!\n", i);
-	ft_putendl("");
-	i++;
-	printf("Test %d : printf(\"|%%s|\\n\", NULL)\n", i);
-	a = printf("|%s|\n", NULL);
-	b = ft_printf("|%s|\n", NULL);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -555,21 +525,6 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%5Y|\\n\")\n", i);
-	a = printf("|%5Y|\n");
-	b = ft_printf("|%5Y|\n");
-	ft_putstr("return value printf : ");
-	ft_putnbr(a);
-	ft_putendl("");
-	ft_putstr("return value ft_printf : ");
-	ft_putnbr(b);
-	ft_putendl("");
-	if (a == b)
-		printf("Test %d : return value OK\n", i);
-	else
-		printf("Test %d : return value NOK !!!\n", i);
-	ft_putendl("");
-	i++;
 	printf("Test %d : printf(\"|%%.3c|\\n\", 0)\n", i);
 	a = printf("|%.3c|\n", 0);
 	b = ft_printf("|%.3c|\n", 0);
@@ -712,6 +667,171 @@ int		main(void)
 	ft_putnbr(a);
 	ft_putendl("");
 	ft_putstr("ggreturn value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%5Y|\\n\")\n", i);
+	a = printf("|%5Y|\n");
+	b = ft_printf("|%5Y|\n");
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%.5Y|\\n\")\n", i);
+	a = printf("|%.5Y|\n");
+	b = ft_printf("|%.5Y|\n");
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%s|\\n\", NULL)\n", i);
+	a = printf("|%s|\n", NULL);
+	b = ft_printf("|%s|\n", NULL);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|to%%s|\", \"z123a\")\n", i);
+	a = printf("|to%s|\n", "z123a");
+	b = ft_printf("|to%s|\n", "z123a");
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%5.3s|\\n\", NULL)\n", i);
+	a = printf("|%5.3s|\n", NULL);
+	b = ft_printf("|%5.3s|\n", NULL);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|to%%5.3s|\", \"z1\")\n", i);
+	a = printf("|to%5.3s|\n", "z1");
+	b = ft_printf("|to%5.3s|\n", "z1");
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%.4S|\",\"...\")\n", i);
+	a = printf("|%.4S|\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	b = ft_printf("|%.4S|\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%15.4S|\",\"...\")\n", i);
+	a = printf("|%15.4S|\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	b = ft_printf("|%15.4S|\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%.4S|\",\"...\")\n", i);
+	a = printf("|%.4S|\n", L"我是一只猫。");
+	b = ft_printf("|%.4S|\n", L"我是一只猫。");
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%15.4S|\",\"...\")\n", i);
+	a = printf("|%15.4S|\n", L"我是一只猫。");
+	b = ft_printf("|%15.4S|\n", L"我是一只猫。");
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%S|\",\"...\")\n", i);
+	a = printf("|%S|\n", L"米");
+	b = ft_printf("|%S|\n", L"米");
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
 	ft_putnbr(b);
 	ft_putendl("");
 	if (a == b)

@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 15:21:04 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 15:35:29 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/06 15:35:16 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,7 +29,7 @@ static int		ft_printf_type3(t_field *current, va_list *va)
 	if (current->type & N_FLAG)
 		ret += ft_printf_n(current, va);
 	if (!current->type && current->letter)
-		ret += ft_putchar_size(current->letter);
+		ret += ft_printf_z(current);
 	return (ret);
 }
 

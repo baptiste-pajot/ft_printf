@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/18 14:23:00 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/02 08:49:59 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/06 16:27:42 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -60,4 +60,17 @@ int				ft_putwchar(wchar_t c)
 		return (3);
 	}
 	return (ft_putwchar2(c));
+}
+
+int				ft_wcharlen(wchar_t c)
+{
+	if (c > 0xFFFF && c <= 0x1FFFFF)
+		return (4);
+	else if (c > 0x7FF)
+		return (3);
+	else if (c > 0x7F)
+		return (2);
+	else if (c >= 0)
+		return (1);
+	return (-1);
 }
