@@ -6,12 +6,34 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/26 14:27:00 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 15:35:38 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/07 17:22:57 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static t_field		*ft_init(t_field *current)
+{
+	current->flag = 0;
+	current->width = 0;
+	current->preci = -1;
+	current->conv = 0;
+	current->type = 0;
+	current->letter = 0;
+	current->len = 0;
+	current->nb = 0;
+	current->ret = 0;
+	current->l = 0;
+	current->spc_bfr = 0;
+	current->spc_aft = 0;
+	current->zero = 0;
+	current->plus = 0;
+	current->minus = 0;
+	current->pos = 0;
+	current->next = NULL;
+	return (current);
+}
 
 static t_field		*ft_add(t_field *current, int i)
 {
@@ -27,15 +49,7 @@ static t_field		*ft_add(t_field *current, int i)
 		current = current->next;
 	}
 	current->text = i - 1;
-	current->flag = 0;
-	current->width = 0;
-	current->preci = -1;
-	current->conv = 0;
-	current->type = 0;
-	current->letter = 0;
-	current->len = 0;
-	current->nb = 0;
-	current->next = NULL;
+	current = ft_init(current);
 	return (current);
 }
 
@@ -94,6 +108,3 @@ t_field				*ft_parse(const char *str)
 	}
 	return (begin);
 }
-//			printf("flags : %d\nwidth : %d\npreci : %d\nconv : %d\ntype : %d\n",
-//					current->flag, current->width, current->preci, current->conv,
-//					current->type);

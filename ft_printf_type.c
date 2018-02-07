@@ -6,83 +6,74 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 15:21:04 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/06 15:35:16 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/07 18:20:53 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int		ft_printf_type3(t_field *current, va_list *va)
+static int		ft_printf_type3(t_field *cur, va_list *va)
 {
-	int			ret;
-
-	ret = 0;
-	if (current->type & G_MIN)
-		ret += ft_printf_g(current, va);
-	if (current->type & G_MAJ)
-		ret += ft_printf_gg(current, va);
-	if (current->type & A_MIN)
-		ret += ft_printf_a(current, va);
-	if (current->type & A_MAJ)
-		ret += ft_printf_aa(current, va);
-	if (current->type & N_FLAG)
-		ret += ft_printf_n(current, va);
-	if (!current->type && current->letter)
-		ret += ft_printf_z(current);
-	return (ret);
+	if (cur->type & G_MIN)
+		ft_printf_g(cur, va);
+	if (cur->type & G_MAJ)
+		ft_printf_gg(cur, va);
+	if (cur->type & A_MIN)
+		ft_printf_a(cur, va);
+	if (cur->type & A_MAJ)
+		ft_printf_aa(cur, va);
+	if (cur->type & N_FLAG)
+		ft_printf_n(cur, va);
+	if (!cur->type && cur->letter)
+		ft_printf_z(cur);
+	return (cur->ret);
 }
 
-static int		ft_printf_type2(t_field *current, va_list *va)
+static int		ft_printf_type2(t_field *cur, va_list *va)
 {
-	int			ret;
-
-	ret = 0;
-	if (current->type & O_MIN)
-		ret += ft_printf_o(current, va);
-	if (current->type & O_MAJ)
-		ret += ft_printf_oo(current, va);
-	if (current->type & X_MIN)
-		ret += ft_printf_x(current, va);
-	if (current->type & X_MAJ)
-		ret += ft_printf_xx(current, va);
-	if (current->type & POINTER)
-		ret += ft_printf_p(current, va);
-	if (current->type & E_MIN)
-		ret += ft_printf_e(current, va);
-	if (current->type & E_MAJ)
-		ret += ft_printf_ee(current, va);
-	if (current->type & F_MIN)
-		ret += ft_printf_f(current, va);
-	if (current->type & F_MAJ)
-		ret += ft_printf_ff(current, va);
-	ret += ft_printf_type3(current, va);
-	return (ret);
+	if (cur->type & O_MIN)
+		ft_printf_o(cur, va);
+	if (cur->type & O_MAJ)
+		ft_printf_oo(cur, va);
+	if (cur->type & X_MIN)
+		ft_printf_x(cur, va);
+	if (cur->type & X_MAJ)
+		ft_printf_xx(cur, va);
+	if (cur->type & POINTER)
+		ft_printf_p(cur, va);
+	if (cur->type & E_MIN)
+		ft_printf_e(cur, va);
+	if (cur->type & E_MAJ)
+		ft_printf_ee(cur, va);
+	if (cur->type & F_MIN)
+		ft_printf_f(cur, va);
+	if (cur->type & F_MAJ)
+		ft_printf_ff(cur, va);
+	ft_printf_type3(cur, va);
+	return (cur->ret);
 }
 
-int				ft_printf_type(t_field *current, va_list *va)
+int				ft_printf_type(t_field *cur, va_list *va)
 {
-	int			ret;
-
-	ret = 0;
-	if (current->type & PERCENT)
-		ret += ft_printf_percent(current);
-	if (current->type & C_MIN)
-		ret += ft_printf_c(current, va);
-	if (current->type & C_MAJ)
-		ret += ft_printf_cc(current, va);
-	if (current->type & S_MIN)
-		ret += ft_printf_s(current, va);
-	if (current->type & S_MAJ)
-		ret += ft_printf_ss(current, va);
-	if (current->type & D_MIN)
-		ret += ft_printf_d(current, va);
-	if (current->type & D_MAJ)
-		ret += ft_printf_dd(current, va);
-	if (current->type & U_MIN)
-		ret += ft_printf_u(current, va);
-	if (current->type & U_MAJ)
-		ret += ft_printf_uu(current, va);
-	ret += ft_printf_type2(current, va);
-	return (ret);
+	if (cur->type & PERCENT)
+		ft_printf_percent(cur);
+	if ((cur->type & C_MIN) && !(cur->conv & L_FLAG))
+		ft_printf_c(cur, va);
+	if ((cur->type & C_MAJ) || ((cur->type & C_MIN) && (cur->conv & L_FLAG)))
+		ft_printf_cc(cur, va);
+	if (cur->type & S_MIN)
+		ft_printf_s(cur, va);
+	if (cur->type & S_MAJ)
+		ft_printf_ss(cur, va);
+	if (cur->type & D_MIN)
+		ft_printf_d(cur, va);
+	if (cur->type & D_MAJ)
+		ft_printf_dd(cur, va);
+	if (cur->type & U_MIN)
+		ft_printf_u(cur, va);
+	if (cur->type & U_MAJ)
+		ft_printf_uu(cur, va);
+	ft_printf_type2(cur, va);
+	return (cur->ret);
 }

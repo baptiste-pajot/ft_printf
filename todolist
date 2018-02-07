@@ -6,22 +6,36 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/02/06 12:09:16 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/02/06 21:10:37 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/07 19:03:21 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
 Nb erreurs restantes :
-- basic tests			24
-- undefined beh tests	4
-- moulitest				13
+- norminette			52 50
+- basic tests			24 80
+- undefined beh tests	4  4
+- moulitest				13 33
 - corky test			
 
 Reste a faire :
 - prefix resize hh h l ll j z
+	- c OK
+	- s
+	- d
+	- o norme
+	- u norme
+	- x norme
+	- p norme
 - float double e E f F g G a A
 - flag n
 - flags bonus * $ L '
 - flags bonus + b r k color fd
+- forum comment gerer fd, limits.h autorise et limits associer
+- valgrind
+- norminette
+- Makefile
+- demi codets + valeur or UTF-8 negative et sup ?
 
-
+- visal.fr
+gcc -o main_test.o -c main_test.c && make test && ./test

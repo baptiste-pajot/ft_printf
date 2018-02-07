@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/06 17:17:38 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/07 19:00:18 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -77,9 +77,18 @@ typedef struct		s_field
 	int				preci;
 	int				conv;
 	int				type;
-	char			letter;
 	int				len;
 	int				nb;
+	int				ret;
+	int				l;
+	int				spc_bfr;
+	int				spc_aft;
+	int				zero;
+	int				plus;
+	int				minus;
+	int				pos;
+	long int		pos_long;
+	char			letter;
 	struct s_field	*next;
 }					t_field;
 
