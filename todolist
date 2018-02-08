@@ -6,27 +6,24 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/02/06 12:09:16 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/02/07 19:03:21 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/08 18:04:17 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
 Nb erreurs restantes :
-- norminette			52 50
-- basic tests			24 80
-- undefined beh tests	4  4
-- moulitest				13 33
+- norminette			43
+- basic tests			24
+- undefined beh tests	4
+- moulitest				13
 - corky test			
 
 Reste a faire :
+- 2 cas 
+ - "%05.c", 0
+ - "%#.5x", 1
+- norminette
 - prefix resize hh h l ll j z
-	- c OK
-	- s
-	- d
-	- o norme
-	- u norme
-	- x norme
-	- p norme
 - float double e E f F g G a A
 - flag n
 - flags bonus * $ L '
@@ -35,7 +32,7 @@ Reste a faire :
 - valgrind
 - norminette
 - Makefile
-- demi codets + valeur or UTF-8 negative et sup ?
+- demi codets + valeur or UTF-8 negative et sup pour c et C ?
 
 - visal.fr
 gcc -o main_test.o -c main_test.c && make test && ./test

@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:26:36 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 18:32:21 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 17:17:48 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,14 +19,14 @@ int		ft_printf_s(t_field *cur, va_list *va)
 
 	str = va_arg(*va, char*);
 	cur->l = (str == 0) ? 6 : ft_strlen(str);
-	if ((cur->preci >= 0 || (cur->flag & MINUS)) && (cur->flag & ZERO))
+	if ((cur->flag & MINUS) && (cur->flag & ZERO))
 		cur->flag -= ZERO;
 	if (cur->preci >= 0 && cur->l > cur->preci)
 		cur->l = cur->preci;
 	if ((cur->flag & PLUS) && (cur->flag & SPACE))
 		cur->flag -= SPACE;
 	if (cur->width > cur->l && (cur->flag & ZERO))
-		cur->zero = (cur->width - cur->l > cur->zero) ? cur->width - cur->len :
+		cur->zero = (cur->width - cur->l > cur->zero) ? cur->width - cur->l :
 		cur->zero;
 	if (cur->width > cur->l + cur->zero && !(cur->flag & ZERO) && !(cur->flag &
 		MINUS))
@@ -47,7 +47,7 @@ int		ft_printf_ss(t_field *cur, va_list *va)
 
 	wstr = va_arg(*va, int*);
 	cur->l = (wstr == 0) ? 6 : ft_wstrlen(wstr);
-	if ((cur->preci >= 0 || (cur->flag & MINUS)) && (cur->flag & ZERO))
+	if ((cur->flag & MINUS) && (cur->flag & ZERO))
 		cur->flag -= ZERO;
 	if (cur->preci >= 0 && cur->l > cur->preci)
 	{

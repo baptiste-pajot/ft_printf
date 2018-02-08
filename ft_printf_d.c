@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:13:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 19:01:14 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 14:53:11 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,18 +23,12 @@ int			ft_printf_d(t_field *cur, va_list *va)
 		cur->flag -= ZERO;
 	if ((cur->flag & PLUS) && (cur->flag & SPACE))
 		cur->flag -= SPACE;
-	if ((cur->flag & PLUS) && d >= 0)
+	if (((cur->flag & PLUS) || (cur->flag & SPACE)) && d >= 0)
 	{
-		cur->plus = 1;
+		cur->plus = (cur->flag & PLUS) ? 1 : 2;
 		cur->l++;
 	}
-	if ((cur->flag & SPACE) && d >= 0)
-	{
-		cur->plus = 2;
-		cur->l++;
-	}
-	if (d < 0)
-		cur->minus = 1;
+	cur->minus = (d < 0) ? 1 : 0;
 	cur->pos = (d < 0 && d != -2147483648) ? -d : d;
 	if (cur->preci > ft_nbr_size(d) - cur->minus)
 		cur->zero = cur->preci - ft_nbr_size(d) + cur->minus;
@@ -51,10 +45,9 @@ int			ft_printf_d(t_field *cur, va_list *va)
 	cur->ret += (cur->plus == 2) ? ft_putchar_size(' ') : 0;
 	cur->ret += (cur->minus == 1) ? ft_putchar_size('-') : 0;
 	cur->ret += ft_putchar_sizel('0', cur->zero);
-	if (d != -2147483648 && (cur->preci != 0 || d != 0))
-		cur->ret += ft_putnbr_size(cur->pos);
-	else if (d == -2147483648)
-		cur->ret += ft_putstr_size("2147483648");
+	if (cur->preci != 0 || d != 0)
+		cur->ret += (d == -2147483648) ? ft_putstr_size("2147483648") :
+			ft_putnbr_size(cur->pos);
 	cur->ret += ft_putchar_sizel(' ', cur->spc_aft);
 	return (cur->ret);
 }
@@ -69,18 +62,12 @@ int			ft_printf_dd(t_field *cur, va_list *va)
 		cur->flag -= ZERO;
 	if ((cur->flag & PLUS) && (cur->flag & SPACE))
 		cur->flag -= SPACE;
-	if ((cur->flag & PLUS) && dd >= 0)
+	if (((cur->flag & PLUS) || (cur->flag & SPACE)) && dd >= 0)
 	{
-		cur->plus = 1;
+		cur->plus = (cur->flag & PLUS) ? 1 : 2;
 		cur->l++;
 	}
-	if ((cur->flag & SPACE) && dd >= 0)
-	{
-		cur->plus = 2;
-		cur->l++;
-	}
-	if (dd < 0)
-		cur->minus = 1;
+	cur->minus = (dd < 0) ? 1 : 0;
 	cur->pos_long = (dd < 0 && dd != LONG_MIN) ? -dd : dd;
 	if (cur->preci > ft_nbr_long_size(dd) - cur->minus)
 		cur->zero = cur->preci - ft_nbr_long_size(dd) + cur->minus;
@@ -97,10 +84,9 @@ int			ft_printf_dd(t_field *cur, va_list *va)
 	cur->ret += (cur->plus == 2) ? ft_putchar_size(' ') : 0;
 	cur->ret += (cur->minus == 1) ? ft_putchar_size('-') : 0;
 	cur->ret += ft_putchar_sizel('0', cur->zero);
-	if (dd != LONG_MIN && (cur->preci != 0 || dd != 0))
-		cur->ret += ft_putnbr_long_size(cur->pos_long);
-	else if (dd == LONG_MIN)
-		cur->ret += ft_putstr_size("9223372036854775808");
+	if (cur->preci != 0 || dd != 0)
+		cur->ret += (dd == LONG_MIN ) ? ft_putstr_size("9223372036854775808") :
+			ft_putnbr_long_size(cur->pos_long);
 	cur->ret += ft_putchar_sizel(' ', cur->spc_aft);
 	return (cur->ret);
 }
