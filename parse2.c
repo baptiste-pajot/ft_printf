@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 10:10:54 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/09 16:30:48 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/09 16:48:33 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -65,7 +65,7 @@ t_field			*ft_preci(t_field *current, const char *str, int i)
 
 t_field			*ft_sizem(t_field *current, const char *str, int i)
 {
-	if (str[i] == 'h' && str[i + 1] != 'h' && str[i - 1] != 'h' )
+	if (str[i] == 'h' && str[i + 1] != 'h' && str[i - 1] != 'h')
 		current->conv = H_FLAG;
 	if (str[i] == 'h' && str[i + 1] == 'h')
 		current->conv = HH_FLAG;

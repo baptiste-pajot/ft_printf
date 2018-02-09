@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/09 16:04:54 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/09 17:22:25 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -115,8 +115,14 @@ void				ft_printf_jd(t_field *cur, va_list *va);
 void				ft_printf_zd(t_field *cur, va_list *va);
 void				ft_printf_d_flag(t_field *cur);
 void				ft_printf_d_space(t_field *cur);
+void				ft_printf_hhu(t_field *current, va_list *va);
+void				ft_printf_hu(t_field *current, va_list *va);
 void				ft_printf_u(t_field *current, va_list *va);
-void				ft_printf_uu(t_field *current, va_list *va);
+void				ft_printf_lu(t_field *current, va_list *va);
+void				ft_printf_llu(t_field *current, va_list *va);
+void				ft_printf_ju(t_field *current, va_list *va);
+void				ft_printf_zu(t_field *current, va_list *va);
+void				ft_printf_u_flag_space(t_field *cur);
 void				ft_printf_o(t_field *current, va_list *va);
 void				ft_printf_oo(t_field *current, va_list *va);
 void				ft_printf_x(t_field *current, va_list *va);
