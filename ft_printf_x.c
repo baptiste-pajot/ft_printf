@@ -6,14 +6,14 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:34:11 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/09 12:02:32 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/09 12:27:42 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_printf_x(t_field *cur, va_list *va)
+void		ft_printf_x(t_field *cur, va_list *va)
 {
 	unsigned int	x;
 
@@ -41,10 +41,9 @@ int		ft_printf_x(t_field *cur, va_list *va)
 	cur->ret += ft_putchar_sizel('0', cur->zero);
 	cur->ret += (cur->preci != 0 || x) ? ft_putnbr_base(x, 16, 0) : 0;
 	cur->ret += ft_putchar_sizel(' ', cur->spc_aft);
-	return (cur->ret);
 }
 
-int		ft_printf_xx(t_field *cur, va_list *va)
+void		ft_printf_xx(t_field *cur, va_list *va)
 {
 	unsigned int	xx;
 
@@ -72,5 +71,4 @@ int		ft_printf_xx(t_field *cur, va_list *va)
 	cur->ret += ft_putchar_sizel('0', cur->zero);
 	cur->ret += (cur->preci != 0 || xx) ? ft_putnbr_base(xx, 16, 1) : 0;
 	cur->ret += ft_putchar_sizel(' ', cur->spc_aft);
-	return (cur->ret);
 }

@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/26 14:27:00 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/09 12:02:57 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/09 16:42:27 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -63,7 +63,8 @@ static t_field		*ft_parse2(const char *str, int i, t_field *current)
 			current = ft_width(current, str, i);
 		else if (str[i] == '.' && current->nb < 3)
 			current = ft_preci(current, str, i);
-		else if (ft_strchr(CONV, str[i]) != NULL && current->nb < 5)
+		else if (ft_strchr(CONV, str[i]) != NULL && current->nb < 5 &&
+			current->conv < J_FLAG)
 			current = ft_sizem(current, str, i);
 		else if (ft_strchr(TYPE, str[i]) != NULL)
 			current = ft_type(current, str, i);
@@ -76,8 +77,19 @@ static t_field		*ft_parse2(const char *str, int i, t_field *current)
 			current->letter = str[i];
 			current->nb = 5;
 		}
+//	printf("FLAG %d\n", current->flag);
+//	printf("WIDTH %d\n", current->width);
+//	printf("CONV %d\n", current->conv);
+//	printf("TYPE %d\n", current->type);
+//	printf("letter %c\n", current->letter);
+//	printf("i %d\n", i);
 		current->len++;
 	}
+//	printf("FLAG %d\n", current->flag);
+//	printf("WIDTH %d\n", current->width);
+//	printf("CONV %d\n", current->conv);
+//	printf("TYPE %d\n", current->type);
+//	printf("letter %c\n", current->letter);
 	return (current);
 }
 

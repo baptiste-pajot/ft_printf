@@ -6,14 +6,14 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:32:39 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 17:32:07 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/09 12:25:13 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_printf_o(t_field *cur, va_list *va)
+void		ft_printf_o(t_field *cur, va_list *va)
 {
 	unsigned int	o;
 
@@ -39,10 +39,9 @@ int		ft_printf_o(t_field *cur, va_list *va)
 	if ((!(cur->flag & SHARP) || o) && (cur->preci || o))
 		cur->ret += ft_putnbr_base(o, 8, 0);
 	cur->ret += ft_putchar_sizel(' ', cur->spc_aft);
-	return (cur->ret);
 }
 
-int		ft_printf_oo(t_field *cur, va_list *va)
+void		ft_printf_oo(t_field *cur, va_list *va)
 {
 	unsigned long	oo;
 
@@ -68,5 +67,4 @@ int		ft_printf_oo(t_field *cur, va_list *va)
 	if ((!(cur->flag & SHARP) || oo) && (cur->preci || oo))
 		cur->ret += ft_putnbr_long_base(oo, 8, 0);
 	cur->ret += ft_putchar_sizel(' ', cur->spc_aft);
-	return (cur->ret);
 }

@@ -6,14 +6,14 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:26:36 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/09 12:01:44 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/09 12:26:51 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_printf_s(t_field *cur, va_list *va)
+void		ft_printf_s(t_field *cur, va_list *va)
 {
 	char		*str;
 
@@ -38,10 +38,9 @@ int		ft_printf_s(t_field *cur, va_list *va)
 	cur->ret += (str) ? ft_putstr_sizel(str, cur->l) : ft_putstr_sizel("(null)",
 		cur->l);
 	cur->ret += ft_putchar_sizel(' ', cur->spc_aft);
-	return (cur->ret);
 }
 
-int		ft_printf_ss(t_field *cur, va_list *va)
+void		ft_printf_ss(t_field *cur, va_list *va)
 {
 	wchar_t		*wstr;
 
@@ -66,5 +65,4 @@ int		ft_printf_ss(t_field *cur, va_list *va)
 	cur->ret += (wstr) ? ft_putwstrl(wstr, cur->l) : ft_putstr_sizel("(null)",
 		cur->l);
 	cur->ret += ft_putchar_sizel(' ', cur->spc_aft);
-	return (cur->ret);
 }

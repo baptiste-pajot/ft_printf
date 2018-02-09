@@ -6,14 +6,14 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:12:01 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/09 11:58:34 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/09 12:26:02 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_printf_percent(t_field *cur)
+void		ft_printf_percent(t_field *cur)
 {
 	if ((cur->flag & MINUS) && (cur->flag & ZERO))
 		cur->flag -= ZERO;
@@ -30,10 +30,9 @@ int			ft_printf_percent(t_field *cur)
 	cur->ret += ft_putchar_sizel('0', cur->zero);
 	cur->ret += ft_putchar_size('%');
 	cur->ret += ft_putchar_sizel(' ', cur->spc_aft);
-	return (cur->ret);
 }
 
-int			ft_printf_z(t_field *cur)
+void		ft_printf_z(t_field *cur)
 {
 	cur->l = 1;
 	if ((cur->flag & MINUS) && (cur->flag & ZERO))
@@ -52,5 +51,4 @@ int			ft_printf_z(t_field *cur)
 	cur->ret += ft_putchar_sizel('0', cur->zero);
 	cur->ret += ft_putchar_size(cur->letter);
 	cur->ret += ft_putchar_sizel(' ', cur->spc_aft);
-	return (cur->ret);
 }
