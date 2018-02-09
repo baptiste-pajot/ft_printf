@@ -6,29 +6,26 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/02/06 12:09:16 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/02/08 18:04:17 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/09 12:04:57 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
 Nb erreurs restantes :
-- norminette			43
+- norminette			5
 - basic tests			24
 - undefined beh tests	4
-- moulitest				13
+- moulitest				12
 - corky test			
 
 Reste a faire :
-- 2 cas 
- - "%05.c", 0
- - "%#.5x", 1
 - norminette
 - prefix resize hh h l ll j z
 - float double e E f F g G a A
 - flag n
 - flags bonus * $ L '
 - flags bonus + b r k color fd
-- forum comment gerer fd, limits.h autorise et limits associer
+- forum comment gerer fd
 - valgrind
 - norminette
 - Makefile

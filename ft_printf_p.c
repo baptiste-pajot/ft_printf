@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:33:06 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 15:55:28 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/09 09:51:03 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,7 +31,7 @@ int		ft_printf_p(t_field *cur, va_list *va)
 	if (cur->width > cur->l + 2 + cur->zero && !(cur->flag & ZERO) &&
 		!(cur->flag & MINUS))
 		cur->spc_bfr = cur->width - cur->l - 2 - cur->zero;
-	if (cur->width > cur->l - 2 + cur->zero && (cur->flag & MINUS))
+	if (cur->width > cur->l + 2 + cur->zero && (cur->flag & MINUS))
 		cur->spc_aft = cur->width - cur->l - 2 - cur->zero;
 	cur->ret += ft_putchar_sizel(' ', cur->spc_bfr);
 	cur->ret += ft_putstr_size("0x");

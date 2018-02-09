@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 08:26:34 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/06 19:25:59 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/09 12:02:14 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -76,7 +76,7 @@ int				ft_wstrlenl(wchar_t *wstr, int l)
 	ret = 0;
 	if (wstr)
 	{
-		while (wstr[i]  && ret + ft_wcharlen(wstr[i]) <= l)
+		while (wstr[i] && ret + ft_wcharlen(wstr[i]) <= l)
 		{
 			ret += ft_wcharlen(wstr[i]);
 			i++;

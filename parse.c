@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/26 14:27:00 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 17:22:57 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/09 12:02:57 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -69,7 +69,7 @@ static t_field		*ft_parse2(const char *str, int i, t_field *current)
 			current = ft_type(current, str, i);
 		else if (str[i] == '+')
 			current->flag += PLUS;
-		else if (!ft_strchr(FLAG, str[i])  && !ft_strchr(WIDTH, str[i]) &&
+		else if (!ft_strchr(FLAG, str[i]) && !ft_strchr(WIDTH, str[i]) &&
 			str[i] != '.' && !ft_strchr(CONV, str[i]) &&
 			!ft_strchr(TYPE, str[i]))
 		{
