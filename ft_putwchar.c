@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/18 14:23:00 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/06 16:27:42 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 14:57:59 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,7 +25,7 @@ static int		ft_putwchar2(wchar_t c)
 		write(1, &i, 1);
 		return (2);
 	}
-	else if (c >= 0)
+	else //if (c >= 0)
 	{
 		write(1, &c, 1);
 		return (1);

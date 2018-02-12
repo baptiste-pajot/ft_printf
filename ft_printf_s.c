@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:26:36 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/09 12:26:51 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 14:30:08 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,7 +49,7 @@ void		ft_printf_ss(t_field *cur, va_list *va)
 	if ((cur->flag & MINUS) && (cur->flag & ZERO))
 		cur->flag -= ZERO;
 	if (cur->preci >= 0 && cur->l > cur->preci)
-		cur->l = ft_wstrlenl(wstr, cur->preci);
+		cur->l = (wstr == 0) ? cur->preci : ft_wstrlenl(wstr, cur->preci);
 	if ((cur->flag & PLUS) && (cur->flag & SPACE))
 		cur->flag -= SPACE;
 	if (cur->width > cur->l && (cur->flag & ZERO))

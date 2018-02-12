@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/09 16:47:41 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 13:53:51 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 14:51:12 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -64,20 +64,21 @@ void			ft_printf_jd(t_field *cur, va_list *va)
 	intmax_t		jd;
 
 	jd = va_arg(*va, intmax_t);
-	cur->l = (cur->preci == 0 && jd == 0) ? 0 : ft_nbr_u_long_size(jd);
+	cur->l = (cur->preci == 0 && jd == 0) ? 0 : ft_nbr_long_size(jd);
 	ft_printf_d_flag(cur);
-	if ((cur->flag & PLUS) || (cur->flag & SPACE)) // && jd >= 0)
+	if (((cur->flag & PLUS) || (cur->flag & SPACE)) && jd >= 0)
 	{
 		cur->plus = (cur->flag & PLUS) ? 1 : 2;
 		cur->l++;
 	}
-//	cur->minus = (jd < 0) ? 1 : 0;
-	if (cur->preci > ft_nbr_u_long_size(jd)) // - cur->minus)
-		cur->zero = cur->preci - ft_nbr_u_long_size(jd) ; // + cur->minus;
+	cur->minus = (jd < 0) ? 1 : 0;
+	cur->pos_long = (jd < 0 && jd != LLONG_MIN) ? -jd : jd;
+	if (cur->preci > ft_nbr_long_size(jd) - cur->minus)
+		cur->zero = cur->preci - ft_nbr_long_size(jd) + cur->minus;
 	ft_printf_d_space(cur);
-//	cur->pos_long = (jd < 0 && jd != LLONG_MIN) ? -jd : jd;
 	if (cur->preci != 0 || jd != 0)
-		cur->ret += ft_putnbr_u_long_size(jd);
+		cur->ret += (jd == LLONG_MIN) ? ft_putstr_size("9223372036854775808") :
+			ft_putnbr_long_size(cur->pos_long);
 	cur->ret += ft_putchar_sizel(' ', cur->spc_aft);
 }
 

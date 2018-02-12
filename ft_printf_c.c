@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:15:01 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/09 12:23:21 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 14:14:39 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,7 +42,7 @@ void		ft_printf_cc(t_field *cur, va_list *va)
 	wchar_t		wc;
 
 	wc = va_arg(*va, int);
-	cur->l = 1;
+	cur->l = ft_wcharlen(wc);
 	if ((cur->flag & MINUS) && (cur->flag & ZERO))
 		cur->flag -= ZERO;
 	if ((cur->flag & PLUS) && (cur->flag & SPACE))
