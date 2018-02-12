@@ -6,14 +6,32 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 10:14:27 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 14:37:13 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 18:24:15 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_field			*ft_type2(t_field *current, const char *str, int i)
+t_field			*ft_type3(t_field *current, const char *str, int i, va_list *va)
+{
+	int		val;
+
+	if (str[i] == 'n')
+		current->type = N_FLAG;
+	val = va_arg(*va, int);
+	if (val < 0 && (current->type == C_MAJ || (current->type == C_MIN &&
+		current->conv == L_FLAG)))
+		current->error = 1;
+	if (val < -128 && current->type == C_MIN && current->conv != L_FLAG)
+		current->error = 2;
+	if (val > 0x20000 && (current->type == C_MAJ || (current->type == C_MIN &&
+		current->conv == L_FLAG)))
+		current->error = 1;
+	return (current);
+}
+
+t_field			*ft_type2(t_field *current, const char *str, int i, va_list *va)
 {
 	if (str[i] == 'x')
 		current->type = X_MIN;
@@ -37,12 +55,11 @@ t_field			*ft_type2(t_field *current, const char *str, int i)
 		current->type = A_MIN;
 	if (str[i] == 'A')
 		current->type = A_MAJ;
-	if (str[i] == 'n')
-		current->type = N_FLAG;
+	current = ft_type3(current, str, i, va);
 	return (current);
 }
 
-t_field			*ft_type(t_field *current, const char *str, int i)
+t_field			*ft_type(t_field *current, const char *str, int i, va_list *va)
 {
 	if (str[i] == '%')
 		current->type = PERCENT;
@@ -66,7 +83,7 @@ t_field			*ft_type(t_field *current, const char *str, int i)
 		current->type = O_MIN;
 	if (str[i] == 'O')
 		current->type = O_MAJ;
-	current = ft_type2(current, str, i);
+	current = ft_type2(current, str, i, va);
 	current->nb = 5;
 	return (current);
 }

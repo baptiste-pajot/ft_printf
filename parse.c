@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/26 14:27:00 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 13:37:06 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 17:01:10 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,6 +31,7 @@ static t_field		*ft_init(t_field *cur)
 	cur->plus = 0;
 	cur->minus = 0;
 	cur->pos = 0;
+	cur->error = 0;
 	cur->next = NULL;
 	return (cur);
 }
@@ -68,7 +69,8 @@ void				ft_parse3(const char *str, int i, t_field *cur)
 	}
 }
 
-static t_field		*ft_parse2(const char *str, int i, t_field *cur)
+static t_field		*ft_parse2(const char *str, int i, t_field *cur,
+		va_list *va)
 {
 	while (str[++i] && cur->nb != 5)
 	{
@@ -82,7 +84,7 @@ static t_field		*ft_parse2(const char *str, int i, t_field *cur)
 				< J_FLAG)
 			cur = ft_sizem(cur, str, i);
 		else if (ft_strchr(TYPE, str[i]) != NULL)
-			cur = ft_type(cur, str, i);
+			cur = ft_type(cur, str, i, va);
 		else
 			ft_parse3(str, i, cur);
 		cur->len++;
@@ -90,7 +92,7 @@ static t_field		*ft_parse2(const char *str, int i, t_field *cur)
 	return (cur);
 }
 
-t_field				*ft_parse(const char *str)
+t_field				*ft_parse(const char *str, va_list  *va)
 {
 	t_field		*cur;
 	t_field		*begin;
@@ -111,7 +113,7 @@ t_field				*ft_parse(const char *str)
 			}
 			else if ((cur = ft_add(cur, i)) == NULL)
 				return (NULL);
-			cur = ft_parse2(str, i, cur);
+			cur = ft_parse2(str, i, cur, va);
 			i += cur->len;
 		}
 	}

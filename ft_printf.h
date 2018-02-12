@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 10:47:58 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 15:55:51 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -89,15 +89,17 @@ typedef struct		s_field
 	int				pos;
 	long int		pos_long;
 	char			letter;
+	int				error;
 	struct s_field	*next;
 }					t_field;
 
-t_field				*ft_parse(const char *str);
+t_field				*ft_parse(const char *str, va_list *va);
 t_field				*ft_flags(t_field *current, const char *str, int i);
 t_field				*ft_width(t_field *current, const char *str, int i);
 t_field				*ft_preci(t_field *current, const char *str, int i);
 t_field				*ft_sizem(t_field *current, const char *str, int i);
-t_field				*ft_type(t_field *current, const char *str, int i);
+t_field				*ft_type(t_field *current, const char *str, int i,
+		va_list *va);
 int					ft_printf(const char *format, ...);
 int					ft_printf_type(t_field *current, va_list *va);
 void				ft_printf_percent(t_field *current);
