@@ -6,7 +6,7 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/02/06 12:09:16 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/02/12 12:09:33 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/12 13:56:57 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -17,11 +17,16 @@ Nb erreurs restantes :
 - undefined beh tests	0
 - speed					8%
 - moulitest				4 bonus wildcard ...
-- corky test			
+- quorquy test			
+- unit test				beaucoup 
+c	12435
+C	12300
+s	944
 
 Reste a faire :
 - norminette
 - prefix resize hh h l ll j z
+- remettre tout au propre 
 _ ft_size et nbr em long long et ... pour portabilite
 - float double e E f F g G a A
 - flag n

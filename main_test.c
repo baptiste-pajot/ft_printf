@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 12:25:58 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 14:03:50 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -1236,13 +1236,43 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%48.57ji|\\n\", -1866645128)\n", i);
-	a = printf("|%48.57ji|\n", -1866645128);
-	b = ft_printf("|%48.57ji|\n", -1866645128);
+	printf("Test %d : printf(\"|%%48.13ji|\\n\", -1)\n", i);
+	a = printf("|%48.13ji|\n", -1);
+	b = ft_printf("|%48.13ji|\n", -1);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
 	ft_putstr("ggreturn value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%+.12ji|\\n\", -2031434840)\n", i);
+	a = printf("|%+.12ji|\n", -2031434840);
+	b = ft_printf("|%+.12ji|\n", -2031434840);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("ggreturn value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%.10s|\\n\", NULL)\n", i);
+	a = printf("|%.10s|\n", NULL);
+	b = ft_printf("|%.10s|\n", NULL);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
 	ft_putnbr(b);
 	ft_putendl("");
 	if (a == b)
@@ -1257,6 +1287,7 @@ int		main(void)
 	printf("%ld\n", LONG_MAX);
 	printf("%lld\n", LLONG_MIN);
 	printf("%lld\n", LLONG_MAX);
+	printf("%lld\n", INT_MAX);
 	printf("%lld\n", UINT_MAX);
 
 	return (0);
