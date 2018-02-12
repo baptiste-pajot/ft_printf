@@ -6,25 +6,28 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/02/06 12:09:16 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/02/09 17:29:43 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/12 12:09:33 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
 Nb erreurs restantes :
-- norminette			3
-- basic tests			8
-- undefined beh tests	1
-- moulitest				10
+- norminette			1 main_test
+- basic tests			0
+- undefined beh tests	0
+- speed					8%
+- moulitest				4 bonus wildcard ...
 - corky test			
 
 Reste a faire :
 - norminette
 - prefix resize hh h l ll j z
+_ ft_size et nbr em long long et ... pour portabilite
 - float double e E f F g G a A
 - flag n
 - flags bonus * $ L '
 - flags bonus + b r k color fd
+- opti vitesse
 - forum comment gerer fd
 - valgrind
 - norminette
@@ -33,3 +36,9 @@ Reste a faire :
 
 - visal.fr
 gcc -o main_test.o -c main_test.c && make test && ./test
+
+/*	printf("FLAG %d\n", cur->flag);
+	printf("WIDTH %d\n", cur->width);
+	printf("CONV %d\n", cur->conv);
+	printf("TYPE %d\n", cur->type);
+	printf("letter %c\n", cur->letter);*/

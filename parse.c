@@ -6,96 +6,99 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/26 14:27:00 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/09 17:30:34 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 11:59:35 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static t_field		*ft_init(t_field *current)
+static t_field		*ft_init(t_field *cur)
 {
-	current->flag = 0;
-	current->width = 0;
-	current->preci = -1;
-	current->conv = 0;
-	current->type = 0;
-	current->letter = 0;
-	current->len = 0;
-	current->nb = 0;
-	current->ret = 0;
-	current->l = 0;
-	current->spc_bfr = 0;
-	current->spc_aft = 0;
-	current->zero = 0;
-	current->plus = 0;
-	current->minus = 0;
-	current->pos = 0;
-	current->next = NULL;
-	return (current);
+	cur->flag = 0;
+	cur->width = 0;
+	cur->preci = -1;
+	cur->conv = 0;
+	cur->type = 0;
+	cur->letter = 0;
+	cur->len = 0;
+	cur->nb = 0;
+	cur->ret = 0;
+	cur->l = 0;
+	cur->spc_bfr = 0;
+	cur->spc_aft = 0;
+	cur->zero = 0;
+	cur->plus = 0;
+	cur->minus = 0;
+	cur->pos = 0;
+	cur->next = NULL;
+	return (cur);
 }
 
-static t_field		*ft_add(t_field *current, int i)
+static t_field		*ft_add(t_field *cur, int i)
 {
-	if (current == NULL)
+	if (cur == NULL)
 	{
-		if ((current = (t_field*)malloc(sizeof(t_field))) == NULL)
+		if ((cur = (t_field*)malloc(sizeof(t_field))) == NULL)
 			return (NULL);
 	}
 	else
 	{
-		if ((current->next = (t_field*)malloc(sizeof(t_field))) == NULL)
+		if ((cur->next = (t_field*)malloc(sizeof(t_field))) == NULL)
 			return (NULL);
-		current = current->next;
+		cur = cur->next;
 	}
-	current->text = i - 1;
-	current = ft_init(current);
-	return (current);
+	cur->text = i - 1;
+	cur = ft_init(cur);
+	return (cur);
 }
 
-static t_field		*ft_parse2(const char *str, int i, t_field *current)
+void				ft_parse3(const char *str, int i, t_field *cur)
 {
-	while (str[++i] && current->nb != 5)
+	if (str[i] == '+' || str[i] == '#')
 	{
-		if (ft_strchr(FLAG, str[i]) != NULL && current->nb < 2)
-			current = ft_flags(current, str, i);
-		else if (ft_strchr(WIDTH, str[i]) != NULL && current->nb < 2)
-			current = ft_width(current, str, i);
-		else if (str[i] == '.' && current->nb < 3)
-			current = ft_preci(current, str, i);
-		else if (ft_strchr(CONV, str[i]) != NULL && current->nb < 5 &&
-			current->conv < J_FLAG)
-			current = ft_sizem(current, str, i);
-		else if (ft_strchr(TYPE, str[i]) != NULL)
-			current = ft_type(current, str, i);
-		else if (str[i] == '+')
-			current->flag += PLUS;
-		else if (!ft_strchr(FLAG, str[i]) && !ft_strchr(WIDTH, str[i]) &&
-			str[i] != '.' && !ft_strchr(CONV, str[i]) &&
-			!ft_strchr(TYPE, str[i]))
-		{
-			current->letter = str[i];
-			current->nb = 5;
-		}
-		current->len++;
+		cur->flag += ((str[i] == '+') && !(cur->flag & PLUS)) ? PLUS : 0;
+		cur->flag += ((str[i] == '#') && !(cur->flag & SHARP)) ? SHARP : 0;
 	}
-//	printf("FLAG %d\n", current->flag);
-//	printf("WIDTH %d\n", current->width);
-//	printf("CONV %d\n", current->conv);
-//	printf("TYPE %d\n", current->type);
-//	printf("letter %c\n", current->letter);
-	return (current);
+	else if (!ft_strchr(FLAG, str[i]) && !ft_strchr(WIDTH, str[i]) && str[i]
+			!= '.' && !ft_strchr(CONV, str[i]) && !ft_strchr(TYPE, str[i]))
+	{
+		cur->letter = str[i];
+		cur->nb = 5;
+	}
+}
+
+static t_field		*ft_parse2(const char *str, int i, t_field *cur)
+{
+	while (str[++i] && cur->nb != 5)
+	{
+		if (ft_strchr(FLAG, str[i]) != NULL && cur->nb < 2)
+			cur = ft_flags(cur, str, i);
+		else if (ft_strchr(WIDTH, str[i]) != NULL && cur->nb < 2)
+			cur = ft_width(cur, str, i);
+		else if (str[i] == '.' && cur->nb < 3)
+			cur = ft_preci(cur, str, i);
+		else if (ft_strchr(CONV, str[i]) != NULL && cur->nb < 5 && cur->conv
+				< J_FLAG)
+			cur = ft_sizem(cur, str, i);
+		else if (ft_strchr(TYPE, str[i]) != NULL)
+			cur = ft_type(cur, str, i);
+		else
+			ft_parse3(str, i, cur);
+		cur->len++;
+	}
+	return (cur);
 }
 
 t_field				*ft_parse(const char *str)
 {
-	t_field		*current;
+	t_field		*cur;
 	t_field		*begin;
 	int			i;
 
 	i = -1;
 	begin = NULL;
-	current = NULL;
+	cur = NULL;
 	while (str[++i])
 	{
 		if (str[i] == '%')
@@ -104,12 +107,12 @@ t_field				*ft_parse(const char *str)
 			{
 				if ((begin = ft_add(begin, i)) == NULL)
 					return (NULL);
-				current = begin;
+				cur = begin;
 			}
-			else if ((current = ft_add(current, i)) == NULL)
+			else if ((cur = ft_add(cur, i)) == NULL)
 				return (NULL);
-			current = ft_parse2(str, i, current);
-			i += current->len;
+			cur = ft_parse2(str, i, cur);
+			i += cur->len;
 		}
 	}
 	return (begin);

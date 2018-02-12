@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/09 16:40:42 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 12:25:58 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -1130,6 +1130,128 @@ int		main(void)
 	else
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%####0000 33..1..#00d|\\n\", 256)\n", i);
+	a = printf("|%####0000 33..1..#00d|\n", 256);
+	b = ft_printf("|%####0000 33..1..#00d|\n", 256);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%##-##0000 33..12..#0+0d|\\n\", 256)\n", i);
+	a = printf("|%##-##0000 33..12..#0+0d|\n", 256);
+	b = ft_printf("|%##-##0000 33..12..#0+0d|\n", 256);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%15.4S|\",\"...\")\n", i);
+	a = printf("|%15.4S|\n", L"我是一只猫。");
+	b = ft_printf("|%15.4S|\n", L"我是一只猫。");
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%60.4S|\",\"...\")\n", i);
+	a = printf("|%60.4S|\n", L"我是一只猫。");
+	b = ft_printf("|%60.4S|\n", L"我是一只猫。");
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%61.4S|\",\"...\")\n", i);
+	a = printf("|%61.4S|\n", L"我是一只猫。");
+	b = ft_printf("|%61.4S|\n", L"我是一只猫。");
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%hhp|\\n\", p)\n", i);
+	a = printf("|%hhp|\n", p);
+	b = ft_printf("|%hhp|\n", p);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%llp|\\n\", p)\n", i);
+	a = printf("|%llp|\n", p);
+	b = ft_printf("|%llp|\n", p);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("ggreturn value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%48.57ji|\\n\", -1866645128)\n", i);
+	a = printf("|%48.57ji|\n", -1866645128);
+	b = ft_printf("|%48.57ji|\n", -1866645128);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("ggreturn value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+
+	printf("%ld\n", LONG_MIN);
 
 	printf("%ld\n", LONG_MIN);
 	printf("%ld\n", LONG_MAX);

@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/09 17:22:25 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 10:47:58 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -123,10 +123,23 @@ void				ft_printf_llu(t_field *current, va_list *va);
 void				ft_printf_ju(t_field *current, va_list *va);
 void				ft_printf_zu(t_field *current, va_list *va);
 void				ft_printf_u_flag_space(t_field *cur);
+void				ft_printf_hho(t_field *current, va_list *va);
+void				ft_printf_ho(t_field *current, va_list *va);
 void				ft_printf_o(t_field *current, va_list *va);
-void				ft_printf_oo(t_field *current, va_list *va);
+void				ft_printf_lo(t_field *current, va_list *va);
+void				ft_printf_llo(t_field *current, va_list *va);
+void				ft_printf_jo(t_field *current, va_list *va);
+void				ft_printf_zo(t_field *current, va_list *va);
+void				ft_printf_o_flag_space(t_field *cur);
+void				ft_printf_hhx(t_field *current, va_list *va);
+void				ft_printf_hx(t_field *current, va_list *va);
 void				ft_printf_x(t_field *current, va_list *va);
-void				ft_printf_xx(t_field *current, va_list *va);
+void				ft_printf_lx(t_field *current, va_list *va);
+void				ft_printf_llx(t_field *current, va_list *va);
+void				ft_printf_jx(t_field *current, va_list *va);
+void				ft_printf_zx(t_field *current, va_list *va);
+void				ft_printf_x_flag(t_field *cur);
+void				ft_printf_x_zero(t_field *cur);
 void				ft_printf_p(t_field *current, va_list *va);
 void				ft_printf_e(t_field *current, va_list *va);
 void				ft_printf_ee(t_field *current, va_list *va);
