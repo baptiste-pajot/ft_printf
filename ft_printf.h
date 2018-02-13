@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 15:55:51 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/13 14:58:34 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include <locale.h>
 
 # define FLAG		"#0-+ *$L'brk"
 # define WIDTH		"123456789"

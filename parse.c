@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/26 14:27:00 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 17:01:10 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/13 17:33:48 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -89,6 +89,11 @@ static t_field		*ft_parse2(const char *str, int i, t_field *cur,
 			ft_parse3(str, i, cur);
 		cur->len++;
 	}
+	printf("FLAG %d\n", cur->flag);
+	printf("WIDTH %d\n", cur->width);
+	printf("CONV %d\n", cur->conv);
+	printf("TYPE %d\n", cur->type);
+	printf("error %i\n", cur->error);
 	return (cur);
 }
 

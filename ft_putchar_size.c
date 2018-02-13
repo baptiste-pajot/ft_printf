@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/01 19:24:28 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/02 09:36:15 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/13 17:30:07 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,30 @@
 
 int		ft_putchar_size(char c)
 {
+//	unsigned char ch;
+
+//	ch = 0;
 	return (write(1, &c, 1));
+/*	if (c >= 0)
+		return(write(1, &c, 1));
+	else
+	{
+		ch = c + 128;
+		if (ch >= 64)
+		{
+			c = 0xc3;
+			write(1, &c, 1);
+			ch = ch - 64;
+		}
+		else
+		{
+			c = 0xc2;
+			write(1, &c, 1);
+		}
+		c = 0x80;
+		c = c + ch;
+		return(write(1, &c, 1));
+	}*/
 }
 
 int		ft_putchar_sizel(char c, int i)

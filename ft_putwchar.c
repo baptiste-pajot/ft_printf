@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/18 14:23:00 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 18:07:18 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/13 16:18:29 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,7 +37,7 @@ int				ft_putwchar(wchar_t c)
 {
 	int		i;
 
-	if (c > 0xFFFF && c <= 0x1FFFFF)
+	if (c > 0xFFFF) // && c <= 0x1FFFFF)
 	{
 		i = 0xF0 + ((c >> 18) & 0x07);
 		write(1, &i, 1);
@@ -64,7 +64,7 @@ int				ft_putwchar(wchar_t c)
 
 int				ft_wcharlen(wchar_t c)
 {
-	if (c > 0xFFFF && c <= 0x1FFFFF)
+	if (c > 0xFFFF )// && c <= 0x1FFFFF)
 		return (4);
 	else if (c > 0x7FF)
 		return (3);

@@ -6,7 +6,7 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/02/06 12:09:16 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/02/12 16:26:39 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/13 17:34:28 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -17,20 +17,19 @@ Nb erreurs restantes :
 - undefined beh tests	0
 - speed					8%
 - moulitest				4 bonus wildcard ...
-- quorquy test			
-- unit test				beaucoup 
-i	18410
-d	18366
-c	12435
-C	12300
-s	944
+- unit test				0
+- quorquy test
+	- C		13/22
+	- S		15/23
+	- Mixed	4/5
 
 Reste a faire :
 - norminette
-- prefix resize hh h l ll j z
+- remettre au propre
 _ ft_size et nbr em long long et ... pour portabilite
 - float double e E f F g G a A
 - flag n
+- prefix resize hh h l ll j z
 - flags bonus * $ L '
 - flags bonus + b r k color fd
 - opti vitesse
@@ -45,6 +44,8 @@ gcc -o main_test.o -c main_test.c && make test && ./test
 
 /*	printf("FLAG %d\n", cur->flag);
 	printf("WIDTH %d\n", cur->width);
+	printf("PRECI %d\n", cur->preci);
 	printf("CONV %d\n", cur->conv);
 	printf("TYPE %d\n", cur->type);
-	printf("letter %c\n", cur->letter);*/
+	printf("letter %c\n", cur->letter);
+	printf("error %i\n", cur->error);*/

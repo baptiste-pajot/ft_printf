@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 10:14:27 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 18:24:15 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/13 17:31:45 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,18 +15,21 @@
 
 t_field			*ft_type3(t_field *current, const char *str, int i, va_list *va)
 {
-	int		val;
+	long long int	val;
 
 	if (str[i] == 'n')
 		current->type = N_FLAG;
-	val = va_arg(*va, int);
+	val = va_arg(*va, long long int);
 	if (val < 0 && (current->type == C_MAJ || (current->type == C_MIN &&
 		current->conv == L_FLAG)))
 		current->error = 1;
-	if (val < -128 && current->type == C_MIN && current->conv != L_FLAG)
-		current->error = 2;
-	if (val > 0x20000 && (current->type == C_MAJ || (current->type == C_MIN &&
+	if (val < 0 && current->type == C_MIN && current->conv != L_FLAG)
+		current->error = 1;
+	if (val > 0x10ffff && (current->type == C_MAJ || (current->type == C_MIN &&
 		current->conv == L_FLAG)))
+		current->error = 2;
+	if (val > 0xd7ff && val < 0xe000 && (current->type == C_MAJ ||
+		(current->type == C_MIN && current->conv == L_FLAG)))
 		current->error = 1;
 	return (current);
 }
