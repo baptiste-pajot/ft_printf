@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:15:01 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 14:26:46 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/14 17:42:12 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,13 +35,18 @@ void		ft_printf_c(t_field *cur, va_list *va)
 	cur->ret += ft_putchar_sizel('0', cur->zero);
 	cur->ret += ft_putchar_size(c);
 	cur->ret += ft_putchar_sizel(' ', cur->spc_aft);
+//	ft_putstr("MB_CUR_MAX =");
+//	ft_putnbr(MB_CUR_MAX);
 }
 
 void		ft_printf_cc(t_field *cur, va_list *va)
 {
 	wchar_t		wc;
 
-	wc = (wchar_t)va_arg(*va, int);
+//	if (MB_CUR_MAX == 4)
+		wc = (wchar_t)va_arg(*va, int);
+//	else
+//		wc = (unsigned char)va_arg(*va, int);
 	cur->l = ft_wcharlen(wc);
 	if ((cur->flag & MINUS) && (cur->flag & ZERO))
 		cur->flag -= ZERO;
@@ -59,4 +64,6 @@ void		ft_printf_cc(t_field *cur, va_list *va)
 	cur->ret += ft_putchar_sizel('0', cur->zero);
 	cur->ret += ft_putwchar(wc);
 	cur->ret += ft_putchar_sizel(' ', cur->spc_aft);
+//	ft_putstr("MB_CUR_MAX =");
+//	ft_putnbr(MB_CUR_MAX);
 }

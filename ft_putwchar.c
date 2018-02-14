@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/18 14:23:00 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 16:18:29 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/14 18:22:18 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,7 +17,7 @@ static int		ft_putwchar2(wchar_t c)
 {
 	int		i;
 
-	if (c > 0x7F)
+	if (c > 0x7F && c <= 0x7FF)
 	{
 		i = 0xC0 + ((c >> 6) & 0x1F);
 		write(1, &i, 1);
@@ -25,7 +25,7 @@ static int		ft_putwchar2(wchar_t c)
 		write(1, &i, 1);
 		return (2);
 	}
-	else if (c >= 0)
+	else if (c >= 0 && c <= 0x7F)
 	{
 		write(1, &c, 1);
 		return (1);
@@ -37,7 +37,7 @@ int				ft_putwchar(wchar_t c)
 {
 	int		i;
 
-	if (c > 0xFFFF) // && c <= 0x1FFFFF)
+	if (c > 0xFFFF  && c <= 0x10FFFF)
 	{
 		i = 0xF0 + ((c >> 18) & 0x07);
 		write(1, &i, 1);
@@ -49,7 +49,7 @@ int				ft_putwchar(wchar_t c)
 		write(1, &i, 1);
 		return (4);
 	}
-	else if (c > 0x7FF)
+	else if (c > 0x7FF && (c < 0xD800 || c > 0xDFFF))
 	{
 		i = 0xE0 + ((c >> 12) & 0xF);
 		write(1, &i, 1);

@@ -6,7 +6,7 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/02/06 12:09:16 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/02/13 17:34:28 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/14 18:13:45 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -19,11 +19,12 @@ Nb erreurs restantes :
 - moulitest				4 bonus wildcard ...
 - unit test				0
 - quorquy test
-	- C		13/22
-	- S		15/23
-	- Mixed	4/5
+	- C		14/22 good
+	- S		15/23 good
+	- Mixed	4/5	good
 
 Reste a faire :
+- gestion erreur c C s S
 - norminette
 - remettre au propre
 _ ft_size et nbr em long long et ... pour portabilite
