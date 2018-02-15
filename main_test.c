@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/14 18:31:26 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/15 14:27:22 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,28 +28,7 @@ int		main(void)
 	i = 0;
 	a = 0;
 	b = 0;
-	printf("LC_TYPE = %s\n", setlocale(LC_CTYPE, NULL));
-	printf("MB_CUR_MAX = %i\n", MB_CUR_MAX);
-
-	i++;
-	printf("Test %d : printf(\"|%%C|\\n\", 0x11ffff)\n", i);
-	a = printf("|%C|\n", 0x11ffff);
-	b = ft_printf("|%C|\n", 0x11ffff);
-	ft_putstr("return value printf : ");
-	ft_putnbr(a);
-	ft_putendl("");
-	ft_putstr("return value ft_printf : ");
-	ft_putnbr(b);
-	ft_putendl("");
-	if (a == b)
-		printf("Test %d : return value OK\n", i);
-	else
-		printf("Test %d : return value NOK !!!\n", i);
-	ft_putendl("");
-
-	printf("setlocale(LC_TYPE, NULL)\n");
-	setlocale(LC_ALL, "");
-	printf("LC_TYPE = %s\n", setlocale(LC_CTYPE, NULL));
+	printf("\nLC_TYPE = %s\n", setlocale(LC_CTYPE, NULL));
 	printf("MB_CUR_MAX = %i\n\n", MB_CUR_MAX);
 
 	i++;
@@ -67,6 +46,134 @@ int		main(void)
 	else
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%C|\\n\", 'c')\n", i);
+	a = printf("|%C|\n", 'c');
+	b = ft_printf("|%C|\n", 'c');
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%C%%C%%C%%C%%C%%C%%C%%C%%C%%C%%C%%C|\\n\", ...)\n", i);
+	a = printf("|%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C|\n",
+	' ', '!', '"', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-',
+	'.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
+	'<', '=', '>', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
+	'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
+	'X', 'Y', 'Z', '[',  ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
+	'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+	't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}');
+	b = ft_printf("|%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C|\n",
+	' ', '!', '"', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-',
+	'.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
+	'<', '=', '>', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
+	'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
+	'X', 'Y', 'Z', '[',  ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
+	'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+	't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}');
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+
+	printf("setlocale(LC_ALL, \"\")\n");
+	setlocale(LC_ALL, "");
+	printf("LC_TYPE = %s\n", setlocale(LC_CTYPE, ""));
+	printf("MB_CUR_MAX = %i\n\n", MB_CUR_MAX);
+
+	i++;
+	printf("Test %d : printf(\"|%%C|\\n\", 0x11ffff)\n", i);
+	a = printf("|%C|\n", 0x11ffff);
+	b = ft_printf("|%C|\n", 0x11ffff);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+
+
+	i++;
+	printf("Test %d : printf(\"|%%C|\\n\", 242)\n", i);
+	a = printf("|%C|\n", 242);
+	b = ft_printf("|%C|\n", 242);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%C%%C%%C%%C%%C%%C%%C%%C%%C%%C%%C%%C|\\n\", ...)\n", i);
+	a = printf("|%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C|\n",
+	' ', '!', '"', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-',
+	'.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
+	'<', '=', '>', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
+	'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
+	'X', 'Y', 'Z', '[',  ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
+	'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+	't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}');
+	b = ft_printf("|%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C|\n",
+	' ', '!', '"', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-',
+	'.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
+	'<', '=', '>', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
+	'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
+	'X', 'Y', 'Z', '[',  ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
+	'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+	't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}');
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+
+	printf("LC_TYPE = %s\n", setlocale(LC_CTYPE, NULL));
+	printf("MB_CUR_MAX = %i\n", MB_CUR_MAX);
+	printf("CHAR_MIN : %d\n", CHAR_MIN);
+	printf("CHAR_MAX : %d\n", CHAR_MAX);
+	printf("UCHAR_MAX : %d\n", UCHAR_MAX);
+	printf("INT_MIN : %d\n", INT_MIN);
+	printf("INT_MAX : %d\n", INT_MAX);
+	printf("UINT_MAX : %u\n", UINT_MAX);
+	printf("LONG_MIN : %ld\n", LONG_MIN);
+	printf("LONG_MAX : %ld\n", LONG_MAX);
+	printf("LLONG_MIN : %lld\n", LLONG_MIN);
+	printf("LLONG_MAX : %lld\n", LLONG_MAX);
+	printf("WCHAR_MIN : %d\n", WCHAR_MIN);
+	printf("WCHAR_MAX : %d\n", WCHAR_MAX);
+	printf("WINT_MIN : %d\n", WINT_MIN);
+	printf("WINT_MAX : %d\n", WINT_MAX);
 
 	return (0);
 }
