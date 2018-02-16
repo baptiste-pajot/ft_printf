@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 10:14:27 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 15:24:49 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 15:33:58 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,14 +16,10 @@
 t_field			*ft_type3(t_field *current, const char *str, int i, va_list *va)
 {
 	wchar_t		val;
-	short		val_short;
-	char		val_char;
 
 	if (str[i] == 'n')
 		current->type = N_FLAG;
 	val = va_arg(*va, wchar_t);
-	val_short = (short)val;
-	val_char = (char)val;
 //	printf("val = %d\n", val);
 	if (val < 0 && ((current->type == C_MAJ) || (current->type == C_MIN &&
 		current->conv == L_FLAG)))
@@ -35,6 +31,7 @@ t_field			*ft_type3(t_field *current, const char *str, int i, va_list *va)
 	if (val > 255 && MB_CUR_MAX == 1 && ((current->type == C_MAJ) ||
 		(current->type == C_MIN && current->conv == L_FLAG)))
 	{
+		ft_putnbr(val);
 		current->error = 1;
 		printf("error 2");
 		printf("MB_CUR_MAX %d\n", MB_CUR_MAX);
@@ -44,8 +41,6 @@ t_field			*ft_type3(t_field *current, const char *str, int i, va_list *va)
 		printf("TYPE %d\n", current->type);
 		printf("error %i\n", current->error);
 		printf("val = %d\n", val);
-		printf("val = %d\n", val_short);
-		printf("val = %d\n", val_char);
 	}
 	if (val > 0x10ffff && (current->type == C_MAJ || (current->type == C_MIN &&
 		current->conv == L_FLAG)))
