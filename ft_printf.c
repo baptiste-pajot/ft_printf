@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/26 10:37:00 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/15 11:56:56 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 16:48:07 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,35 +15,35 @@
 
 static void		clean(t_field *field)
 {
-	t_field		*current;
+	t_field		*cur;
 	t_field		*next;
 //	int			error;
 
 //	error = 0;
-	current = field;
-	while (current)
+	cur = field;
+	while (cur)
 	{
-//		if (current->error == 2)
+//		if (cur->error == 2)
 //			error = 1;
-		next = current->next;
-		ft_memdel((void**)&current);
-		current = next;
+		next = cur->next;
+		ft_memdel((void**)&cur);
+		cur = next;
 	}
 //	return (error);
 }
 
-static t_field	*ft_printf_arg(t_field *current, va_list *va, int *i, int *ret)
+static t_field	*ft_printf_arg(t_field *cur, va_list *va, int *i, int *ret)
 {
-	*ret += ft_printf_type(current, va);
-	*i += current->len;
-	current = current->next;
-	return (current);
+	*ret += ft_printf_type(cur, va);
+	*i += cur->len;
+	cur = cur->next;
+	return (cur);
 }
 
 int				ft_printf(const char *format, ...)
 {
 	t_field		*field;
-	t_field		*current;
+	t_field		*cur;
 	int			i;
 	int			ret;
 	va_list		va;
@@ -54,22 +54,22 @@ int				ft_printf(const char *format, ...)
 	field = ft_parse(format, &va);
 	va_end(va);
 	va_start(va, format);
-	current = field;
+	cur = field;
 	while (format[++i])
 	{
-		if (current && current->error == 1)
+		if (cur && cur->error == 1)
 		{
 			clean(field);
 			va_end(va);
 			return(-1);
 		}
 		else if (format[i] == '%')
-			current = ft_printf_arg(current, &va, &i, &ret);
+			cur = ft_printf_arg(cur, &va, &i, &ret);
 		else
 		{
-			ret += (current) ? ft_putstr_sizel((char*)&(format[i]),
-				current->text - i + 1) : ft_putstr_size((char*)&format[i]);
-			i = (current) ? current->text : ft_strlen(format) - 1;
+			ret += (cur) ? ft_putstr_sizel((char*)&(format[i]),
+				cur->text - i + 1) : ft_putstr_size((char*)&format[i]);
+			i = (cur) ? cur->text : ft_strlen(format) - 1;
 		}
 	}
 	va_end(va);

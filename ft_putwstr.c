@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 08:26:34 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/09 12:02:14 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 16:41:58 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,6 +25,24 @@ int				ft_putwstr(wchar_t *wstr)
 		while (wstr[i])
 		{
 			ret += ft_putwchar(wstr[i]);
+			i++;
+		}
+	}
+	return (ret);
+}
+
+int				ft_putwstr_singlel(wchar_t *wstr, int l)
+{
+	int		ret;
+	int		i;
+
+	i = 0;
+	ret = 0;
+	if (wstr)
+	{
+		while (wstr[i] && ret + 1 <= l)
+		{
+			ret += ft_putchar_size(wstr[i]);
 			i++;
 		}
 	}
@@ -65,6 +83,21 @@ int				ft_wstrlen(wchar_t *wstr)
 		}
 	}
 	return (ret);
+}
+
+int				ft_wstrlen_single(wchar_t *wstr)
+{
+	size_t		i;
+	int			ret;
+
+	i = 0;
+	ret = 0;
+	if (wstr)
+	{
+		while (wstr[i])
+			i++;
+	}
+	return (i);
 }
 
 int				ft_wstrlenl(wchar_t *wstr, int l)

@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:26:36 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 14:30:08 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 16:40:45 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -46,6 +46,7 @@ void		ft_printf_ss(t_field *cur, va_list *va)
 
 	wstr = va_arg(*va, int*);
 	cur->l = (wstr == 0) ? 6 : ft_wstrlen(wstr);
+	cur->l = (MB_CUR_MAX == 1 && wstr) ? ft_wstrlen_single(wstr) : cur->l;
 	if ((cur->flag & MINUS) && (cur->flag & ZERO))
 		cur->flag -= ZERO;
 	if (cur->preci >= 0 && cur->l > cur->preci)
@@ -62,7 +63,10 @@ void		ft_printf_ss(t_field *cur, va_list *va)
 		cur->spc_aft = cur->width - cur->l - cur->zero;
 	cur->ret += ft_putchar_sizel(' ', cur->spc_bfr);
 	cur->ret += ft_putchar_sizel('0', cur->zero);
-	cur->ret += (wstr) ? ft_putwstrl(wstr, cur->l) : ft_putstr_sizel("(null)",
-		cur->l);
+	if (MB_CUR_MAX == 1 && wstr)
+		cur->ret += ft_putwstr_singlel(wstr, cur->l);
+	else
+		cur->ret += (wstr) ? ft_putwstrl(wstr, cur->l) :
+			ft_putstr_sizel("(null)", cur->l);
 	cur->ret += ft_putchar_sizel(' ', cur->spc_aft);
 }

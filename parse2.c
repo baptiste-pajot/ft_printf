@@ -6,77 +6,77 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 10:10:54 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/09 16:48:33 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 16:49:41 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static t_field	*ft_flags2(t_field *current, const char *str, int i)
+static t_field	*ft_flags2(t_field *cur, const char *str, int i)
 {
-	if (str[i] == '\'' && !(current->flag & APOSTROPHE))
-		current->flag += APOSTROPHE;
-	if (str[i] == 'b' && !(current->flag & B_FLAG))
-		current->flag += B_FLAG;
-	if (str[i] == 'r' && !(current->flag & R_FLAG))
-		current->flag += R_FLAG;
-	if (str[i] == 'k' && !(current->flag & K_FLAG))
-		current->flag += K_FLAG;
-	return (current);
+	if (str[i] == '\'' && !(cur->flag & APOSTROPHE))
+		cur->flag += APOSTROPHE;
+	if (str[i] == 'b' && !(cur->flag & B_FLAG))
+		cur->flag += B_FLAG;
+	if (str[i] == 'r' && !(cur->flag & R_FLAG))
+		cur->flag += R_FLAG;
+	if (str[i] == 'k' && !(cur->flag & K_FLAG))
+		cur->flag += K_FLAG;
+	return (cur);
 }
 
-t_field			*ft_flags(t_field *current, const char *str, int i)
+t_field			*ft_flags(t_field *cur, const char *str, int i)
 {
-	if (str[i] == '#' && !(current->flag & SHARP))
-		current->flag += SHARP;
-	if (str[i] == '0' && !(current->flag & ZERO))
-		current->flag += ZERO;
-	if (str[i] == '-' && !(current->flag & MINUS))
-		current->flag += MINUS;
-	if (str[i] == '+' && !(current->flag & PLUS))
-		current->flag += PLUS;
-	if (str[i] == ' ' && !(current->flag & SPACE))
-		current->flag += SPACE;
-	if (str[i] == '*' && !(current->flag & ASTERIX))
-		current->flag += ASTERIX;
-	if (str[i] == '$' && !(current->flag & DOLLAR))
-		current->flag += DOLLAR;
-	if (str[i] == 'L' && !(current->flag & L_FLAG))
-		current->flag += L_FLAG;
-	current = ft_flags2(current, str, i);
-	current->nb = 1;
-	return (current);
+	if (str[i] == '#' && !(cur->flag & SHARP))
+		cur->flag += SHARP;
+	if (str[i] == '0' && !(cur->flag & ZERO))
+		cur->flag += ZERO;
+	if (str[i] == '-' && !(cur->flag & MINUS))
+		cur->flag += MINUS;
+	if (str[i] == '+' && !(cur->flag & PLUS))
+		cur->flag += PLUS;
+	if (str[i] == ' ' && !(cur->flag & SPACE))
+		cur->flag += SPACE;
+	if (str[i] == '*' && !(cur->flag & ASTERIX))
+		cur->flag += ASTERIX;
+	if (str[i] == '$' && !(cur->flag & DOLLAR))
+		cur->flag += DOLLAR;
+	if (str[i] == 'L' && !(cur->flag & L_FLAG))
+		cur->flag += L_FLAG;
+	cur = ft_flags2(cur, str, i);
+	cur->nb = 1;
+	return (cur);
 }
 
-t_field			*ft_width(t_field *current, const char *str, int i)
+t_field			*ft_width(t_field *cur, const char *str, int i)
 {
-	current->width = ft_atoi(&str[i]);
-	current->nb = 2;
-	return (current);
+	cur->width = ft_atoi(&str[i]);
+	cur->nb = 2;
+	return (cur);
 }
 
-t_field			*ft_preci(t_field *current, const char *str, int i)
+t_field			*ft_preci(t_field *cur, const char *str, int i)
 {
-	current->preci = ft_atoi(&str[i + 1]);
-	current->nb = 3;
-	return (current);
+	cur->preci = ft_atoi(&str[i + 1]);
+	cur->nb = 3;
+	return (cur);
 }
 
-t_field			*ft_sizem(t_field *current, const char *str, int i)
+t_field			*ft_sizem(t_field *cur, const char *str, int i)
 {
 	if (str[i] == 'h' && str[i + 1] != 'h' && str[i - 1] != 'h')
-		current->conv = H_FLAG;
+		cur->conv = H_FLAG;
 	if (str[i] == 'h' && str[i + 1] == 'h')
-		current->conv = HH_FLAG;
+		cur->conv = HH_FLAG;
 	if (str[i] == 'l' && str[i + 1] != 'l' && str[i - 1] != 'l')
-		current->conv = L_FLAG;
+		cur->conv = L_FLAG;
 	if (str[i] == 'l' && str[i + 1] == 'l')
-		current->conv = LL_FLAG;
+		cur->conv = LL_FLAG;
 	if (str[i] == 'j')
-		current->conv = J_FLAG;
+		cur->conv = J_FLAG;
 	if (str[i] == 'z')
-		current->conv = Z_FLAG;
-	current->nb = 4;
-	return (current);
+		cur->conv = Z_FLAG;
+	cur->nb = 4;
+	return (cur);
 }

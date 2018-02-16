@@ -6,113 +6,98 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 10:14:27 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 15:41:09 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 16:52:48 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static	t_field			*ft_type3(t_field *current, va_list *va)
+static	t_field			*ft_type3(t_field *cur, va_list *va)
 {
-	wchar_t		val;
+	wchar_t		wchar;
+	wchar_t*	p_wchar;
 
-	val = va_arg(*va, wchar_t);
-//	printf("val = %d\n", val);
-	if (val < 0 && ((current->type == C_MAJ) || (current->type == C_MIN &&
-		current->conv == L_FLAG)))
+	if (cur->type == S_MIN || cur->type == S_MAJ)
 	{
-		current->error = 1;
-//		printf("error 1");
-//		printf("val = %d\n", val);
+		p_wchar = va_arg(*va, wchar_t*);
 	}
-	if (val > 255 && MB_CUR_MAX == 1 && ((current->type == C_MAJ) ||
-		(current->type == C_MIN && current->conv == L_FLAG)))
+	else
 	{
-		current->error = 1;
-//		printf("error 2");
-//		printf("MB_CUR_MAX %d\n", MB_CUR_MAX);
-//		printf("FLAG %d\n", current->flag);
-//		printf("WIDTH %d\n", current->width);
-//		printf("CONV %d\n", current->conv);
-//		printf("TYPE %d\n", current->type);
-//		printf("error %i\n", current->error);
-//		printf("val = %d\n", val);
+		wchar = va_arg(*va, wchar_t);
+		if (wchar < 0 && ((cur->type == C_MAJ) || (cur->type == C_MIN &&
+						cur->conv == L_FLAG)))
+			cur->error = 1;
+		if (wchar > 255 && MB_CUR_MAX == 1 && ((cur->type == C_MAJ) ||
+					(cur->type == C_MIN && cur->conv == L_FLAG)))
+			cur->error = 1;
+		if (wchar > 0x10ffff && (cur->type == C_MAJ || (cur->type == C_MIN
+						&& cur->conv == L_FLAG)))
+			cur->error = 1;
+		if (wchar > 0xd7ff && wchar < 0xe000 && (cur->type == C_MAJ ||
+					(cur->type == C_MIN && cur->conv == L_FLAG)))
+			cur->error = 1;
 	}
-	if (val > 0x10ffff && (current->type == C_MAJ || (current->type == C_MIN &&
-		current->conv == L_FLAG)))
-	{
-		current->error = 1;
-//		printf("error 3");
-//		printf("val = %d\n", val);
-	}
-	if (val > 0xd7ff && val < 0xe000 && (current->type == C_MAJ ||
-		(current->type == C_MIN && current->conv == L_FLAG)))
-	{
-		current->error = 1;
-//		printf("error 4");
-//		printf("val = %d\n", val);
-	}
-	return (current);
+	return (cur);
 }
 
-static t_field			*ft_type2(t_field *current, const char *str, int i,
-		va_list *va)
-{
-	if (str[i] == 'x')
-		current->type = X_MIN;
-	if (str[i] == 'X')
-		current->type = X_MAJ;
-	if (str[i] == 'p')
-		current->type = POINTER;
-	if (str[i] == 'e')
-		current->type = E_MIN;
-	if (str[i] == 'E')
-		current->type = E_MAJ;
-	if (str[i] == 'f')
-		current->type = F_MIN;
-	if (str[i] == 'F')
-		current->type = F_MAJ;
-	if (str[i] == 'g')
-		current->type = G_MIN;
-	if (str[i] == 'G')
-		current->type = G_MAJ;
-	if (str[i] == 'a')
-		current->type = A_MIN;
-	if (str[i] == 'A')
-		current->type = A_MAJ;
-	if (str[i] == 'n')
-		current->type = N_FLAG;
-	if (str[i] != '%')
-		current = ft_type3(current, va);
-	return (current);
-}
+	static t_field			*ft_type2(t_field *cur, const char *str, int i,
+			va_list *va)
+	{
+		if (str[i] == 'x')
+			cur->type = X_MIN;
+		if (str[i] == 'X')
+			cur->type = X_MAJ;
+		if (str[i] == 'p')
+			cur->type = POINTER;
+		if (str[i] == 'e')
+			cur->type = E_MIN;
+		if (str[i] == 'E')
+			cur->type = E_MAJ;
+		if (str[i] == 'f')
+			cur->type = F_MIN;
+		if (str[i] == 'F')
+			cur->type = F_MAJ;
+		if (str[i] == 'g')
+			cur->type = G_MIN;
+		if (str[i] == 'G')
+			cur->type = G_MAJ;
+		if (str[i] == 'a')
+			cur->type = A_MIN;
+		if (str[i] == 'A')
+			cur->type = A_MAJ;
+		if (str[i] == 'n')
+			cur->type = N_FLAG;
+		if (str[i] != '%')
+			cur = ft_type3(cur, va);
+		return (cur);
+	}
 
-t_field			*ft_type(t_field *current, const char *str, int i, va_list *va)
-{
-	if (str[i] == '%')
-		current->type = PERCENT;
-	if (str[i] == 'c')
-		current->type = C_MIN;
-	if (str[i] == 'C')
-		current->type = C_MAJ;
-	if (str[i] == 's')
-		current->type = S_MIN;
-	if (str[i] == 'S')
-		current->type = S_MAJ;
-	if (str[i] == 'd' || str[i] == 'i')
-		current->type = D_MIN;
-	if (str[i] == 'D')
-		current->type = D_MAJ;
-	if (str[i] == 'u')
-		current->type = U_MIN;
-	if (str[i] == 'U')
-		current->type = U_MAJ;
-	if (str[i] == 'o')
-		current->type = O_MIN;
-	if (str[i] == 'O')
-		current->type = O_MAJ;
-	current = ft_type2(current, str, i, va);
-	current->nb = 5;
-	return (current);
-}
+	t_field			*ft_type(t_field *cur, const char *str, int i, va_list *va)
+	{
+		if (str[i] == '%')
+			cur->type = PERCENT;
+		if (str[i] == 'c')
+			cur->type = C_MIN;
+		if (str[i] == 'C')
+			cur->type = C_MAJ;
+		if (str[i] == 's')
+			cur->type = S_MIN;
+		if (str[i] == 'S')
+			cur->type = S_MAJ;
+		if (str[i] == 'd' || str[i] == 'i')
+			cur->type = D_MIN;
+		if (str[i] == 'D')
+			cur->type = D_MAJ;
+		if (str[i] == 'u')
+			cur->type = U_MIN;
+		if (str[i] == 'U')
+			cur->type = U_MAJ;
+		if (str[i] == 'o')
+			cur->type = O_MIN;
+		if (str[i] == 'O')
+			cur->type = O_MAJ;
+		cur = ft_type2(cur, str, i, va);
+		cur->nb = 5;
+		return (cur);
+	}

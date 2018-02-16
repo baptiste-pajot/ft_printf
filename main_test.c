@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 13:39:08 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 16:00:39 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -97,35 +97,6 @@ int		main(void)
 	else
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
-	i++;
-	printf("Test %d : printf(\"|%%C%%C%%C%%C%%C%%C%%C%%C%%C%%C%%C%%C|\\n\", ...)\n", i);
-	a = printf("|%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C|\n",
-	' ', '!', '"', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-',
-	'.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
-	'<', '=', '>', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
-	'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
-	'X', 'Y', 'Z', '[',  ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
-	'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-	't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}');
-	b = ft_printf("|%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C|\n",
-	' ', '!', '"', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-',
-	'.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
-	'<', '=', '>', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
-	'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
-	'X', 'Y', 'Z', '[',  ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
-	'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-	't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}');
-	ft_putstr("return value printf : ");
-	ft_putnbr(a);
-	ft_putendl("");
-	ft_putstr("return value ft_printf : ");
-	ft_putnbr(b);
-	ft_putendl("");
-	if (a == b)
-		printf("Test %d : return value OK\n", i);
-	else
-		printf("Test %d : return value NOK !!!\n", i);
-	ft_putendl("");
 
 	printf("setlocale(LC_ALL, \"\")\n");
 	setlocale(LC_ALL, "");
@@ -153,35 +124,6 @@ int		main(void)
 	printf("Test %d : printf(\"|%%C|\\n\", 242)\n", i);
 	a = printf("|%C|\n", 242);
 	b = ft_printf("|%C|\n", 242);
-	ft_putstr("return value printf : ");
-	ft_putnbr(a);
-	ft_putendl("");
-	ft_putstr("return value ft_printf : ");
-	ft_putnbr(b);
-	ft_putendl("");
-	if (a == b)
-		printf("Test %d : return value OK\n", i);
-	else
-		printf("Test %d : return value NOK !!!\n", i);
-	ft_putendl("");
-	i++;
-	printf("Test %d : printf(\"|%%C%%C%%C%%C%%C%%C%%C%%C%%C%%C%%C%%C|\\n\", ...)\n", i);
-	a = printf("|%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C|\n",
-	' ', '!', '"', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-',
-	'.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
-	'<', '=', '>', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
-	'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
-	'X', 'Y', 'Z', '[',  ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
-	'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-	't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}');
-	b = ft_printf("|%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C|\n",
-	' ', '!', '"', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-',
-	'.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
-	'<', '=', '>', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
-	'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
-	'X', 'Y', 'Z', '[',  ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
-	'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-	't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}');
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
