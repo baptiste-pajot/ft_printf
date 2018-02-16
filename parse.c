@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/26 14:27:00 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/14 17:38:46 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 18:26:33 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -97,7 +97,7 @@ static t_field		*ft_parse2(const char *str, int i, t_field *cur,
 	return (cur);
 }
 
-t_field				*ft_parse(const char *str, va_list  *va)
+t_field				*ft_parse(const char *str, va_list *va)
 {
 	t_field		*cur;
 	t_field		*begin;
@@ -106,7 +106,7 @@ t_field				*ft_parse(const char *str, va_list  *va)
 	i = -1;
 	begin = NULL;
 	cur = NULL;
-	while (str[++i])
+	while (str[++i] && (cur == NULL || cur->error == 0))
 	{
 		if (str[i] == '%')
 		{

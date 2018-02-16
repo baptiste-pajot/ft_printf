@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 16:00:39 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 18:27:43 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,36 +24,23 @@ int		main(void)
 	int		i;
 	char	*p = "tata";
 	char	*p_null = NULL;
+	wchar_t	s[4];
 
 	i = 0;
 	a = 0;
 	b = 0;
-
-	i++;
-	printf("Test %d : printf(\"|%%lc|\\n\", 254)\n", i);
-	a = printf("%lc", 254);
-	ft_putendl("");
-	b = ft_printf("%lc", 254);
-	ft_putendl("");
-	ft_putstr("return value printf : ");
-	ft_putnbr(a);
-	ft_putendl("");
-	ft_putstr("return value ft_printf : ");
-	ft_putnbr(b);
-	ft_putendl("");
-	if (a == b)
-		printf("Test %d : return value OK\n", i);
-	else
-		printf("Test %d : return value NOK !!!\n", i);
-	ft_putendl("");
+	s[0] = 0x53;
+	s[1] = 0x3abc;
+	s[2] = 0x81000;
+	s[3] = '\0';
 
 	printf("\nLC_TYPE = %s\n", setlocale(LC_CTYPE, NULL));
 	printf("MB_CUR_MAX = %i\n\n", MB_CUR_MAX);
 
 	i++;
-	printf("Test %d : printf(\"|%%C|\\n\", 0x11ffff)\n", i);
-	a = printf("|%C|\n", 0x11ffff);
-	b = ft_printf("|%C|\n", 0x11ffff);
+	printf("Test %d : printf(\"|%%9.6ls|\\n\", s)\n", i);
+	a = printf("|%9.6ls|\n", s);
+	b = ft_printf("||%9.6ls|\n", s);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -66,26 +53,9 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%C|\\n\", 'c')\n", i);
-	a = printf("|%C|\n", 'c');
-	b = ft_printf("|%C|\n", 'c');
-	ft_putstr("return value printf : ");
-	ft_putnbr(a);
-	ft_putendl("");
-	ft_putstr("return value ft_printf : ");
-	ft_putnbr(b);
-	ft_putendl("");
-	if (a == b)
-		printf("Test %d : return value OK\n", i);
-	else
-		printf("Test %d : return value NOK !!!\n", i);
-	ft_putendl("");
-	i++;
-	printf("Test %d : printf(\"|%%C|\\n\", 254)\n", i);
-	a = printf("%C", 254);
-	ft_putendl("");
-	b = ft_printf("%C", 254);
-	ft_putendl("");
+	printf("Test %d : printf(\"|%%9.6ls %%S|\\n\", s, (wchar_t*)'a')\n", i);
+	a = printf("|%9.6ls %S|\n", s, (wchar_t *)'a');
+	b = ft_printf("|%9.6ls %S|\n", s, (wchar_t*)'a');
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -103,72 +73,6 @@ int		main(void)
 	printf("LC_TYPE = %s\n", setlocale(LC_CTYPE, ""));
 	printf("MB_CUR_MAX = %i\n\n", MB_CUR_MAX);
 
-	i++;
-	printf("Test %d : printf(\"|%%C|\\n\", 0x11ffff)\n", i);
-	a = printf("|%C|\n", 0x11ffff);
-	b = ft_printf("|%C|\n", 0x11ffff);
-	ft_putstr("return value printf : ");
-	ft_putnbr(a);
-	ft_putendl("");
-	ft_putstr("return value ft_printf : ");
-	ft_putnbr(b);
-	ft_putendl("");
-	if (a == b)
-		printf("Test %d : return value OK\n", i);
-	else
-		printf("Test %d : return value NOK !!!\n", i);
-	ft_putendl("");
-
-
-	i++;
-	printf("Test %d : printf(\"|%%C|\\n\", 242)\n", i);
-	a = printf("|%C|\n", 242);
-	b = ft_printf("|%C|\n", 242);
-	ft_putstr("return value printf : ");
-	ft_putnbr(a);
-	ft_putendl("");
-	ft_putstr("return value ft_printf : ");
-	ft_putnbr(b);
-	ft_putendl("");
-	if (a == b)
-		printf("Test %d : return value OK\n", i);
-	else
-		printf("Test %d : return value NOK !!!\n", i);
-	ft_putendl("");
-	i++;
-	printf("Test %d : printf(\"|%%C|\\n\", 254)\n", i);
-	a = printf("%C", 254);
-	ft_putendl("");
-	b = ft_printf("%C", 254);
-	ft_putendl("");
-	ft_putstr("return value printf : ");
-	ft_putnbr(a);
-	ft_putendl("");
-	ft_putstr("return value ft_printf : ");
-	ft_putnbr(b);
-	ft_putendl("");
-	if (a == b)
-		printf("Test %d : return value OK\n", i);
-	else
-		printf("Test %d : return value NOK !!!\n", i);
-	ft_putendl("");
-	i++;
-	printf("Test %d : printf(\"|%%lc|\\n\", 254)\n", i);
-	a = printf("%lc", 254);
-	ft_putendl("");
-	b = ft_printf("%lc", 254);
-	ft_putendl("");
-	ft_putstr("return value printf : ");
-	ft_putnbr(a);
-	ft_putendl("");
-	ft_putstr("return value ft_printf : ");
-	ft_putnbr(b);
-	ft_putendl("");
-	if (a == b)
-		printf("Test %d : return value OK\n", i);
-	else
-		printf("Test %d : return value NOK !!!\n", i);
-	ft_putendl("");
 
 	printf("LC_TYPE = %s\n", setlocale(LC_CTYPE, NULL));
 	printf("MB_CUR_MAX = %i\n", MB_CUR_MAX);

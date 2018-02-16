@@ -6,7 +6,7 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/02/06 12:09:16 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/02/16 16:42:20 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/16 18:28:28 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -18,8 +18,7 @@ Nb erreurs restantes :
 - speed					8%
 - moulitest				4 bonus wildcard ...
 - unit test				0
-- quorquy test
-	- S		17/23 
+- quorquy test			0
 - ftprintf.com			0
 
 Reste a faire :
