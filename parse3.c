@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 10:14:27 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 15:22:36 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 15:24:49 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,13 +15,13 @@
 
 t_field			*ft_type3(t_field *current, const char *str, int i, va_list *va)
 {
-	int		val;
-	short	val_short;
-	char	val_char;
+	wchar_t		val;
+	short		val_short;
+	char		val_char;
 
 	if (str[i] == 'n')
 		current->type = N_FLAG;
-	val = va_arg(*va, int);
+	val = va_arg(*va, wchar_t);
 	val_short = (short)val;
 	val_char = (char)val;
 //	printf("val = %d\n", val);
