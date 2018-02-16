@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 14:58:34 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 13:43:55 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -157,7 +157,7 @@ int					ft_putwchar(wchar_t c);
 int					ft_wcharlen(wchar_t c);
 int					ft_putstr_size(char *str);
 int					ft_putstr_sizel(char *str, int i);
-int					ft_putchar_size(char c);
+int					ft_putchar_size(int c);
 int					ft_putchar_sizel(char c, int i);
 int					ft_putwstr(wchar_t *wstr);
 int					ft_putwstrl(wchar_t *wstr, int l);

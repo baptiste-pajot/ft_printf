@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:15:01 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/14 17:42:12 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 13:50:53 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -47,7 +47,7 @@ void		ft_printf_cc(t_field *cur, va_list *va)
 		wc = (wchar_t)va_arg(*va, int);
 //	else
 //		wc = (unsigned char)va_arg(*va, int);
-	cur->l = ft_wcharlen(wc);
+	cur->l = (MB_CUR_MAX == 1) ? 1 : ft_wcharlen(wc);
 	if ((cur->flag & MINUS) && (cur->flag & ZERO))
 		cur->flag -= ZERO;
 	if ((cur->flag & PLUS) && (cur->flag & SPACE))
@@ -62,7 +62,10 @@ void		ft_printf_cc(t_field *cur, va_list *va)
 		cur->spc_aft = cur->width - cur->l - cur->zero;
 	cur->ret += ft_putchar_sizel(' ', cur->spc_bfr);
 	cur->ret += ft_putchar_sizel('0', cur->zero);
-	cur->ret += ft_putwchar(wc);
+	if (MB_CUR_MAX == 1)
+		cur->ret += ft_putchar_size(wc);
+	else
+		cur->ret += ft_putwchar(wc);
 	cur->ret += ft_putchar_sizel(' ', cur->spc_aft);
 //	ft_putstr("MB_CUR_MAX =");
 //	ft_putnbr(MB_CUR_MAX);

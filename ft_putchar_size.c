@@ -6,14 +6,14 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/01 19:24:28 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/14 17:18:54 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 13:44:10 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_putchar_size(char c)
+int		ft_putchar_size(int c)
 {
 //	unsigned char ch;
 
