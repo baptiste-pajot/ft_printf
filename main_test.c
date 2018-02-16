@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 18:27:43 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 18:52:31 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,7 +36,6 @@ int		main(void)
 
 	printf("\nLC_TYPE = %s\n", setlocale(LC_CTYPE, NULL));
 	printf("MB_CUR_MAX = %i\n\n", MB_CUR_MAX);
-
 	i++;
 	printf("Test %d : printf(\"|%%9.6ls|\\n\", s)\n", i);
 	a = printf("|%9.6ls|\n", s);
@@ -73,7 +72,6 @@ int		main(void)
 	printf("LC_TYPE = %s\n", setlocale(LC_CTYPE, ""));
 	printf("MB_CUR_MAX = %i\n\n", MB_CUR_MAX);
 
-
 	printf("LC_TYPE = %s\n", setlocale(LC_CTYPE, NULL));
 	printf("MB_CUR_MAX = %i\n", MB_CUR_MAX);
 	printf("CHAR_MIN : %d\n", CHAR_MIN);
@@ -90,6 +88,5 @@ int		main(void)
 	printf("WCHAR_MAX : %d\n", WCHAR_MAX);
 	printf("WINT_MIN : %d\n", WINT_MIN);
 	printf("WINT_MAX : %d\n", WINT_MAX);
-
 	return (0);
 }

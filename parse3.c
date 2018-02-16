@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 10:14:27 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 18:37:13 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 18:55:15 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,13 +36,13 @@ static int				ft_check_wchar(wchar_t *p_wchar, t_field *cur)
 			ret = 1;
 		i++;
 	}
-	return(ret);
+	return (ret);
 }
 
 static t_field			*ft_type3(t_field *cur, va_list *va)
 {
 	wchar_t		wchar;
-	wchar_t*	p_wchar;
+	wchar_t		*p_wchar;
 
 	if ((cur->type == S_MIN && cur->conv == L_FLAG) || cur->type == S_MAJ)
 	{
@@ -100,7 +100,8 @@ static t_field			*ft_type2(t_field *cur, const char *str, int i,
 	return (cur);
 }
 
-t_field			*ft_type(t_field *cur, const char *str, int i, va_list *va)
+t_field					*ft_type(t_field *cur, const char *str, int i,
+		va_list *va)
 {
 	if (str[i] == '%')
 		cur->type = PERCENT;

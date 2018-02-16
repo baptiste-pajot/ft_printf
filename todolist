@@ -6,13 +6,13 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/02/06 12:09:16 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/02/16 18:39:28 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/16 18:56:31 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
 Nb erreurs restantes :
-- norminette			1 main_test
+- norminette			14 main_test
 - basic tests			0
 - undefined beh tests	0
 - speed					8%
@@ -35,7 +35,6 @@ _ ft_size et nbr em long long et ... pour portabilite
 - valgrind
 - norminette
 - Makefile
-- demi codets + valeur or UTF-8 negative et sup pour c et C ?
 
 - visal.fr
 gcc -o main_test.o -c main_test.c && make test && ./test

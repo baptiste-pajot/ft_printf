@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/26 10:37:00 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 18:25:47 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 18:50:21 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,19 +17,14 @@ static void		clean(t_field *field)
 {
 	t_field		*cur;
 	t_field		*next;
-//	int			error;
 
-//	error = 0;
 	cur = field;
 	while (cur)
 	{
-//		if (cur->error == 2)
-//			error = 1;
 		next = cur->next;
 		ft_memdel((void**)&cur);
 		cur = next;
 	}
-//	return (error);
 }
 
 static t_field	*ft_printf_arg(t_field *cur, va_list *va, int *i, int *ret)
@@ -61,7 +56,7 @@ int				ft_printf(const char *format, ...)
 		{
 			clean(field);
 			va_end(va);
-			return(-1);
+			return (-1);
 		}
 		else if (format[i] == '%')
 			cur = ft_printf_arg(cur, &va, &i, &ret);
@@ -74,6 +69,5 @@ int				ft_printf(const char *format, ...)
 	}
 	va_end(va);
 	clean(field);
-//	ret = (clean(field)) ? -1 : ret;
 	return (ret);
 }
