@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 10:14:27 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 14:16:49 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 14:18:38 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,14 +24,14 @@ t_field			*ft_type3(t_field *current, const char *str, int i, va_list *va)
 	if (val < 0 && (current->type == C_MAJ))// || (current->type == C_MIN &&
 //		current->conv == L_FLAG)))
 		current->error = 1;
-//	if (val > 255 && current->type == C_MAJ && MB_CUR_MAX == 1)
+	if (val > 255 && current->type == C_MAJ && MB_CUR_MAX == 1)
+		current->error = 1;
+//	if (val > 0x10ffff && (current->type == C_MAJ || (current->type == C_MIN &&
+//		current->conv == L_FLAG)))
 //		current->error = 1;
-	if (val > 0x10ffff && (current->type == C_MAJ || (current->type == C_MIN &&
-		current->conv == L_FLAG)))
-		current->error = 1;
-	if (val > 0xd7ff && val < 0xe000 && (current->type == C_MAJ ||
-		(current->type == C_MIN && current->conv == L_FLAG)))
-		current->error = 1;
+//	if (val > 0xd7ff && val < 0xe000 && (current->type == C_MAJ ||
+//		(current->type == C_MIN && current->conv == L_FLAG)))
+//		current->error = 1;
 	return (current);
 }
 
