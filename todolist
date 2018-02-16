@@ -6,7 +6,7 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/02/06 12:09:16 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/02/16 15:16:04 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/16 15:42:58 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -19,10 +19,8 @@ Nb erreurs restantes :
 - moulitest				4 bonus wildcard ...
 - unit test				0
 - quorquy test
-	- C		20/22 good
-	- S		15/23 good
-	- Mixed	4/5	good
-- ftprintf.com			1 C diam
+	- S		15/23 
+- ftprintf.com			0
 
 Reste a faire :
 - gestion erreur c C s S

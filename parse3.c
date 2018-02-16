@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 10:14:27 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 15:38:56 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 15:41:09 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,14 +30,14 @@ static	t_field			*ft_type3(t_field *current, va_list *va)
 		(current->type == C_MIN && current->conv == L_FLAG)))
 	{
 		current->error = 1;
-		printf("error 2");
-		printf("MB_CUR_MAX %d\n", MB_CUR_MAX);
-		printf("FLAG %d\n", current->flag);
-		printf("WIDTH %d\n", current->width);
-		printf("CONV %d\n", current->conv);
-		printf("TYPE %d\n", current->type);
-		printf("error %i\n", current->error);
-		printf("val = %d\n", val);
+//		printf("error 2");
+//		printf("MB_CUR_MAX %d\n", MB_CUR_MAX);
+//		printf("FLAG %d\n", current->flag);
+//		printf("WIDTH %d\n", current->width);
+//		printf("CONV %d\n", current->conv);
+//		printf("TYPE %d\n", current->type);
+//		printf("error %i\n", current->error);
+//		printf("val = %d\n", val);
 	}
 	if (val > 0x10ffff && (current->type == C_MAJ || (current->type == C_MIN &&
 		current->conv == L_FLAG)))
