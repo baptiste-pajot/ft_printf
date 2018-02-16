@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 10:14:27 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 18:04:16 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 18:37:13 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,7 +20,7 @@ static int				ft_check_wchar(wchar_t *p_wchar, t_field *cur)
 
 	ret = 0;
 	i = 0;
-	while (p_wchar[i] && (cur->preci == -1 || i < cur->preci))
+	while (p_wchar && p_wchar[i] && (cur->preci == -1 || i < cur->preci))
 	{
 		if (p_wchar[i] < 0 && ((cur->type == S_MAJ) || (cur->type == S_MIN &&
 			cur->conv == L_FLAG)))
