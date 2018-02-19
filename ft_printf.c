@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/26 10:37:00 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 18:50:21 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 09:52:03 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,6 +35,21 @@ static t_field	*ft_printf_arg(t_field *cur, va_list *va, int *i, int *ret)
 	return (cur);
 }
 
+static int		end(t_field *field, va_list *va, int ret)
+{
+	clean(field);
+	va_end(*va);
+	return (ret);
+}
+
+static void		ft_printf_txt(t_field *cur, const char *format, int *i,
+		int *ret)
+{
+	*ret += (cur) ? ft_putstr_sizel((char*)&(format[*i]),
+		cur->text - *i + 1) : ft_putstr_size((char*)&format[*i]);
+	*i = (cur) ? cur->text : ft_strlen(format) - 1;
+}
+
 int				ft_printf(const char *format, ...)
 {
 	t_field		*field;
@@ -53,21 +68,11 @@ int				ft_printf(const char *format, ...)
 	while (format[++i])
 	{
 		if (cur && cur->error == 1)
-		{
-			clean(field);
-			va_end(va);
-			return (-1);
-		}
+			return (end(field, &va, -1));
 		else if (format[i] == '%')
 			cur = ft_printf_arg(cur, &va, &i, &ret);
 		else
-		{
-			ret += (cur) ? ft_putstr_sizel((char*)&(format[i]),
-				cur->text - i + 1) : ft_putstr_size((char*)&format[i]);
-			i = (cur) ? cur->text : ft_strlen(format) - 1;
-		}
+			ft_printf_txt(cur, format, &i, &ret);
 	}
-	va_end(va);
-	clean(field);
-	return (ret);
+	return (end(field, &va, ret));
 }

@@ -6,65 +6,72 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 10:14:27 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 18:55:15 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 10:49:49 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int				ft_check_wchar(wchar_t *p_wchar, t_field *cur)
+static t_field			*ft_check_error_s(t_field *cur, wchar_t *p_wchar)
 {
 	int		ret;
 	int		i;
 
 	ret = 0;
 	i = 0;
-	while (p_wchar && p_wchar[i] && (cur->preci == -1 || i < cur->preci))
+	if ((cur->type == S_MIN && cur->conv == L_FLAG) || cur->type == S_MAJ)
 	{
-		if (p_wchar[i] < 0 && ((cur->type == S_MAJ) || (cur->type == S_MIN &&
-			cur->conv == L_FLAG)))
-			ret = 1;
-		if (p_wchar[i] > 255 && MB_CUR_MAX == 1 && ((cur->type == S_MAJ) ||
-			(cur->type == S_MIN && cur->conv == L_FLAG)))
-			ret = 1;
-		if (p_wchar[i] > 0x10ffff && (cur->type == S_MAJ || (cur->type == S_MIN
-			&& cur->conv == L_FLAG)))
-			ret = 1;
-		if (p_wchar[i] > 0xd7ff && p_wchar[i] < 0xe000 && (cur->type == S_MAJ ||
-			(cur->type == S_MIN && cur->conv == L_FLAG)))
-			ret = 1;
-		i++;
+		while (p_wchar && p_wchar[i] && (cur->preci == -1 || i < cur->preci))
+		{
+			if (p_wchar[i] < 0)
+				cur->error = 1;
+			if (p_wchar[i] > 255 && MB_CUR_MAX == 1)
+				cur->error = 1;
+			if (p_wchar[i] > 0x10ffff)
+				cur->error = 1;
+			if (p_wchar[i] > 0xd7ff && p_wchar[i] < 0xe000)
+				cur->error = 1;
+			i++;
+		}
 	}
-	return (ret);
+	return (cur);
 }
 
-static t_field			*ft_type3(t_field *cur, va_list *va)
+static t_field			*ft_check_error_c(t_field *cur, wchar_t wchar)
+{
+	if ((cur->type == C_MAJ) || (cur->type == C_MIN &&
+				cur->conv == L_FLAG))
+	{
+		if (wchar < 0)
+			cur->error = 1;
+		if (wchar > 255 && MB_CUR_MAX == 1)
+			cur->error = 1;
+		if (wchar > 0x10ffff)
+			cur->error = 1;
+		if (wchar > 0xd7ff && wchar < 0xe000)
+			cur->error = 1;
+	}
+	return (cur);
+}
+
+static t_field			*ft_type3(t_field *cur, const char *str, int i,
+		va_list *va)
 {
 	wchar_t		wchar;
 	wchar_t		*p_wchar;
 
-	if ((cur->type == S_MIN && cur->conv == L_FLAG) || cur->type == S_MAJ)
-	{
-		p_wchar = va_arg(*va, wchar_t*);
-		cur->error = ft_check_wchar(p_wchar, cur);
-	}
-	else
+	if (str[i] == 'n')
+		cur->type = N_FLAG;
+	if (str[i] == 'c' || str[i] == 'C')
 	{
 		wchar = va_arg(*va, wchar_t);
-		if (wchar < 0 && ((cur->type == C_MAJ) || (cur->type == C_MIN &&
-			cur->conv == L_FLAG)))
-			cur->error = 1;
-		if (wchar > 255 && MB_CUR_MAX == 1 && ((cur->type == C_MAJ) ||
-			(cur->type == C_MIN && cur->conv == L_FLAG)))
-			cur->error = 1;
-		if (wchar > 0x10ffff && (cur->type == C_MAJ || (cur->type == C_MIN
-			&& cur->conv == L_FLAG)))
-			cur->error = 1;
-		if (wchar > 0xd7ff && wchar < 0xe000 && (cur->type == C_MAJ ||
-			(cur->type == C_MIN && cur->conv == L_FLAG)))
-			cur->error = 1;
+		cur = ft_check_error_c(cur, wchar);
 	}
+	else if (str[i] != '%')
+		p_wchar = va_arg(*va, wchar_t*);
+	if (str[i] == 's' || str[i] == 'S')
+		cur = ft_check_error_s(cur, p_wchar);
 	return (cur);
 }
 
@@ -93,10 +100,7 @@ static t_field			*ft_type2(t_field *cur, const char *str, int i,
 		cur->type = A_MIN;
 	if (str[i] == 'A')
 		cur->type = A_MAJ;
-	if (str[i] == 'n')
-		cur->type = N_FLAG;
-	if (str[i] != '%')
-		cur = ft_type3(cur, va);
+	cur = ft_type3(cur, str, i, va);
 	return (cur);
 }
 
