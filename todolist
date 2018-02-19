@@ -6,7 +6,7 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/02/06 12:09:16 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/02/19 14:51:10 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/19 17:02:34 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -16,7 +16,7 @@ Nb erreurs restantes :
 - basic tests			0
 - undefined beh tests	0
 - speed					8%
-- moulitest				1 conv f F
+- moulitest				0
 - unit test				0
 - quorquy test			0
 - ftprintf.com			0

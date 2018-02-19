@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:30:13 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 16:48:43 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 17:01:59 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,24 +15,27 @@
 
 void		ft_printf_f(t_field *cur, va_list *va)
 {
-	char		c;
-	int			ret;
+	double		f;
+	long int	f_int;
+	double		f_dec;
 
-	ret = 0;
-	if (cur)
+	f = va_arg(*va, double);
+	f_int = (long int)f;
+	f_dec = f - (double)f_int;
+	f_dec = (f_dec < 0) ? - f_dec : f_dec;
+	f_dec += DBL_EPSILON;
+	cur->ret += ft_putnbr_long_size(f_int);
+	if (f_dec * 1000000 >= 1.0)
 	{
-		c = va_arg(*va, int);
+		cur->ret += ft_putchar_size('.');
+		cur->ret += ft_putnbr_long_size((long int)(f_dec * 1000000));
 	}
 }
 
-void		ft_printf_ff(t_field *cur, va_list *va)
+void		ft_printf_lf(t_field *cur, va_list *va)
 {
-	wchar_t		wc;
-	int			ret;
+	long double		lf;
 
-	ret = 0;
-	if (cur)
-	{
-		wc = va_arg(*va, int);
-	}
+	lf = va_arg(*va, long double);
+	cur->ret += ft_putnbr_size((int)lf);
 }

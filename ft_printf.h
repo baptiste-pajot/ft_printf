@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 13:58:05 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 16:25:51 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,6 +20,7 @@
 # include <unistd.h>
 # include <limits.h>
 # include <locale.h>
+# include <float.h>
 
 # define FLAG		"#0-+ $L'brk"
 # define WIDTH		"123456789*"
@@ -151,7 +152,7 @@ void				ft_printf_p(t_field *cur, va_list *va);
 void				ft_printf_e(t_field *cur, va_list *va);
 void				ft_printf_ee(t_field *cur, va_list *va);
 void				ft_printf_f(t_field *cur, va_list *va);
-void				ft_printf_ff(t_field *cur, va_list *va);
+void				ft_printf_lf(t_field *cur, va_list *va);
 void				ft_printf_g(t_field *cur, va_list *va);
 void				ft_printf_gg(t_field *cur, va_list *va);
 void				ft_printf_a(t_field *cur, va_list *va);

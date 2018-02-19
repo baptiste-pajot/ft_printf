@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 14:49:15 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 17:00:50 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -94,6 +94,64 @@ int		main(void)
 	else
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%f||%%F|\\n\", 1.42, 1.42)\n", i);
+	a = printf("|%f||%F|\n", 1.42, 1.42);
+	b = ft_printf("|%f||%F|\n", 1.42, 1.42);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%f||%%F|\\n\", -1.42, -1.42)\n", i);
+	a = printf("|%f||%F|\n", -1.42, -1.42);
+	b = ft_printf("|%f||%F|\n", -1.42, -1.42);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%f||%%F|\\n\", 1444565444646.6465424242242, 1444565444646.6465424242242)\n", i);
+	a = printf("|%f||%F|\n", 1444565444646.6465424242242,
+		1444565444646.6465424242242);
+	b = ft_printf("|%f||%F|\n", 1444565444646.6465424242242,
+		1444565444646.6465424242242);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+
+	printf("DBL_MANT_DIG : %d\n", DBL_MANT_DIG);
+	printf("DBL_MIN_EXP : %d\n", DBL_MIN_EXP);
+	printf("DBL_MAX_EXP : %d\n", DBL_MAX_EXP);
+	printf("DBL_DIG : %d\n", DBL_DIG);
+	printf("DBL_MIN_10_EXP : %d\n", DBL_MIN_10_EXP);
+	printf("DBL_MAX_10_EXP : %d\n", DBL_MAX_10_EXP);
+	printf("DBL_MIN : %.50f\n", DBL_MIN);
+	printf("DBL_MAX : %f\n", DBL_MAX);
+	printf("DBL_EPSILON : %.50f\n", DBL_EPSILON);
+
 
 	printf("CHAR_MIN : %d\n", CHAR_MIN);
 	printf("CHAR_MAX : %d\n", CHAR_MAX);
