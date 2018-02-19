@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:30:13 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 17:25:02 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 17:27:33 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,7 +20,7 @@ void		ft_printf_f(t_field *cur, va_list *va)
 	double		f_dec;
 	int			i;
 
-	i = 6;
+	i = (cur->preci >= 0) ? cur->preci : 6;
 	f = va_arg(*va, double);
 	f_int = (long int)f;
 	f_dec = f - (double)f_int;
