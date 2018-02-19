@@ -6,7 +6,7 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/02/06 12:09:16 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/02/19 12:04:09 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/19 14:51:10 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -16,16 +16,19 @@ Nb erreurs restantes :
 - basic tests			0
 - undefined beh tests	0
 - speed					8%
-- moulitest				4 bonus wildcard ...
+- moulitest				1 conv f F
 - unit test				0
 - quorquy test			0
 - ftprintf.com			0
+
+Bonus fait :
+- flag *
 
 Reste a faire :
 - float double e E f F g G a A
 - flag n
 - prefix resize hh h l ll j z
-- flags bonus * $ L '
+- flags bonus $ L '
 - flags bonus + b r k color fd
 - opti vitesse
 - forum comment gerer fd
@@ -36,12 +39,14 @@ Reste a faire :
 - visal.fr
 gcc -o main_test.o -c main_test.c && make test && ./test
 
-/*	printf("FLAG %d\n", cur->flag);
+	printf("FLAG %d\n", cur->flag);
 	printf("WIDTH %d\n", cur->width);
+	printf("width_ast %d\n", cur->width_ast);
 	printf("PRECI %d\n", cur->preci);
+	printf("preci_ast %d\n", cur->preci_ast);
 	printf("CONV %d\n", cur->conv);
 	printf("TYPE %d\n", cur->type);
 	printf("letter %c\n", cur->letter);
-	printf("error %i\n", cur->error);*/
+	printf("error %i\n", cur->error);
 
 installer module sea lion  jetbrain student sur internet puis sur msc

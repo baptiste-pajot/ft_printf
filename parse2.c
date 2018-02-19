@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 10:10:54 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 16:49:41 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 14:44:16 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,16 +49,49 @@ t_field			*ft_flags(t_field *cur, const char *str, int i)
 	return (cur);
 }
 
-t_field			*ft_width(t_field *cur, const char *str, int i)
+t_field			*ft_width(t_field *cur, const char *str, int i, va_list *va)
 {
-	cur->width = ft_atoi(&str[i]);
+	int		end_nb;
+
+	end_nb = i;
+	while (ft_strchr(" 0123456789+-/t/n/v/f/r", (char)str[end_nb]))
+		end_nb++;
+	if (str[i] == '*' || str[end_nb] == '*')
+	{
+		cur->width = va_arg(*va, int);
+		cur->width_ast = 1;
+		if (cur->width < 0)
+		{
+			cur->flag += MINUS;
+			cur->width = -cur->width;
+		}
+		if (ft_strchr(" 0123456789+-/t/n/v/f/r", (char)str[end_nb + 1]))
+			cur->width = ft_atoi(&str[end_nb + 1]);
+	}
+	else
+		cur->width = ft_atoi(&str[i]);
 	cur->nb = 2;
 	return (cur);
 }
 
-t_field			*ft_preci(t_field *cur, const char *str, int i)
+t_field			*ft_preci(t_field *cur, const char *str, int i, va_list *va)
 {
-	cur->preci = ft_atoi(&str[i + 1]);
+	int		end_nb;
+
+	end_nb = i + 1;
+	while (ft_strchr(" 0123456789+-/t/n/v/f/r", (char)str[end_nb]))
+		end_nb++;
+	if (str[i + 1] == '*' || str[end_nb] == '*')
+	{
+		cur->preci = va_arg(*va, int);
+		cur->preci_ast = 1;
+		if (cur->preci < 0)
+			cur->preci = -1;
+		if (ft_strchr(" 0123456789+-/t/n/v/f/r", (char)str[end_nb + 1]))
+			cur->preci = ft_atoi(&str[end_nb + 1]);
+	}
+	else
+		cur->preci = ft_atoi(&str[i + 1]);
 	cur->nb = 3;
 	return (cur);
 }

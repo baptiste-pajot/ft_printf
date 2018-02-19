@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 16:47:48 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 13:58:05 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,8 +21,8 @@
 # include <limits.h>
 # include <locale.h>
 
-# define FLAG		"#0-+ *$L'brk"
-# define WIDTH		"123456789"
+# define FLAG		"#0-+ $L'brk"
+# define WIDTH		"123456789*"
 # define CONV		"hljz"
 # define TYPE		"sSpdDioOuUxXcCeEfFgGaAn%"
 
@@ -75,7 +75,9 @@ typedef struct		s_field
 	int				text;
 	int				flag;
 	int				width;
+	int				width_ast;
 	int				preci;
+	int				preci_ast;
 	int				conv;
 	int				type;
 	int				len;
@@ -96,8 +98,10 @@ typedef struct		s_field
 
 t_field				*ft_parse(const char *str, va_list *va);
 t_field				*ft_flags(t_field *cur, const char *str, int i);
-t_field				*ft_width(t_field *cur, const char *str, int i);
-t_field				*ft_preci(t_field *cur, const char *str, int i);
+t_field				*ft_width(t_field *cur, const char *str, int i,
+		va_list *va);
+t_field				*ft_preci(t_field *cur, const char *str, int i,
+		va_list *va);
 t_field				*ft_sizem(t_field *cur, const char *str, int i);
 t_field				*ft_type(t_field *cur, const char *str, int i,
 		va_list *va);

@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/26 14:27:00 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 18:47:01 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 14:01:23 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,7 +17,9 @@ static t_field		*ft_init(t_field *cur)
 {
 	cur->flag = 0;
 	cur->width = 0;
+	cur->width_ast = 0;
 	cur->preci = -1;
+	cur->preci_ast = 0;
 	cur->conv = 0;
 	cur->type = 0;
 	cur->letter = 0;
@@ -77,9 +79,9 @@ static t_field		*ft_parse2(const char *str, int i, t_field *cur,
 		if (ft_strchr(FLAG, str[i]) != NULL && cur->nb < 2)
 			cur = ft_flags(cur, str, i);
 		else if (ft_strchr(WIDTH, str[i]) != NULL && cur->nb < 2)
-			cur = ft_width(cur, str, i);
+			cur = ft_width(cur, str, i, va);
 		else if (str[i] == '.' && cur->nb < 3)
-			cur = ft_preci(cur, str, i);
+			cur = ft_preci(cur, str, i, va);
 		else if (ft_strchr(CONV, str[i]) != NULL && cur->nb < 5 && cur->conv
 				< J_FLAG)
 			cur = ft_sizem(cur, str, i);

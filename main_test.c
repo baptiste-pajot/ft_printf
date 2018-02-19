@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 11:45:52 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 14:49:15 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,12 +34,10 @@ int		main(void)
 	s[2] = 0x81000;
 	s[3] = '\0';
 
-	printf("\nLC_TYPE = %s\n", setlocale(LC_CTYPE, NULL));
-	printf("MB_CUR_MAX = %i\n\n", MB_CUR_MAX);
 	i++;
-	printf("Test %d : printf(\"|%%9.6ls|\\n\", s)\n", i);
-	a = printf("|%9.6ls|\n", s);
-	b = ft_printf("||%9.6ls|\n", s);
+	printf("Test %d : printf(\"|%%*d|\\n\", 5, 42)\n", i);
+	a = printf("|%*d|\n", 5, 42);
+	b = ft_printf("|%*d|\n", 5, 42);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -52,9 +50,9 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%9.6ls %%S|\\n\", s, (wchar_t*)'a')\n", i);
-	a = printf("|%9.6ls %S|\n", s, (wchar_t *)'a');
-	b = ft_printf("|%9.6ls %S|\n", s, (wchar_t*)'a');
+	printf("Test %d : printf(\"|%%.*d|\\n\", 5, 42)\n", i);
+	a = printf("|%.*d|\n", 5, 42);
+	b = ft_printf("|%.*d|\n", 5, 42);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -66,14 +64,36 @@ int		main(void)
 	else
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
-
-	printf("setlocale(LC_ALL, \"\")\n");
-	setlocale(LC_ALL, "");
-	printf("LC_TYPE = %s\n", setlocale(LC_CTYPE, ""));
-	printf("MB_CUR_MAX = %i\n\n", MB_CUR_MAX);
-
-	printf("LC_TYPE = %s\n", setlocale(LC_CTYPE, NULL));
-	printf("MB_CUR_MAX = %i\n", MB_CUR_MAX);
+	i++;
+	printf("Test %d : printf(\"|%%3*p|\\n\", 10, 0)\n", i);
+	a = printf("|%3*p|\n", 10, 0);
+	b = ft_printf("|%3*p|\n", 10, 0);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%*3d|\\n\", 0, 10)\n", i);
+	a = printf("|%*3d|\n", 0, 10);
+	b = ft_printf("|%*3d|\n", 0, 10);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
 
 	printf("CHAR_MIN : %d\n", CHAR_MIN);
 	printf("CHAR_MAX : %d\n", CHAR_MAX);
