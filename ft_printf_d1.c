@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/09 16:47:32 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/09 17:22:29 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 11:32:13 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -51,12 +51,12 @@ void			ft_printf_hhd(t_field *cur, va_list *va)
 		cur->l++;
 	}
 	cur->minus = (hhd < 0) ? 1 : 0;
-	cur->pos = (hhd < 0 && hhd != -128) ? -hhd : hhd;
+	cur->pos = (hhd < 0 && hhd != CHAR_MIN) ? -hhd : hhd;
 	if (cur->preci > ft_nbr_size(hhd) - cur->minus)
 		cur->zero = cur->preci - ft_nbr_size(hhd) + cur->minus;
 	ft_printf_d_space(cur);
 	if (cur->preci != 0 || hhd != 0)
-		cur->ret += (hhd == -128) ? ft_putstr_size("128") :
+		cur->ret += (hhd == CHAR_MIN) ? ft_putstr_size("128") :
 			ft_putnbr_size(cur->pos);
 	cur->ret += ft_putchar_sizel(' ', cur->spc_aft);
 }
@@ -74,12 +74,12 @@ void			ft_printf_hd(t_field *cur, va_list *va)
 		cur->l++;
 	}
 	cur->minus = (hd < 0) ? 1 : 0;
-	cur->pos = (hd < 0 && hd != -32768) ? -hd : hd;
+	cur->pos = (hd < 0 && hd != SHRT_MIN) ? -hd : hd;
 	if (cur->preci > ft_nbr_size(hd) - cur->minus)
 		cur->zero = cur->preci - ft_nbr_size(hd) + cur->minus;
 	ft_printf_d_space(cur);
 	if (cur->preci != 0 || hd != 0)
-		cur->ret += (hd == -32768) ? ft_putstr_size("32768") :
+		cur->ret += (hd == SHRT_MIN) ? ft_putstr_size("32768") :
 			ft_putnbr_size(cur->pos);
 	cur->ret += ft_putchar_sizel(' ', cur->spc_aft);
 }
@@ -97,12 +97,12 @@ void			ft_printf_d(t_field *cur, va_list *va)
 		cur->l++;
 	}
 	cur->minus = (d < 0) ? 1 : 0;
-	cur->pos = (d < 0 && d != -2147483648) ? -d : d;
+	cur->pos = (d < 0 && d != INT_MIN) ? -d : d;
 	if (cur->preci > ft_nbr_size(d) - cur->minus)
 		cur->zero = cur->preci - ft_nbr_size(d) + cur->minus;
 	ft_printf_d_space(cur);
 	if (cur->preci != 0 || d != 0)
-		cur->ret += (d == -2147483648) ? ft_putstr_size("2147483648") :
+		cur->ret += (d == INT_MIN) ? ft_putstr_size("2147483648") :
 			ft_putnbr_size(cur->pos);
 	cur->ret += ft_putchar_sizel(' ', cur->spc_aft);
 }

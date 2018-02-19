@@ -6,13 +6,13 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/02/06 12:09:16 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/02/19 10:02:24 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/19 12:04:09 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
 Nb erreurs restantes :
-- norminette			14 main_test
+- norminette			9 main_test
 - basic tests			0
 - undefined beh tests	0
 - speed					8%
@@ -22,9 +22,6 @@ Nb erreurs restantes :
 - ftprintf.com			0
 
 Reste a faire :
-- norminette
-- remettre au propre
-_ ft_size et nbr em long long et ... pour portabilite
 - float double e E f F g G a A
 - flag n
 - prefix resize hh h l ll j z

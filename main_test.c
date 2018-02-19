@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 18:52:31 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 11:45:52 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -74,16 +74,26 @@ int		main(void)
 
 	printf("LC_TYPE = %s\n", setlocale(LC_CTYPE, NULL));
 	printf("MB_CUR_MAX = %i\n", MB_CUR_MAX);
+
 	printf("CHAR_MIN : %d\n", CHAR_MIN);
 	printf("CHAR_MAX : %d\n", CHAR_MAX);
 	printf("UCHAR_MAX : %d\n", UCHAR_MAX);
+	printf("SHRT_MIN : %d\n", SHRT_MIN);
+	printf("SHRT_MAX : %d\n", SHRT_MAX);
+	printf("USHRT_MAX : %d\n", USHRT_MAX);
 	printf("INT_MIN : %d\n", INT_MIN);
 	printf("INT_MAX : %d\n", INT_MAX);
 	printf("UINT_MAX : %u\n", UINT_MAX);
+	printf("SIZE_MAX : %llu\n", SIZE_MAX);
 	printf("LONG_MIN : %ld\n", LONG_MIN);
 	printf("LONG_MAX : %ld\n", LONG_MAX);
+	printf("ULONG_MAX : %lu\n", ULONG_MAX);
 	printf("LLONG_MIN : %lld\n", LLONG_MIN);
 	printf("LLONG_MAX : %lld\n", LLONG_MAX);
+	printf("ULLONG_MAX : %llu\n", ULLONG_MAX);
+	printf("INTMAX_MIN : %lld\n", INTMAX_MIN);
+	printf("INTMAX_MAX : %lld\n", INTMAX_MAX);
+	printf("UINTMAX_MIN : %llu\n", UINTMAX_MAX);
 	printf("WCHAR_MIN : %d\n", WCHAR_MIN);
 	printf("WCHAR_MAX : %d\n", WCHAR_MAX);
 	printf("WINT_MIN : %d\n", WINT_MIN);

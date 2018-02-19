@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/09 16:47:41 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 14:51:12 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 11:45:06 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -72,12 +72,12 @@ void			ft_printf_jd(t_field *cur, va_list *va)
 		cur->l++;
 	}
 	cur->minus = (jd < 0) ? 1 : 0;
-	cur->pos_long = (jd < 0 && jd != LLONG_MIN) ? -jd : jd;
+	cur->pos_long = (jd < 0 && jd != INTMAX_MIN) ? -jd : jd;
 	if (cur->preci > ft_nbr_long_size(jd) - cur->minus)
 		cur->zero = cur->preci - ft_nbr_long_size(jd) + cur->minus;
 	ft_printf_d_space(cur);
 	if (cur->preci != 0 || jd != 0)
-		cur->ret += (jd == LLONG_MIN) ? ft_putstr_size("9223372036854775808") :
+		cur->ret += (jd == INTMAX_MIN) ? ft_putstr_size("9223372036854775808") :
 			ft_putnbr_long_size(cur->pos_long);
 	cur->ret += ft_putchar_sizel(' ', cur->spc_aft);
 }
