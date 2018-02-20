@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:30:13 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 17:27:33 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/20 17:57:49 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,26 +16,14 @@
 void		ft_printf_f(t_field *cur, va_list *va)
 {
 	double		f;
-	long int	f_int;
-	double		f_dec;
-	int			i;
 
-	i = (cur->preci >= 0) ? cur->preci : 6;
+	cur->preci = (cur->preci < 0) ? 6 : cur->preci;
 	f = va_arg(*va, double);
-	f_int = (long int)f;
-	f_dec = f - (double)f_int;
-	f_dec = (f_dec < 0) ? - f_dec : f_dec;
-	f_dec += DBL_EPSILON;
-	cur->ret += ft_putnbr_long_size(f_int);
-	cur->ret += ft_putchar_size('.');
-	while (i > 0)
-	{
-		f_dec *= 10;
-		cur->ret += ft_putnbr_size((int)f_dec);
-		f_dec = f_dec - (int)f_dec;
-		i--;
-	}
-//	cur->ret += ft_putnbr_long_size((long int)(f_dec * 1000000));
+	cur->ret += (f > 0.0) ? 0 : ft_putchar_size('-');
+	f = (f > 0.0) ? f : -f;
+	cur->ret += ft_putnbr_double_int(f);
+	cur->ret += (cur->preci == 0) ? 0 : ft_putchar_size('.');
+	cur->ret += ft_putchar_sizel('0', cur->preci);
 }
 
 void		ft_printf_lf(t_field *cur, va_list *va)

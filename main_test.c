@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 17:00:50 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/20 17:46:17 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -95,9 +95,9 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%f||%%F|\\n\", 1.42, 1.42)\n", i);
-	a = printf("|%f||%F|\n", 1.42, 1.42);
-	b = ft_printf("|%f||%F|\n", 1.42, 1.42);
+	printf("Test %d : printf(\"|%%.70f|\\n\", 1.15)\n", i);
+	a = printf("|%.70f|\n", 1.15);
+	b = ft_printf("|%.70f|\n", 1.15);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -110,9 +110,9 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%f||%%F|\\n\", -1.42, -1.42)\n", i);
-	a = printf("|%f||%F|\n", -1.42, -1.42);
-	b = ft_printf("|%f||%F|\n", -1.42, -1.42);
+	printf("Test %d : printf(\"|%%.0f|\\n\", -1024.0)\n", i);
+	a = printf("|%.0f|\n", -1024.0);
+	b = ft_printf("|%.0f|\n", -1024.0);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -125,11 +125,54 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%f||%%F|\\n\", 1444565444646.6465424242242, 1444565444646.6465424242242)\n", i);
-	a = printf("|%f||%F|\n", 1444565444646.6465424242242,
-		1444565444646.6465424242242);
-	b = ft_printf("|%f||%F|\n", 1444565444646.6465424242242,
-		1444565444646.6465424242242);
+	printf("Test %d : printf(\"|%%f|\\n\", 1444565444646.6465424242242)\n", i);
+	a = printf("|%f|\n", 1444565444646.6465424242242);
+	b = ft_printf("|%f|\n", 1444565444646.6465424242242);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%f|\\n\", -148681115151511651115156115115.428168111651151616161566156)\n", i);
+	a = printf("|%f|\n", -148681115151511651115156115115.428168111651151616161566156);
+	b = ft_printf("|%f|\n", -148681115151511651115156115115.428168111651151616161566156);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%f|\\n\", 1234567890123456789012345678901234567890)\n", i);
+	a = printf("|%f|\n", 1234567890123456789012345678901234567890.123);
+	b = ft_printf("|%f|\n", 1234567890123456789012345678901234567890.123);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%f|\\n\", -0.00000000000000000000000000000000000000000001)\n", i);
+	a = printf("|%.80f|\n", -0.00000000000000000000000000000000000000000001);
+	b = ft_printf("|%.80f|\n", -0.00000000000000000000000000000000000000000001);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -142,15 +185,34 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 
+	printf("+0 : %.350f\n", 0.0);
+	printf("-0 : %.350f\n", (-0.0));
+	printf("+Inf : %.1f\n", (3 / 0.0));
+	printf("-Inf : %.1f\n", (-3 / 0.0));
+	printf("NaN : %.1f\n", (0.0 / 0.0));
+	ft_putendl("");
+
 	printf("DBL_MANT_DIG : %d\n", DBL_MANT_DIG);
 	printf("DBL_MIN_EXP : %d\n", DBL_MIN_EXP);
 	printf("DBL_MAX_EXP : %d\n", DBL_MAX_EXP);
 	printf("DBL_DIG : %d\n", DBL_DIG);
 	printf("DBL_MIN_10_EXP : %d\n", DBL_MIN_10_EXP);
 	printf("DBL_MAX_10_EXP : %d\n", DBL_MAX_10_EXP);
-	printf("DBL_MIN : %.50f\n", DBL_MIN);
+	printf("DBL_MIN : %.450f\n", DBL_MIN);
 	printf("DBL_MAX : %f\n", DBL_MAX);
-	printf("DBL_EPSILON : %.50f\n", DBL_EPSILON);
+	printf("DBL_EPSILON : %.80f\n", DBL_EPSILON);
+	ft_putendl("");
+
+	printf("LDBL_MANT_DIG : %d\n", LDBL_MANT_DIG);
+	printf("LDBL_MIN_EXP : %d\n", LDBL_MIN_EXP);
+	printf("LDBL_MAX_EXP : %d\n", LDBL_MAX_EXP);
+	printf("LDBL_DIG : %d\n", LDBL_DIG);
+	printf("LDBL_MIN_10_EXP : %d\n", LDBL_MIN_10_EXP);
+	printf("LDBL_MAX_10_EXP : %d\n", LDBL_MAX_10_EXP);
+	printf("LDBL_MIN : %.300Lf\n", LDBL_MIN);
+	printf("LDBL_MAX : %Lf\n", LDBL_MAX);
+	printf("LDBL_EPSILON : %.80Lf\n", LDBL_EPSILON);
+	ft_putendl("");
 
 
 	printf("CHAR_MIN : %d\n", CHAR_MIN);

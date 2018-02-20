@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 14:53:54 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 12:01:17 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/20 09:54:37 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -92,5 +92,20 @@ int		ft_putnbr_u_long_size(unsigned long int n)
 	}
 	else
 		ret += ft_putchar_size(n + 48);
+	return (ret);
+}
+
+int		ft_putnbr_u_double(double d)
+{
+	int		ret;
+
+	ret = 0;
+	if (d >= 10.0)
+	{
+		ret += ft_putnbr_u_double(d / 10.0);
+		ret += ft_putnbr_u_double(d - d / 10.0);
+	}
+	else
+		ret += ft_putchar_size((int)d + 48);
 	return (ret);
 }
