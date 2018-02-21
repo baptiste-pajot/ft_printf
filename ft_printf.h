@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/20 17:34:23 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/21 16:19:00 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -179,6 +179,7 @@ int					ft_putnbr_base(unsigned int n, unsigned int base, int maj);
 int					ft_putnbr_long_base(unsigned long n, unsigned long base,
 		int maj);
 int					ft_putnbr_double_int(double d);
+void				ft_putnbr_double_info(double d);
 int					ft_nbr_size(int n);
 int					ft_nbr_long_size(long int n);
 int					ft_nbr_u_size(unsigned int n);

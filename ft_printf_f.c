@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:30:13 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/20 17:57:49 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/21 16:19:43 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,6 +24,8 @@ void		ft_printf_f(t_field *cur, va_list *va)
 	cur->ret += ft_putnbr_double_int(f);
 	cur->ret += (cur->preci == 0) ? 0 : ft_putchar_size('.');
 	cur->ret += ft_putchar_sizel('0', cur->preci);
+	ft_putendl("");
+	ft_putnbr_double_info(f);
 }
 
 void		ft_printf_lf(t_field *cur, va_list *va)
