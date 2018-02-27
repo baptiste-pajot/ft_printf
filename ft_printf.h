@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/27 12:29:30 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/27 13:42:44 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -188,5 +188,6 @@ int					ft_nbr_size_base(unsigned int n, unsigned int base);
 int					ft_nbr_long_size_base(unsigned long int n,
 		unsigned long int base);
 char				*ft_two_pow(int pow);
+char				*ft_two_pow_minus(int pow);
 
 #endif

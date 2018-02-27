@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/27 12:50:54 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/27 14:03:13 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -203,19 +203,19 @@ int		main(void)
 
 	ft_putstr(ft_two_pow(0));
 	ft_putendl("");
-	ft_putstr(ft_two_pow(1));
+	ft_putstr(ft_two_pow(-1));
 	ft_putendl("");
-	ft_putstr(ft_two_pow(2));
+	ft_putstr(ft_two_pow(-2));
 	ft_putendl("");
-	ft_putstr(ft_two_pow(9));
+	ft_putstr(ft_two_pow(-9));
 	ft_putendl("");
-	printf("%f\n", pow(2, 9));
-	ft_putstr(ft_two_pow(123));
+	printf("%f\n", pow(2, -9));
+	ft_putstr(ft_two_pow(-123));
 	ft_putendl("");
-	printf("%f\n", pow(2, 123));
-	ft_putstr(ft_two_pow(1024));
+	printf("%.125f\n", pow(2, -123));
+	ft_putstr(ft_two_pow(-1024));
 	ft_putendl("");
-	printf("%Lf\n", powl(2, 1024));
+	printf("%.1030Lf\n", powl(2, -1024));
 	ft_putendl("");
 	ft_putendl("");
 
