@@ -6,7 +6,7 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/02/06 12:09:16 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/02/27 15:02:24 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/27 17:40:40 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -25,7 +25,6 @@ Bonus fait :
 - flag *
 
 Reste a faire :
-- fonction sum 
 - fonction round
 - gestion free des *char
 - fonction signe expo et mantisse
