@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/27 11:58:45 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/27 12:50:54 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include "ft_printf.h"
 #include <locale.h>
+#include <math.h>
 
 int		main(void)
 {
@@ -200,17 +201,21 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 
-	ft_putstr(two_times("0"));
+	ft_putstr(ft_two_pow(0));
 	ft_putendl("");
-	ft_putstr(two_times("23"));
+	ft_putstr(ft_two_pow(1));
 	ft_putendl("");
-	ft_putstr(two_times("1024"));
+	ft_putstr(ft_two_pow(2));
 	ft_putendl("");
-	ft_putstr(two_times("214156513317161"));
+	ft_putstr(ft_two_pow(9));
 	ft_putendl("");
-	ft_putstr(two_times("1516813513513561616161168181611818616"));
+	printf("%f\n", pow(2, 9));
+	ft_putstr(ft_two_pow(123));
 	ft_putendl("");
-	ft_putstr(two_times("117316351611311063111896418451618431816361811"));
+	printf("%f\n", pow(2, 123));
+	ft_putstr(ft_two_pow(1024));
+	ft_putendl("");
+	printf("%Lf\n", powl(2, 1024));
 	ft_putendl("");
 	ft_putendl("");
 
