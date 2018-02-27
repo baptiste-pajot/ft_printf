@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/27 14:03:13 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/27 17:16:01 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -201,21 +201,30 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 
-	ft_putstr(ft_two_pow(0));
+	ft_putstr(ft_sum("0", "0"));
 	ft_putendl("");
-	ft_putstr(ft_two_pow(-1));
+	ft_putstr(ft_sum("3", "9"));
 	ft_putendl("");
-	ft_putstr(ft_two_pow(-2));
+	ft_putstr(ft_sum("23", "8"));
 	ft_putendl("");
-	ft_putstr(ft_two_pow(-9));
+	ft_putstr(ft_sum("9", "101"));
 	ft_putendl("");
-	printf("%f\n", pow(2, -9));
-	ft_putstr(ft_two_pow(-123));
 	ft_putendl("");
-	printf("%.125f\n", pow(2, -123));
-	ft_putstr(ft_two_pow(-1024));
+	ft_putstr(ft_sum("0.0", "0.0"));
 	ft_putendl("");
-	printf("%.1030Lf\n", powl(2, -1024));
+	ft_putstr(ft_sum("0.3", "0.9"));
+	ft_putendl("");
+	ft_putstr(ft_sum("0.23", "0.8"));
+	ft_putendl("");
+	ft_putstr(ft_sum("0.9", "0.101"));
+	ft_putendl("");
+	ft_putstr(ft_sum("1.0", "0.0"));
+	ft_putendl("");
+	ft_putstr(ft_sum("2.3", "1.9"));
+	ft_putendl("");
+	ft_putstr(ft_sum("101.23", "0.0844445"));
+	ft_putendl("");
+	ft_putstr(ft_sum("415650.95660005", "1005115151615100.00000414141101"));
 	ft_putendl("");
 	ft_putendl("");
 
