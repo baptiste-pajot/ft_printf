@@ -6,7 +6,7 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/02/06 12:09:16 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/02/19 17:02:34 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/27 11:14:39 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -36,7 +36,6 @@ Reste a faire :
 - norminette
 - Makefile
 
-- visal.fr
 gcc -o main_test.o -c main_test.c && make test && ./test
 
 	printf("FLAG %d\n", cur->flag);
@@ -48,5 +47,3 @@ gcc -o main_test.o -c main_test.c && make test && ./test
 	printf("TYPE %d\n", cur->type);
 	printf("letter %c\n", cur->letter);
 	printf("error %i\n", cur->error);
-
-installer module sea lion  jetbrain student sur internet puis sur msc

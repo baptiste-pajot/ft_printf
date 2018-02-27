@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/21 16:36:28 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/27 11:58:45 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -198,6 +198,20 @@ int		main(void)
 		printf("Test %d : return value OK\n", i);
 	else
 		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+
+	ft_putstr(two_times("0"));
+	ft_putendl("");
+	ft_putstr(two_times("23"));
+	ft_putendl("");
+	ft_putstr(two_times("1024"));
+	ft_putendl("");
+	ft_putstr(two_times("214156513317161"));
+	ft_putendl("");
+	ft_putstr(two_times("1516813513513561616161168181611818616"));
+	ft_putendl("");
+	ft_putstr(two_times("117316351611311063111896418451618431816361811"));
+	ft_putendl("");
 	ft_putendl("");
 
 	printf("+0 : %.350f\n", 0.0);
