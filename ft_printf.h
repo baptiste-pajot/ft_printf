@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/27 17:24:31 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/28 11:23:26 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -190,9 +190,14 @@ int					ft_nbr_long_size_base(unsigned long int n,
 char				*ft_two_pow(int pow);
 char				*ft_two_pow_minus(int pow);
 char				*ft_sum(char *s1, char *s2);
+char				*ft_sum_integer(char *s1, char *s2);
+char				*ft_sum_fraction(char *s1, char *s2);
+char				*ft_sum_mixt(char *s1_int, char *s1_frac, char *s2_int,
+		char *s2_frac);
 int					ft_inf_one(char *s);
 int					ft_dot(char *s);
-char				*ft_integer(char *s1);
-char				*ft_fraction(char *s1);
+char				*ft_integer(char *s);
+char				*ft_fraction(char *s);
+char				*ft_round(char *s, int preci);
 
 #endif

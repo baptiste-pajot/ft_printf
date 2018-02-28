@@ -6,14 +6,14 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/27 14:16:25 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/27 17:25:14 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/28 12:49:24 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char			*ft_sum_integer(char *s1, char *s2)
+char				*ft_sum_integer(char *s1, char *s2)
 {
 	char	*result;
 	int		len;
@@ -21,6 +21,8 @@ static char			*ft_sum_integer(char *s1, char *s2)
 	int		j;
 	int		carry;
 
+	if (!s1 || !s2)
+		return ((s1) ? ft_strdup(s1) : ft_strdup(s2));
 	len = (ft_strlen(s1) > ft_strlen(s2)) ? ft_strlen(s1) : ft_strlen(s2);
 	len++;
 	if ((result = ft_strnew(len)) == NULL)
@@ -40,7 +42,7 @@ static char			*ft_sum_integer(char *s1, char *s2)
 	return (result);
 }
 
-static char			*ft_sum_fraction(char *s1, char *s2)
+char				*ft_sum_fraction(char *s1, char *s2)
 {
 	char	*result;
 	int		len;
@@ -48,6 +50,8 @@ static char			*ft_sum_fraction(char *s1, char *s2)
 	int		j;
 	int		carry;
 
+	if (!s1 || !s2)
+		return ((s1) ? ft_strdup(s1) : ft_strdup(s2));
 	len = (ft_strlen(s1) > ft_strlen(s2)) ? ft_strlen(s1) : ft_strlen(s2);
 	if ((result = ft_strnew(len)) == NULL)
 		return (NULL);
@@ -67,7 +71,7 @@ static char			*ft_sum_fraction(char *s1, char *s2)
 	return (result);
 }
 
-static char			*ft_sum_mixt(char *s1_int, char *s1_frac, char *s2_int,
+char				*ft_sum_mixt(char *s1_int, char *s1_frac, char *s2_int,
 		char *s2_frac)
 {
 	char	*res;
@@ -97,7 +101,7 @@ char				*ft_sum(char *s1, char *s2)
 	char	*s2_frac;
 
 	if (!s1 || !s2)
-		return (NULL);
+		return ((s1) ? s1 : s2);
 	if (ft_inf_one(s1) >= 0 && ft_inf_one(s2) >= 0)
 		result = ft_sum_fraction(s1, s2);
 	else if (ft_dot(s1) >= 0 || ft_dot(s2) >= 0)

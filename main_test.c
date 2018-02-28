@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/27 17:37:18 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/28 13:03:09 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -108,7 +108,7 @@ int		main(void)
 	if (a == b)
 		printf("Test %d : return value OK\n", i);
 	else
-		printf("Test %d : return value NOK !!!\n", i);
+		printf("Test %d : return vralue NOK !!!\n", i);
 	ft_putendl("");
 	i++;
 	printf("Test %d : printf(\"|%%.0f|\\n\", -1024.0)\n", i);
@@ -201,31 +201,63 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 
-	ft_putstr(ft_sum("0", "0"));
+	p = ft_sum("0", "0");
+	ft_putendl(p);
+	ft_memdel((void**)&p);
+	p = ft_sum("3", "9");
+	ft_putendl(p);
+	ft_memdel((void**)&p);
+	p = ft_sum("23", "8");
+	ft_putendl(p);
+	ft_memdel((void**)&p);
+	p = ft_sum("9", "101");
+	ft_putendl(p);
+	ft_memdel((void**)&p);
 	ft_putendl("");
-	ft_putstr(ft_sum("3", "9"));
+	p = ft_sum("0.0", "0.0");
+	ft_putendl(p);
+	ft_memdel((void**)&p);
+	p = ft_sum("0.3", "0.9");
+	ft_putendl(p);
+	ft_memdel((void**)&p);
+	p = ft_sum("0.23", "0.8");
+	ft_putendl(p);
+	ft_memdel((void**)&p);
+	p = ft_sum("0.9", "0.101");
+	ft_putendl(p);
+	ft_memdel((void**)&p);
 	ft_putendl("");
-	ft_putstr(ft_sum("23", "8"));
+	p = ft_sum("1.0", "0.0");
+	ft_putendl(p);
+	ft_memdel((void**)&p);
+	p = ft_sum("2.3", "1.9");
+	ft_putendl(p);
+	ft_memdel((void**)&p);
+	p = ft_sum("101.23", "0.0844445");
+	ft_putendl(p);
+	ft_memdel((void**)&p);
+	p = ft_sum("415650.95660005", "1005115151615100.00000414141101");
+	ft_putendl(p);
+	ft_memdel((void**)&p);
 	ft_putendl("");
-	ft_putstr(ft_sum("9", "101"));
-	ft_putendl("");
-	ft_putendl("");
-	ft_putstr(ft_sum("0.0", "0.0"));
-	ft_putendl("");
-	ft_putstr(ft_sum("0.3", "0.9"));
-	ft_putendl("");
-	ft_putstr(ft_sum("0.23", "0.8"));
-	ft_putendl("");
-	ft_putstr(ft_sum("0.9", "0.101"));
-	ft_putendl("");
-	ft_putstr(ft_sum("1.0", "0.0"));
-	ft_putendl("");
-	ft_putstr(ft_sum("2.3", "1.9"));
-	ft_putendl("");
-	ft_putstr(ft_sum("101.23", "0.0844445"));
-	ft_putendl("");
-	ft_putstr(ft_sum("415650.95660005", "1005115151615100.00000414141101"));
-	ft_putendl("");
+	p = ft_round("1", 0);
+	ft_putendl(p);
+	ft_memdel((void**)&p);
+	p = ft_round("1.4", 0);
+	ft_putendl(p);
+	ft_memdel((void**)&p);
+	p = ft_round("1.5", 0);
+	ft_putendl(p);
+	ft_memdel((void**)&p);
+	p = ft_round("2.3", 3);
+	ft_putendl(p);
+	ft_memdel((void**)&p);
+	p = ft_round("101.2345641616888183", 10);
+	ft_putendl(p);
+	ft_memdel((void**)&p);
+	p = ft_round("415650.95660005", 0);
+	ft_putendl(p);
+	ft_memdel((void**)&p);
 	ft_putendl("");
 
 	printf("+0 : %.350f\n", 0.0);
