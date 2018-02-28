@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/28 15:59:34 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/28 18:09:41 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,9 +23,9 @@
 # include <float.h>
 # include <math.h>
 
-# define FLAG		"#0-+ $L'brk"
+# define FLAG		"#0-+ $'brk"
 # define WIDTH		"123456789*"
-# define CONV		"hljz"
+# define CONV		"hljzL"
 # define TYPE		"sSpdDioOuUxXcCeEfFgGaAn%"
 
 # define SHARP		0x1
@@ -35,7 +35,6 @@
 # define SPACE		0x10
 # define ASTERIX	0x20
 # define DOLLAR		0x40
-# define L_MAJ		0x80
 # define APOSTROPHE	0x100
 # define B_FLAG		0x200
 # define R_FLAG		0x400
@@ -47,6 +46,7 @@
 # define LL_FLAG	0x8
 # define J_FLAG		0x10
 # define Z_FLAG		0x20
+# define L_MAJ		0x40
 
 # define PERCENT	0x1
 # define C_MIN		0x2
@@ -186,6 +186,7 @@ int					ft_putnbr_base(unsigned int n, unsigned int base, int maj);
 int					ft_putnbr_long_base(unsigned long n, unsigned long base,
 		int maj);
 int					ft_putnbr_double(t_double *d, int preci);
+int					ft_doublelen(t_double *d, int preci);
 t_double			*ft_double_info(double d);
 int					ft_nbr_size(int n);
 int					ft_nbr_long_size(long int n);

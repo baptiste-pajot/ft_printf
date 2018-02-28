@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 10:10:54 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 14:44:16 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/28 17:22:24 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,8 +42,6 @@ t_field			*ft_flags(t_field *cur, const char *str, int i)
 		cur->flag += ASTERIX;
 	if (str[i] == '$' && !(cur->flag & DOLLAR))
 		cur->flag += DOLLAR;
-	if (str[i] == 'L' && !(cur->flag & L_FLAG))
-		cur->flag += L_FLAG;
 	cur = ft_flags2(cur, str, i);
 	cur->nb = 1;
 	return (cur);
@@ -110,6 +108,8 @@ t_field			*ft_sizem(t_field *cur, const char *str, int i)
 		cur->conv = J_FLAG;
 	if (str[i] == 'z')
 		cur->conv = Z_FLAG;
+	if (str[i] == 'L' && !(cur->flag & L_MAJ))
+		cur->flag += L_MAJ;
 	cur->nb = 4;
 	return (cur);
 }

@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/20 09:56:11 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/28 16:59:15 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/28 18:58:30 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,49 +22,95 @@ t_double		*ft_double_info(double d)
 		return (NULL);
 	ptr = (unsigned long int*)&d;
 	d_info->s = *ptr >> 63;
-	ft_putnbr(d_info->s);
-	ft_putendl("");
 	d_info->e = (*ptr & 0x7ff0000000000000) >> 52;
-	ft_putnbr(d_info->e);
-	ft_putendl("");
 	d_info->e -= 1023;
-	ft_putnbr(d_info->e);
-	ft_putendl("");
 	d_info->m = *ptr & 0x000fffffffffffff;
-	ft_putnbr_long_base(d_info->m, 2, 0);
-	ft_putendl("");
 	return (d_info);
+}
+
+static char		*ft_char_double2(char *res, char *pow, int preci)
+{
+	char	*buf;
+
+	buf = ft_sum(res, pow);
+	ft_memdel((void**)&res);
+	res = ft_sum(buf, pow);
+	ft_memdel((void**)&buf);
+	ft_memdel((void**)&pow);
+	buf = ft_round(res, preci);
+	ft_memdel((void**)&res);
+	return (buf);
+}
+
+static char		*ft_char_double(t_double *d, int preci)
+{
+	char	*res;
+	char	*buf;
+	char	*sum;
+	char	*pow;
+	int		i;
+
+	res = NULL;
+	pow = ft_two_pow(d->e - 53);
+	i = -1;
+	while (++i < 52)
+	{
+		buf = ft_sum(pow, pow);
+		ft_memdel((void**)&pow);
+		if ((d->m >> i) % 2)
+		{
+			sum = ft_sum(res, buf);
+			ft_memdel((void**)&res);
+			res = ft_strdup(sum);
+			ft_memdel((void**)&sum);
+		}
+		pow = ft_strdup(buf);
+		ft_memdel((void**)&buf);
+	}
+	buf = ft_char_double2(res, pow, preci);
+	return (buf);
 }
 
 int				ft_putnbr_double(t_double *d, int preci)
 {
-	char	*res;
-	char	*buff;
-	char	*sum;
 	int		ret;
-	int		pow;
-	int		i;
+	char	*buf;
 
 	ret = 0;
-	pow = d->e;
-	i = 52;
-	res = ft_two_pow(d->e);
-	while (--i >= 0)
+	if (d->e == 1024 && d->m == 0)
+		ret += ft_putstr_size("inf");
+	else if (d->e == 1024)
+		ret += ft_putstr_size("nan");
+	else if (d->e == -1023 && d->m == 0)
 	{
-		pow--;
-		if ((d->m >> i) % 2)
-		{
-			buff = ft_two_pow(pow);
-			sum = ft_sum(res, buff);
-			ft_memdel((void**)&res);
-			ft_memdel((void**)&buff);
-			res = ft_strdup(sum);
-			ft_memdel((void**)&sum);
-		}
+		ret += ft_putnbr_size(0);
+		ret += (preci) ? ft_putchar_size('.') : 0;
+		ret += (preci) ? ft_putchar_sizel('0', preci) : 0;
 	}
-	buff = ft_round(res, preci);
-	ft_memdel((void**)&res);
-	ret += ft_putstr_size(buff);
-	ft_memdel((void**)&buff);
+	else
+	{
+		buf = ft_char_double(d, preci);
+		ret += ft_putstr_size(buf);
+		ft_memdel((void**)&buf);
+	}
+	return (ret);
+}
+
+int				ft_doublelen(t_double *d, int preci)
+{
+	int		ret;
+	char	*buf;
+
+	ret = 0;
+	if (d->e == 1024)
+		ret = 3;
+	else if (d->e == -1023 && d->m == 0)
+		ret = (preci) ? preci + 2 : 1;
+	else
+	{
+		buf = ft_char_double(d, preci);
+		ret += ft_strlen(buf);
+		ft_memdel((void**)&buf);
+	}
 	return (ret);
 }

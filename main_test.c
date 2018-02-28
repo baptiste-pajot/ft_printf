@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/28 16:35:15 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/28 18:50:46 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -111,9 +111,9 @@ int		main(void)
 		printf("Test %d : return vralue NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%.0f|\\n\", -1024.0)\n", i);
-	a = printf("|%.0f|\n", -1024.0);
-	b = ft_printf("|%.0f|\n", -1024.0);
+	printf("Test %d : printf(\"|%%20.0f|\\n\", -1024.0)\n", i);
+	a = printf("|%20.0f|\n", -1024.0);
+	b = ft_printf("|%20.0f|\n", -1024.0);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -126,9 +126,24 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%10f|\\n\", 1444565444646.6465424242242)\n", i);
-	a = printf("|%10f|\n", 1444565444646.6465424242242);
-	b = ft_printf("|%10f|\n", 1444565444646.6465424242242);
+	printf("Test %d : printf(\"|%%20.1025f|\\n\", -0.0)\n", i);
+	a = printf("|%20.1025f|\n", -(0.0));
+	b = ft_printf("|%20.1025f|\n", -(0.0));
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%20.42lf|\\n\", 1444565444646.6465424242242)\n", i);
+	a = printf("|%20.42lf|\n", 1444565444646.6465424242242);
+	b = ft_printf("|%20.42lf|\n", 1444565444646.6465424242242);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
