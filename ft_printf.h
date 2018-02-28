@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/28 11:23:26 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/28 15:59:34 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -98,6 +98,13 @@ typedef struct		s_field
 	struct s_field	*next;
 }					t_field;
 
+typedef struct		s_double
+{
+	int				s;
+	int				e;
+	long int		m;
+}					t_double;
+
 t_field				*ft_parse(const char *str, va_list *va);
 t_field				*ft_flags(t_field *cur, const char *str, int i);
 t_field				*ft_width(t_field *cur, const char *str, int i,
@@ -178,8 +185,8 @@ int					ft_putnbr_u_long_size(unsigned long int n);
 int					ft_putnbr_base(unsigned int n, unsigned int base, int maj);
 int					ft_putnbr_long_base(unsigned long n, unsigned long base,
 		int maj);
-int					ft_putnbr_double_int(double d);
-void				ft_putnbr_double_info(double d);
+int					ft_putnbr_double(t_double *d, int preci);
+t_double			*ft_double_info(double d);
 int					ft_nbr_size(int n);
 int					ft_nbr_long_size(long int n);
 int					ft_nbr_u_size(unsigned int n);

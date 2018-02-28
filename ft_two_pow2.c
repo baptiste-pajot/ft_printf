@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/27 13:19:34 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/27 14:13:49 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/28 17:10:31 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -60,6 +60,7 @@ char			*ft_two_pow_minus(int pow)
 		while (++i <= -1)
 		{
 			buff = ft_strdup(result);
+			ft_memdel((void**)&result);
 			if ((result = ft_two_divide(buff)) == NULL)
 				return (result);
 			ft_memdel((void**)&buff);

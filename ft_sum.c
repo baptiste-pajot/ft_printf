@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/27 14:16:25 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/28 12:49:24 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/28 16:17:00 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -101,7 +101,7 @@ char				*ft_sum(char *s1, char *s2)
 	char	*s2_frac;
 
 	if (!s1 || !s2)
-		return ((s1) ? s1 : s2);
+		return ((s1) ? ft_strdup(s1) : ft_strdup(s2));
 	if (ft_inf_one(s1) >= 0 && ft_inf_one(s2) >= 0)
 		result = ft_sum_fraction(s1, s2);
 	else if (ft_dot(s1) >= 0 || ft_dot(s2) >= 0)
