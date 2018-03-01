@@ -6,7 +6,7 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/02/06 12:09:16 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/03/01 15:43:23 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/03/01 20:12:43 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -25,13 +25,12 @@ Bonus fait :
 - flag *
 
 Reste a faire :
-- reste long double
-- float double e E f F g G a A
+- long double L
+- float double e E F g G a A
 - gestion free des *char en cours OK
-- flag n
-- prefix resize hh h l ll j z
-- flags bonus $ L '
-- flags bonus + b r k color fd
+- flag n with prefix resize hh h l ll j z
+- flags bonus $ '
+- flags bonus 2  b r k color fd
 - opti vitesse
 - forum comment gerer fd
 - valgrind

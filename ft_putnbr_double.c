@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/20 09:56:11 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/01 17:35:13 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/01 19:00:37 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,7 +42,7 @@ static char		*ft_char_double2(char *res, char *pow, int preci)
 	return (buf);
 }
 
-static char		*ft_char_double(t_double *d, int preci)
+char			*ft_char_double(t_double *d, int preci)
 {
 	char	*res;
 	char	*buf;

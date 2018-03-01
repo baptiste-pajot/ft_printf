@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/01 17:47:57 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/01 20:06:47 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -205,10 +205,28 @@ int		main(void)
 	ft_putendl(p);
 	ft_memdel((void**)&p);
 	ft_putendl("");
+	ft_putendl("0000");
+	ft_putnbr(ft_get_exponent("0000"));
+	ft_putendl("");
+	ft_putendl("0123");
+	ft_putnbr(ft_get_exponent("0123"));
+	ft_putendl("");
+	ft_putendl("0123.12345000");
+	ft_putnbr(ft_get_exponent("0123.12345000"));
+	ft_putendl("");
+	ft_putendl("000.000123");
+	ft_putnbr(ft_get_exponent("0000.0001223"));
+	ft_putendl("");
+	ft_putendl("0000.000");
+	ft_putnbr(ft_get_exponent("0000.000"));
+	ft_putendl("");
+	ft_putendl("1.000");
+	ft_putnbr(ft_get_exponent("1.000"));
+	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%0100.70f|\\n\", 1.15)\n", i);
-	a = printf("|%0100.70f|\n", 1.15);
-	b = ft_printf("|%0100.70f|\n", 1.15);
+	printf("Test %d : printf(\"|%%0100.70e|\\n\", 1.15)\n", i);
+	a = printf("|%0100.70e|\n", 1.15);
+	b = ft_printf("|%0100.70e|\n", 1.15);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -221,9 +239,9 @@ int		main(void)
 		printf("Test %d : return vralue NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%20.0f|\\n\", -1024.0)\n", i);
-	a = printf("|%20.0f|\n", -1024.0);
-	b = ft_printf("|%20.0f|\n", -1024.0);
+	printf("Test %d : printf(\"|%%20.0e|\\n\", -1024.0)\n", i);
+	a = printf("|%20.0e|\n", -1024.0);
+	b = ft_printf("|%20.0e|\n", -1024.0);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -236,9 +254,9 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%20.1025f|\\n\", -0.0)\n", i);
-	a = printf("|%20.1025f|\n", -(0.0));
-	b = ft_printf("|%20.1025f|\n", -(0.0));
+	printf("Test %d : printf(\"|%%20.1025e|\\n\", -0.0)\n", i);
+	a = printf("|%20.1025e|\n", -(0.0));
+	b = ft_printf("|%20.1025e|\n", -(0.0));
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -251,9 +269,9 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%20.42lf|\\n\", 1444565444646.6465424242242)\n", i);
-	a = printf("|%20.42lf|\n", 1444565444646.6465424242242);
-	b = ft_printf("|%20.42lf|\n", 1444565444646.6465424242242);
+	printf("Test %d : printf(\"|%%20.42le|\\n\", 1444565444646.6465424242242)\n", i);
+	a = printf("|%20.42le|\n", 1444565444646.6465424242242);
+	b = ft_printf("|%20.42le|\n", 1444565444646.6465424242242);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -266,9 +284,9 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%f|\\n\", -148681115151511651115156115115.428168111651151616161566156)\n", i);
-	a = printf("|%f|\n", -148681115151511651115156115115.428168111651151616161566156);
-	b = ft_printf("|%f|\n", (-148681115151511651115156115115.428168111651151616161566156));
+	printf("Test %d : printf(\"|%%e|\\n\", -148681115151511651115156115115.428168111651151616161566156)\n", i);
+	a = printf("|%e|\n", -148681115151511651115156115115.428168111651151616161566156);
+	b = ft_printf("|%e|\n", (-148681115151511651115156115115.428168111651151616161566156));
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -281,9 +299,9 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%f|\\n\", 1234567890123456789012345678901234567890)\n", i);
-	a = printf("|%f|\n", 1234567890123456789012345678901234567890.123);
-	b = ft_printf("|%f|\n", 1234567890123456789012345678901234567890.123);
+	printf("Test %d : printf(\"|%%e|\\n\", 1234567890123456789012345678901234567890)\n", i);
+	a = printf("|%e|\n", 1234567890123456789012345678901234567890.123);
+	b = ft_printf("|%e|\n", 1234567890123456789012345678901234567890.123);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -296,9 +314,9 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%80f|\\n\", -0.00000000000000000000000000000000000000000001)\n", i);
-	a = printf("|%.80f|\n", -0.00000000000000000000000000000000000000000001);
-	b = ft_printf("|%.80f|\n", -0.00000000000000000000000000000000000000000001);
+	printf("Test %d : printf(\"|%%.80e|\\n\", -0.00000000000000000000000000000000000000000001)\n", i);
+	a = printf("|%.80e|\n", -0.00000000000000000000000000000000000000000001);
+	b = ft_printf("|%.80e|\n", -0.00000000000000000000000000000000000000000001);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -311,9 +329,9 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%.3f|\\n\", 179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.0)\n", i);
-	a = printf("|%.3f|\n", 179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.0);
-	b = ft_printf("|%.3f|\n", 179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.0);
+	printf("Test %d : printf(\"|%%.3e|\\n\", 179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.0)\n", i);
+	a = printf("|%.3e|\n", 179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.0);
+	b = ft_printf("|%.3e|\n", 179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.0);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -326,9 +344,9 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%51.59f|\\n\", (0.0/0.0))\n", i);
-	a = printf("|%51.59f|\n", (0.0/0.0));
-	b = ft_printf("|%51.59f|\n", (0.0/0.0));
+	printf("Test %d : printf(\"|%%51.59e|\\n\", (0.0/0.0))\n", i);
+	a = printf("|%51.59e|\n", (0.0/0.0));
+	b = ft_printf("|%51.59e|\n", (0.0/0.0));
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -341,9 +359,9 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%051.59f|\\n\", (0.0/0.0))\n", i);
-	a = printf("|%051.59f|\n", (0.0/0.0));
-	b = ft_printf("|%051.59f|\n", (0.0/0.0));
+	printf("Test %d : printf(\"|%%051.59e|\\n\", (0.0/0.0))\n", i);
+	a = printf("|%051.59e|\n", (0.0/0.0));
+	b = ft_printf("|%051.59e|\n", (0.0/0.0));
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -356,9 +374,9 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%f|\\n\", 1.42)\n", i);
-	a = printf("|%f|\n", 1.42);
-	b = ft_printf("|%f|\n", 1.42);
+	printf("Test %d : printf(\"|%%e|\\n\", 1.42)\n", i);
+	a = printf("|%e|\n", 1.42);
+	b = ft_printf("|%e|\n", 1.42);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -371,9 +389,9 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%02.32f|\\n\", 40518.36752852692734450101852416992187)\n", i);
-	a = printf("|%02.32f|\n", 40518.36752852692734450101852416992187);
-	b = ft_printf("|%02.32f|\n", 40518.36752852692734450101852416992187);
+	printf("Test %d : printf(\"|%%02.32e|\\n\", 40518.36752852692734450101852416992187)\n", i);
+	a = printf("|%02.32e|\n", 40518.36752852692734450101852416992187);
+	b = ft_printf("|%02.32e|\n", 40518.36752852692734450101852416992187);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -386,9 +404,9 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%02.35f|\\n\", 40518.36752852692734450101852416992187)\n", i);
-	a = printf("|%02.35f|\n", 40518.36752852692734450101852416992187);
-	b = ft_printf("|%02.35f|\n", 40518.36752852692734450101852416992187);
+	printf("Test %d : printf(\"|%%02.35e|\\n\", 40518.36752852692734450101852416992187)\n", i);
+	a = printf("|%02.35e|\n", 40518.36752852692734450101852416992187);
+	b = ft_printf("|%02.35e|\n", 40518.36752852692734450101852416992187);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -401,9 +419,9 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%.32f|\\n\", 43368.58690757967997342348098754882813)\n", i);
-	a = printf("|%.32f|\n", 43368.58690757967997342348098754882813);
-	b = ft_printf("|%.32f|\n", 43368.58690757967997342348098754882813);
+	printf("Test %d : printf(\"|%%.32e|\\n\", 43368.58690757967997342348098754882813)\n", i);
+	a = printf("|%.32e|\n", 43368.58690757967997342348098754882813);
+	b = ft_printf("|%.32e|\n", 43368.58690757967997342348098754882813);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -416,9 +434,9 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%.38f|\\n\", 43368.58690757967997342348098754882813)\n", i);
-	a = printf("|%.38f|\n", 43368.58690757967997342348098754882813);
-	b = ft_printf("|%.38f|\n", 43368.58690757967997342348098754882813);
+	printf("Test %d : printf(\"|%%.38e|\\n\", 43368.58690757967997342348098754882813)\n", i);
+	a = printf("|%.38e|\n", 43368.58690757967997342348098754882813);
+	b = ft_printf("|%.38e|\n", 43368.58690757967997342348098754882813);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -431,9 +449,9 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%.1f|\\n\", (3.0/0.0))\n", i);
-	a = printf("|%.1f|\n", (3.0/0.0));
-	b = ft_printf("|%.1f|\n", (3.0/0.0));
+	printf("Test %d : printf(\"|%%.1e|\\n\", (3.0/0.0))\n", i);
+	a = printf("|%.1e|\n", (3.0/0.0));
+	b = ft_printf("|%.1e|\n", (3.0/0.0));
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -446,9 +464,9 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%.1F|\\n\", (3.0/0.0))\n", i);
-	a = printf("|%.1F|\n", (3.0/0.0));
-	b = ft_printf("|%.1F|\n", (3.0/0.0));
+	printf("Test %d : printf(\"|%%.1E|\\n\", (3.0/0.0))\n", i);
+	a = printf("|%.1E|\n", (3.0/0.0));
+	b = ft_printf("|%.1E|\n", (3.0/0.0));
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -461,9 +479,9 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%.0Lf|\\n\", 0.0L)\n", i);
-	a = printf("|%.0Lf|\n", 0.0L);
-	b = ft_printf("|%.0Lf|\n", 0.0L);
+	printf("Test %d : printf(\"|%%.0LE|\\n\", 0.0L)\n", i);
+	a = printf("|%.0LE|\n", 0.0L);
+	b = ft_printf("|%.0LE|\n", 0.0L);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -476,9 +494,9 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%.0Lf|\\n\", -1023.0L)\n", i);
-	a = printf("|%.0Lf|\n", -1023.0L);
-	b = ft_printf("|%.0Lf|\n", -1023.0L);
+	printf("Test %d : printf(\"|%%.0Le|\\n\", -1023.0L)\n", i);
+	a = printf("|%.0Le|\n", -1023.0L);
+	b = ft_printf("|%.0Le|\n", -1023.0L);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -491,9 +509,9 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%Lf|\\n\", 1.4L)\n", i);
-	a = printf("|%.30Lf|\n", 1.4L);
-	b = ft_printf("|%.30Lf|\n", 1.4L);
+	printf("Test %d : printf(\"|%%Le|\\n\", 1.4L)\n", i);
+	a = printf("|%.30Le|\n", 1.4L);
+	b = ft_printf("|%.30Le|\n", 1.4L);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -506,9 +524,9 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%Lf|\\n\", -1.4L)\n", i);
-	a = printf("|%Lf|\n", -1.4L);
-	b = ft_printf("|%Lf|\n", -1.4L);
+	printf("Test %d : printf(\"|%%Le|\\n\", -1.4L)\n", i);
+	a = printf("|%Le|\n", -1.4L);
+	b = ft_printf("|%Le|\n", -1.4L);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
@@ -520,5 +538,6 @@ int		main(void)
 	else
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
+	return (0);
 	return (0);
 }
