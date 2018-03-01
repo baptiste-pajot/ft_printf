@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/20 09:56:11 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/01 12:58:00 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/01 13:35:59 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -71,25 +71,27 @@ static char		*ft_char_double(t_double *d, int preci)
 	return (buf);
 }
 
-int				ft_putnbr_double(t_double *d, int preci)
+int				ft_putnbr_double(t_double *d, t_field *cur)
 {
 	int		ret;
 	char	*buf;
 
 	ret = 0;
 	if (d->e == 1024 && d->m == 0)
-		ret += ft_putstr_size("inf");
+		ret += (cur->type & F_MAJ) ? ft_putstr_size("INF") :
+			ft_putstr_size("inf");
 	else if (d->e == 1024)
-		ret += ft_putstr_size("nan");
+		ret += (cur->type & F_MAJ) ? ft_putstr_size("NAN") :
+			ft_putstr_size("nan");
 	else if (d->e == -1023 && d->m == 0)
 	{
 		ret += ft_putnbr_size(0);
-		ret += (preci) ? ft_putchar_size('.') : 0;
-		ret += (preci) ? ft_putchar_sizel('0', preci) : 0;
+		ret += (cur->preci) ? ft_putchar_size('.') : 0;
+		ret += (cur->preci) ? ft_putchar_sizel('0', cur->preci) : 0;
 	}
 	else
 	{
-		buf = ft_char_double(d, preci);
+		buf = ft_char_double(d, cur->preci);
 		ret += ft_putstr_size(buf);
 		ft_memdel((void**)&buf);
 	}
