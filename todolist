@@ -6,7 +6,7 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/02/06 12:09:16 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/02/28 19:16:50 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/03/01 15:43:23 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -25,11 +25,9 @@ Bonus fait :
 - flag *
 
 Reste a faire :
-- pb arrondi et 00 devant nb sur unit test
-- gestion free des *char en cours OK
-- reste + - inf et nan en cours et NAN INF avec F
 - reste long double
 - float double e E f F g G a A
+- gestion free des *char en cours OK
 - flag n
 - prefix resize hh h l ll j z
 - flags bonus $ L '
@@ -39,6 +37,7 @@ Reste a faire :
 - valgrind
 - norminette
 - Makefile
+- virer math.h de .h
 
 gcc -o main_test.o -c main_test.c && make test && ./test
 

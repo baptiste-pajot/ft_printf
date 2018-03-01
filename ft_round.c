@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/27 17:29:36 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/01 14:59:39 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/01 15:21:06 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -60,7 +60,7 @@ static int		ft_test_round(char *res_frac, int preci)
 			return (0);
 	}
 	else
-		return(0);
+		return (0);
 }
 
 char			*ft_round(char *s, int preci)
