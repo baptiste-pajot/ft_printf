@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/27 17:29:36 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/28 16:58:22 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/01 13:09:57 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,10 +34,30 @@ static char		*ft_round_preci_null(char *res_int, char *res_frac)
 	char	*frac_zero;
 
 	frac_zero = ((res_frac && res_frac[2] >= '5') ? ft_sum(res_int,
-				"1") : ft_strdup(res_int));
+				"1", 0) : ft_strdup(res_int));
 	ft_memdel((void**)&res_int);
 	ft_memdel((void**)&res_frac);
 	return (frac_zero);
+}
+
+static int		ft_test_round(char *res_frac, int preci)
+{
+	int		i;
+
+	i = preci + 2;
+	if (res_frac[i] > '5')
+		return (1);
+	else if (res_frac[i] == '5')
+	{
+		while (res_frac[++i])
+		{
+			if (res_frac[i] != '0')
+				return (1);
+		}
+		return(0);
+	}
+	else
+		return(0);
 }
 
 char			*ft_round(char *s, int preci)
@@ -56,14 +76,14 @@ char			*ft_round(char *s, int preci)
 	else if (preci >= len_frac)
 		frac_zero = ft_frac_zero(preci, 0);
 	else
-		frac_zero = (res_frac[2 + preci] >= '5') ? ft_frac_zero(preci, 1) :
+		frac_zero = (ft_test_round(res_frac, preci)) ? ft_frac_zero(preci, 1) :
 			ft_frac_zero(preci, 0);
 	if (preci < len_frac)
 		res_frac[ft_strlen(frac_zero)] = '\0';
-	res_frac_new = ft_sum(res_frac, frac_zero);
+	res_frac_new = ft_sum(res_frac, frac_zero, 0);
 	ft_memdel((void**)&res_frac);
 	ft_memdel((void**)&frac_zero);
-	res_frac = ft_sum(res_int, res_frac_new);
+	res_frac = ft_sum(res_int, res_frac_new, 0);
 	ft_memdel((void**)&res_int);
 	ft_memdel((void**)&res_frac_new);
 	return (res_frac);

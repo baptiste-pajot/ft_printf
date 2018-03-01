@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/20 09:56:11 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/28 18:58:30 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/01 12:58:00 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,9 +32,9 @@ static char		*ft_char_double2(char *res, char *pow, int preci)
 {
 	char	*buf;
 
-	buf = ft_sum(res, pow);
+	buf = ft_sum(res, pow, 0);
 	ft_memdel((void**)&res);
-	res = ft_sum(buf, pow);
+	res = ft_sum(buf, pow, 0);
 	ft_memdel((void**)&buf);
 	ft_memdel((void**)&pow);
 	buf = ft_round(res, preci);
@@ -55,11 +55,11 @@ static char		*ft_char_double(t_double *d, int preci)
 	i = -1;
 	while (++i < 52)
 	{
-		buf = ft_sum(pow, pow);
+		buf = ft_sum(pow, pow, 0);
 		ft_memdel((void**)&pow);
 		if ((d->m >> i) % 2)
 		{
-			sum = ft_sum(res, buf);
+			sum = ft_sum(res, buf, 0);
 			ft_memdel((void**)&res);
 			res = ft_strdup(sum);
 			ft_memdel((void**)&sum);

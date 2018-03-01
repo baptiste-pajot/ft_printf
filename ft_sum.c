@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/27 14:16:25 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/28 16:17:00 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/01 13:09:22 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -85,14 +85,22 @@ char				*ft_sum_mixt(char *s1_int, char *s1_frac, char *s2_int,
 	res_frac[0] = '0';
 	if ((res = ft_strnew(ft_strlen(res_int) + ft_strlen(res_frac) - 1)) == NULL)
 		return (NULL);
-	res = strcpy(res, res_int);
-	res = strcat(res, &res_frac[1]);
+	res = ft_strcpy(res, res_int);
+	res = ft_strcat(res, &res_frac[1]);
 	ft_memdel((void**)&res_int);
 	ft_memdel((void**)&res_frac);
 	return (res);
 }
 
-char				*ft_sum(char *s1, char *s2)
+static void			ft_clean(char *s1, char *s2, char *s3, char *s4)
+{
+	ft_memdel((void**)&s1);
+	ft_memdel((void**)&s2);
+	ft_memdel((void**)&s3);
+	ft_memdel((void**)&s4);
+}
+
+char				*ft_sum(char *s1, char *s2, int end)
 {
 	char	*result;
 	char	*s1_int;
@@ -111,10 +119,9 @@ char				*ft_sum(char *s1, char *s2)
 		s2_int = ft_integer(s2);
 		s2_frac = ft_fraction(s2);
 		result = ft_sum_mixt(s1_int, s1_frac, s2_int, s2_frac);
-		ft_memdel((void**)&s1_int);
-		ft_memdel((void**)&s1_frac);
-		ft_memdel((void**)&s2_int);
-		ft_memdel((void**)&s2_frac);
+		if (end && result[ft_strlen(result) - 1] == '0')
+			result[ft_strlen(result) - 1] = 0;
+		ft_clean(s1_int, s1_frac, s2_int, s2_frac);
 	}
 	else
 		result = ft_sum_integer(s1, s2);
