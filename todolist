@@ -6,7 +6,7 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/02/06 12:09:16 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/03/05 14:31:02 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/03/05 18:18:48 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -15,7 +15,7 @@ Nb erreurs restantes :
 - norminette			9 main_test
 - basic tests			0
 - undefined beh tests	0
-- speed					8%
+- speed					64%
 - moulitest				0
 - unit test				0
 - quorquy test			0
@@ -26,13 +26,11 @@ Bonus fait :
 
 Reste a faire :
 - long double L
-- float double e E g G a A
+- float double g G a A
 - gestion free des *char en cours OK
 - flag n with prefix resize hh h l ll j z
 - flags bonus $ '
 - flags bonus 2  b r k color fd
-- opti vitesse
-- forum comment gerer fd
 - valgrind
 - norminette
 - Makefile

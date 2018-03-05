@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:30:13 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/05 14:23:44 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/05 18:50:42 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,13 +27,8 @@ static void			ft_printf_f_flag(t_field *cur, t_double *d, int long_double)
 	}
 }
 
-void				ft_printf_f(t_field *cur, va_list *va)
+void				ft_printf_f2(t_double *d, t_field *cur)
 {
-	double		f;
-	t_double	*d;
-
-	f = va_arg(*va, double);
-	d = ft_double_info(f);
 	ft_printf_f_flag(cur, d, 0);
 	cur->minus = (d->s && !(d->e == 1024 && d->m)) ? 1 : 0;
 	if (cur->preci > cur->l - cur->minus && d->e != 1024)
@@ -56,13 +51,18 @@ void				ft_printf_f(t_field *cur, va_list *va)
 	ft_memdel((void**)&d);
 }
 
-void				ft_printf_lf(t_field *cur, va_list *va)
+void				ft_printf_f(t_field *cur, va_list *va)
 {
-	long double		lf;
-	t_double		*d;
+	double		f;
+	t_double	*d;
 
-	lf = va_arg(*va, long double);
-	d = ft_longdouble_info(lf);
+	f = va_arg(*va, double);
+	d = ft_double_info(f);
+	ft_printf_f2(d, cur);
+}
+
+void				ft_printf_lf2(t_double *d, t_field *cur)
+{
 	ft_printf_f_flag(cur, d, 1);
 	cur->minus = (d->s && !(d->e == 16385 && d->m)) ? 1 : 0;
 	if (cur->preci > cur->l - cur->minus && d->e != 16385)
@@ -83,4 +83,14 @@ void				ft_printf_lf(t_field *cur, va_list *va)
 	cur->ret += ft_putnbr_longdouble(d, cur);
 	cur->ret += ft_putchar_sizel(' ', cur->spc_aft);
 	ft_memdel((void**)&d);
+}
+
+void				ft_printf_lf(t_field *cur, va_list *va)
+{
+	long double		lf;
+	t_double		*d;
+
+	lf = va_arg(*va, long double);
+	d = ft_longdouble_info(lf);
+	ft_printf_lf2(d, cur);
 }

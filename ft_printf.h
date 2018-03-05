@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/05 16:26:58 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/05 18:55:55 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -159,11 +159,15 @@ void				ft_printf_x_flag(t_field *cur);
 void				ft_printf_x_zero(t_field *cur);
 void				ft_printf_p(t_field *cur, va_list *va);
 void				ft_printf_e(t_field *cur, va_list *va);
+void				ft_printf_e2(t_field *cur, t_double *d);
 void				ft_printf_le(t_field *cur, va_list *va);
+void				ft_printf_le2(t_field *cur, t_double *d);
 void				ft_printf_f(t_field *cur, va_list *va);
+void				ft_printf_f2(t_double *d, t_field *cur);
 void				ft_printf_lf(t_field *cur, va_list *va);
+void				ft_printf_lf2(t_double *d, t_field *cur);
 void				ft_printf_g(t_field *cur, va_list *va);
-void				ft_printf_gg(t_field *cur, va_list *va);
+void				ft_printf_lg(t_field *cur, va_list *va);
 void				ft_printf_a(t_field *cur, va_list *va);
 void				ft_printf_aa(t_field *cur, va_list *va);
 void				ft_printf_n(t_field *cur, va_list *va);
@@ -200,6 +204,7 @@ char				*ft_char_double(t_double *d, int preci);
 char				*ft_char_longdouble(t_double *d, int preci);
 int					ft_get_exponent(char *res);
 char				*ft_char_dec_to_sci(char *dec, int preci, int e);
+char				*ft_char_exp_double(int e, t_field *cur);
 int					ft_nbr_size(int n);
 int					ft_nbr_long_size(long int n);
 int					ft_nbr_u_size(unsigned int n);

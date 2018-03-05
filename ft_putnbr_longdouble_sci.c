@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/05 15:36:35 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/05 16:26:27 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/05 18:46:29 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -79,11 +79,11 @@ int				ft_putnbr_longdouble_sci(t_double *d, t_field *cur)
 
 	ret = 0;
 	if (d->e == 16385 && d->m == 0)
-		return ((cur->type & E_MAJ) ? ft_putstr_size("INF") :
-			ft_putstr_size("inf"));
+		return ((cur->type & E_MAJ || cur->type & G_MAJ) ? ft_putstr_size("INF")
+			: ft_putstr_size("inf"));
 	else if (d->e == 16385)
-		return ((cur->type & E_MAJ) ? ft_putstr_size("NAN") :
-			ft_putstr_size("nan"));
+		return ((cur->type & E_MAJ || cur->type & G_MAJ) ? ft_putstr_size("NAN")
+			: ft_putstr_size("nan"));
 	else if (d->e == -16384 && d->m == 0)
 	{
 		ret += ft_putnbr_size(0);
