@@ -6,7 +6,7 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/02/06 12:09:16 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/03/05 18:18:48 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/03/05 21:22:12 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -25,8 +25,11 @@ Bonus fait :
 - flag *
 
 Reste a faire :
+- bug sur grande puissance negative aussi sur f
+- double e E reste qlqs erreurs sur grande puissance negative
+- double g G gestion precision differente + enlever les zeros et poibt si besoin
+- a A
 - long double L
-- float double g G a A
 - gestion free des *char en cours OK
 - flag n with prefix resize hh h l ll j z
 - flags bonus $ '
