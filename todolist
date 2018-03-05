@@ -6,7 +6,7 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/02/06 12:09:16 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/03/01 20:12:43 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/03/05 14:31:02 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -26,7 +26,7 @@ Bonus fait :
 
 Reste a faire :
 - long double L
-- float double e E F g G a A
+- float double e E g G a A
 - gestion free des *char en cours OK
 - flag n with prefix resize hh h l ll j z
 - flags bonus $ '
