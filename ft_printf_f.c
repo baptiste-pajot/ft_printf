@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:30:13 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/01 17:43:09 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/05 13:52:35 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,7 +18,7 @@ static void			ft_printf_f_flag(t_field *cur, t_double *d, int long_double)
 	if ((cur->flag & PLUS) && (cur->flag & SPACE))
 		cur->flag -= SPACE;
 	cur->preci = (cur->preci < 0) ? 6 : cur->preci;
-	cur->l = (long_double) ? ft_longdoublelen (d, cur->preci) :
+	cur->l = (long_double) ? ft_longdoublelen(d, cur->preci) :
 		ft_doublelen(d, cur->preci);
 	if (((cur->flag & PLUS) || (cur->flag & SPACE)) && !(d->s))
 	{
@@ -59,7 +59,7 @@ void				ft_printf_f(t_field *cur, va_list *va)
 void				ft_printf_lf(t_field *cur, va_list *va)
 {
 	long double		lf;
-	t_double	*d;
+	t_double		*d;
 
 	lf = va_arg(*va, long double);
 	d = ft_longdouble_info(lf);
