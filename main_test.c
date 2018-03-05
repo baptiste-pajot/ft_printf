@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/01 20:06:47 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/05 14:08:43 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -227,6 +227,36 @@ int		main(void)
 	printf("Test %d : printf(\"|%%0100.70e|\\n\", 1.15)\n", i);
 	a = printf("|%0100.70e|\n", 1.15);
 	b = ft_printf("|%0100.70e|\n", 1.15);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return vralue NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%0100.70E|\\n\", 1.15)\n", i);
+	a = printf("|%0100.70E|\n", 1.15);
+	b = ft_printf("|%0100.70E|\n", 1.15);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return vralue NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%0100.70f|\\n\", 1.15)\n", i);
+	a = printf("|%0100.70f|\n", 1.15);
+	b = ft_printf("|%0100.70f|\n", 1.15);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");

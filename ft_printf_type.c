@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 15:21:04 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/05 11:50:25 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/05 14:27:34 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,7 +20,8 @@ static void		ft_printf_type4(t_field *cur, va_list *va)
 	if (((cur->type & E_MIN) || (cur->type & E_MAJ)) && !(cur->flag & L_MAJ))
 		ft_printf_e(cur, va);
 	if (((cur->type & E_MIN) || (cur->type & E_MAJ)) && (cur->flag & L_MAJ))
-	//	ft_printf_le(cur, va);
+		//ft_printf_le(cur, va);
+		;
 	if (((cur->type & F_MIN) || (cur->type & F_MAJ)) && !(cur->flag & L_MAJ))
 		ft_printf_f(cur, va);
 	if (((cur->type & F_MIN) || (cur->type & F_MAJ)) && (cur->flag & L_MAJ))

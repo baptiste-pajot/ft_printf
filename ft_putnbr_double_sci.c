@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 18:58:48 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/05 13:54:12 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/05 14:07:00 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,14 +39,14 @@ int				ft_get_exponent(char *res)
 	return (exp);
 }
 
-char			*ft_char_exp_double(int e)
+char			*ft_char_exp_double(int e, t_field *cur)
 {
 	char	*exp;
 	int		l;
 
 	l = (e * e >= 100 * 100) ? 5 : 4;
 	exp = ft_strnew(l);
-	exp[0] = 'e';
+	exp[0] = (cur->type & E_MAJ) ? 'E' : 'e';
 	exp[1] = (e < 0) ? '-' : '+';
 	if (e >= 0)
 	{
@@ -102,21 +102,21 @@ static char		*ft_char_dec_to_sci(char *dec, int preci, int e)
 	return (sci);
 }
 
-char			*ft_char_double_sci(t_double *d, int preci)
+static char		*ft_char_double_sci(t_double *d, t_field *cur)
 {
 	char	*res;
 	char	*buf;
 	int		e;
 	char	*exp;
 
-	buf = ft_char_double(d, preci);
+	buf = ft_char_double(d, cur->preci);
 	e = ft_get_exponent(buf);
 	ft_memdel((void**)&buf);
-	buf = (e < 0) ? ft_char_double(d, preci - e + 1) :
-		ft_char_double(d, preci + 1);
-	exp = ft_char_exp_double(e);
-	res = ft_char_dec_to_sci(buf, preci + 1, e);
-	buf = ft_round(res, preci);
+	buf = (e < 0) ? ft_char_double(d, cur->preci - e + 1) :
+		ft_char_double(d, cur->preci + 1);
+	exp = ft_char_exp_double(e, cur);
+	res = ft_char_dec_to_sci(buf, cur->preci + 1, e);
+	buf = ft_round(res, cur->preci);
 	ft_memdel((void**)&res);
 	res = ft_strjoin(buf, exp);
 	ft_memdel((void**)&buf);
@@ -142,20 +142,20 @@ int				ft_putnbr_double_sci(t_double *d, t_field *cur)
 		ret += ft_putnbr_size(0);
 		ret += (cur->preci) ? ft_putchar_size('.') : 0;
 		ret += (cur->preci) ? ft_putchar_sizel('0', cur->preci) : 0;
-		exp = ft_char_exp_double(0);
+		exp = ft_char_exp_double(0, cur);
 		ret += ft_putstr_size(exp);
 		ft_memdel((void**)&exp);
 	}
 	else
 	{
-		buf = ft_char_double_sci(d, cur->preci);
+		buf = ft_char_double_sci(d, cur);
 		ret += ft_putstr_size(buf);
 		ft_memdel((void**)&buf);
 	}
 	return (ret);
 }
 
-int				ft_doublelen_sci(t_double *d, int preci)
+int				ft_doublelen_sci(t_double *d, t_field *cur)
 {
 	int		ret;
 	char	*buf;
@@ -164,10 +164,10 @@ int				ft_doublelen_sci(t_double *d, int preci)
 	if (d->e == 1024)
 		ret = 3;
 	else if (d->e == -1023 && d->m == 0)
-		ret = (preci) ? preci + 6 : 5;
+		ret = (cur->preci) ? cur->preci + 6 : 5;
 	else
 	{
-		buf = ft_char_double_sci(d, preci);
+		buf = ft_char_double_sci(d, cur);
 		ret += ft_strlen(buf);
 		ft_memdel((void**)&buf);
 	}

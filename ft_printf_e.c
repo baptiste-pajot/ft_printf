@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:29:57 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/05 13:47:12 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/05 14:07:53 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,7 @@ static void			ft_printf_e_flag(t_field *cur, t_double *d)//, int long_double)
 		cur->flag -= SPACE;
 	cur->preci = (cur->preci < 0) ? 6 : cur->preci;
 //	cur->l = (long_double) ? ft_longdoublelen_sci (d, cur->preci) :
-	cur->l = ft_doublelen_sci(d, cur->preci);
+	cur->l = ft_doublelen_sci(d, cur);
 	if (((cur->flag & PLUS) || (cur->flag & SPACE)) && !(d->s))
 	{
 		cur->plus = (cur->flag & PLUS) ? 1 : 2;
