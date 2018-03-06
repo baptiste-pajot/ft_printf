@@ -6,12 +6,26 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 15:21:04 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/06 16:29:54 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 16:53:10 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static void		ft_printf_type5(t_field *cur, va_list *va, int *ret)
+{
+	if ((cur->type & N_FLAG) && (cur->conv & L_FLAG))
+		ft_printf_ln(va, ret);
+	if ((cur->type & N_FLAG) && (cur->conv & LL_FLAG))
+		ft_printf_lln(va, ret);
+	if ((cur->type & N_FLAG) && (cur->conv & J_FLAG))
+		ft_printf_jn(va, ret);
+	if ((cur->type & N_FLAG) && (cur->conv & Z_FLAG))
+		ft_printf_zn(va, ret);
+	if (!cur->type && cur->letter)
+		ft_printf_z(cur);
+}
 
 static void		ft_printf_type4(t_field *cur, va_list *va, int *ret)
 {
@@ -29,23 +43,14 @@ static void		ft_printf_type4(t_field *cur, va_list *va, int *ret)
 		ft_printf_g(cur, va);
 	if (((cur->type & G_MIN) || (cur->type & G_MAJ)) && (cur->flag & L_MAJ))
 		ft_printf_lg(cur, va);
-//	if ((cur->type & N_FLAG) && (cur->conv & H_FLAG))
-//		ft_printf_hn(cur, va, ret);
-//	if ((cur->type & N_FLAG) && (cur->conv & HH_FLAG))
-//		ft_printf_hhn(cur, va, ret);
+	if ((cur->type & N_FLAG) && (cur->conv & H_FLAG))
+		ft_printf_hn(va, ret);
+	if ((cur->type & N_FLAG) && (cur->conv & HH_FLAG))
+		ft_printf_hhn(va, ret);
 	if ((cur->type & N_FLAG) && !(cur->conv & (H_FLAG + HH_FLAG + L_FLAG +
 		LL_FLAG + J_FLAG + Z_FLAG)))
 		ft_printf_n(va, ret);
-//	if ((cur->type & N_FLAG) && (cur->conv & L_FLAG))
-//		ft_printf_ln(cur, va, ret);
-//	if ((cur->type & N_FLAG) && (cur->conv & LL_FLAG))
-//		ft_printf_lln(cur, va, ret);
-//	if ((cur->type & N_FLAG) && (cur->conv & J_FLAG))
-//		ft_printf_jn(cur, va, ret);
-//	if ((cur->type & N_FLAG) && (cur->conv & Z_FLAG))
-//		ft_printf_zn(cur, va, ret);
-	if (!cur->type && cur->letter)
-		ft_printf_z(cur);
+	ft_printf_type5(cur, va, ret);
 }
 
 static void		ft_printf_type3(t_field *cur, va_list *va, int *ret)

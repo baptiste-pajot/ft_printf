@@ -6,7 +6,7 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/02/06 12:09:16 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/03/06 15:59:19 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/03/06 17:01:40 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -22,27 +22,6 @@ Nb erreurs restantes :
 - ftprintf.com			0
 
 Reste a faire :
-- double e E reste qlqs erreurs arrondi
-- double g G reste pb avec width sur unit test 
-- a A
-- long double L OK
-- gestion free des *char en cours OK
-- flag n with prefix resize hh h l ll j z
-- flags bonus $ '
-- flags bonus 2  b r k color fd
-- valgrind
-- norminette
-- Makefile
 - virer math.h de .h
 
 gcc -o main_test.o -c main_test.c && make test && ./test
-
-	printf("FLAG %d\n", cur->flag);
-	printf("WIDTH %d\n", cur->width);
-	printf("width_ast %d\n", cur->width_ast);
-	printf("PRECI %d\n", cur->preci);
-	printf("preci_ast %d\n", cur->preci_ast);
-	printf("CONV %d\n", cur->conv);
-	printf("TYPE %d\n", cur->type);
-	printf("letter %c\n", cur->letter);
-	printf("error %i\n", cur->error);

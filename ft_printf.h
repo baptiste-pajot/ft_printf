@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/06 16:29:43 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 17:02:16 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,7 +21,6 @@
 # include <limits.h>
 # include <locale.h>
 # include <float.h>
-# include <math.h>
 # include <inttypes.h>
 
 # define FLAG		"#0-+ $'brk"
@@ -168,7 +167,13 @@ void				ft_printf_g(t_field *cur, va_list *va);
 void				ft_printf_lg(t_field *cur, va_list *va);
 void				ft_printf_a(t_field *cur, va_list *va);
 void				ft_printf_aa(t_field *cur, va_list *va);
+void				ft_printf_hhn(va_list *va, int *ret);
+void				ft_printf_hn(va_list *va, int *ret);
 void				ft_printf_n(va_list *va, int *ret);
+void				ft_printf_ln(va_list *va, int *ret);
+void				ft_printf_lln(va_list *va, int *ret);
+void				ft_printf_jn(va_list *va, int *ret);
+void				ft_printf_zn(va_list *va, int *ret);
 int					ft_putwchar(wchar_t c);
 int					ft_wcharlen(wchar_t c);
 int					ft_putstr_size(char *str);

@@ -6,7 +6,7 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/12/21 14:37:00 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/03/06 16:07:55 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/03/06 16:57:40 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -23,14 +23,13 @@ PATH_SRCS = ./
 PATH_OBJS = ./
 PATH_LIBFT = ./libft/
 PATH_INCS = ./
-FILES = ft_printf.c ft_printf_type.c ft_printf_c.c \
-		ft_printf_d1.c ft_printf_d2.c ft_printf_e.c ft_printf_f.c \
-		ft_printf_g.c ft_printf_n.c ft_printf_o1.c ft_printf_o2.c \
-		ft_printf_p.c \
-		ft_printf_s.c ft_printf_percent.c ft_printf_u1.c ft_printf_u2.c \
-		ft_printf_x1.c ft_printf_x2.c ft_putwchar.c ft_putstr_size.c \
-		ft_putchar_size.c ft_putwstr.c ft_wstrlen.c ft_putnbr_size.c \
-		ft_putnbr_double.c ft_nbr_size.c ft_nbr_size_base.c \
+FILES = ft_printf.c ft_printf_type.c ft_printf_c.c ft_printf_d1.c  \
+		ft_printf_d2.c ft_printf_e.c ft_printf_f.c ft_printf_g.c \
+		ft_printf_n1.c ft_printf_n2.c ft_printf_o1.c ft_printf_o2.c \
+		ft_printf_p.c ft_printf_s.c ft_printf_percent.c ft_printf_u1.c \
+		ft_printf_u2.c ft_printf_x1.c ft_printf_x2.c ft_putwchar.c \
+		ft_putstr_size.c ft_putchar_size.c ft_putwstr.c ft_wstrlen.c \
+		ft_putnbr_size.c ft_putnbr_double.c ft_nbr_size.c ft_nbr_size_base.c \
 		ft_putnbr_base.c parse.c parse2.c parse3.c ft_two_pow.c ft_two_pow2.c \
 		ft_sum.c ft_sum2.c ft_round.c ft_putnbr_longdouble.c \
 		ft_putnbr_double_sci.c ft_putnbr_double_sci2.c \
@@ -50,12 +49,9 @@ FILES_LIBFT = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 		ft_lstmap.c ft_swap.c ft_sort_integer_table.c ft_strrev.c \
 		ft_is_prime.c ft_sqrt.c ft_concat_params.c get_next_line.c \
 		ft_atoi_base.c ft_count_nb_words.c
-MAIN_TEST = main_test.c
 SRCS = $(addprefix $(PATH_SRCS), $(FILES))
 OBJS = $(addprefix $(PATH_OBJS), $(FILES:.c=.o))
 OBJS_LIBFT = $(addprefix $(PATH_LIBFT), $(FILES_LIBFT:.c=.o))
-SRCS_TEST = $(addprefix $(PATH_SRCS), $(MAIN_TEST))
-OBJS_TEST = $(addprefix $(PATH_OBJS), $(MAIN_TEST:.c=.o))
 INCS = ft_printf.h
 
 all: $(NAME)
@@ -64,26 +60,17 @@ $(NAME): $(OBJS) $(OBJS_LIBFT)
 	make -C libft
 	@echo "CREATION DE LA LIBFTPRINTF.A "
 	ar rcs $@ $^
-	@echo "👍  COMPILATION REUSSIE 👍\ "
-
-$(TEST): $(OBJS) $(OBJS_TEST)
-	make -C libft
-	@echo "CREATION DE L'EXECUTABLE TEST "
-	$(CC) $(CC_FLAGS) $(LFT_FLAGS) -o $@ $^
-	@echo "👍  COMPILATION REUSSIE 👍\ "
 
 $(PATH_OBJ)%.o: $(PATH_SRCS)%.c $(INCS)
-	@echo "CREATION $@ "
 	$(CC) $(CC_FLAGS) -o $@ -c $<
-	@echo "👍  COMPILATION REUSSIE 👍\ "
 
 clean:
-	make -C libft clean
+	@make -C libft clean
 	@/bin/rm -f $(OBJS)
 	@/bin/rm -f $(OBJS_TEST)
 
 fclean: clean
-	make -C libft fclean
+	@make -C libft fclean
 	@/bin/rm -f $(NAME)
 	@/bin/rm -f $(TEST)
 
