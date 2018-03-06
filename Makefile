@@ -6,7 +6,7 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/12/21 14:37:00 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/03/05 17:42:09 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/03/06 11:41:56 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -34,7 +34,7 @@ FILES = ft_printf.c ft_printf_type.c ft_printf_a.c ft_printf_c.c \
 		ft_putnbr_base.c parse.c parse2.c parse3.c ft_two_pow.c ft_two_pow2.c \
 		ft_sum.c ft_sum2.c ft_round.c ft_putnbr_longdouble.c \
 		ft_putnbr_double_sci.c ft_putnbr_double_sci2.c \
-		ft_putnbr_longdouble_sci.c
+		ft_putnbr_longdouble_sci.c ft_putnbr_double_denormalized.c
 FILES_LIBFT = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 		ft_isdigit.c ft_isprint.c ft_itoa.c ft_memalloc.c ft_memccpy.c \
 		ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memdel.c ft_memchr.c ft_memcmp.c \

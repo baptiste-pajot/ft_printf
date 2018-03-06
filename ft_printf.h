@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/05 18:55:55 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 11:41:16 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -201,6 +201,7 @@ int					ft_longdoublelen_sci(t_double *d, t_field *cur);
 t_double			*ft_double_info(double d);
 t_double			*ft_longdouble_info(long double d);
 char				*ft_char_double(t_double *d, int preci);
+char				*ft_char_double_denormalized(t_double *d, int preci);
 char				*ft_char_longdouble(t_double *d, int preci);
 int					ft_get_exponent(char *res);
 char				*ft_char_dec_to_sci(char *dec, int preci, int e);
