@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/06 15:41:00 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 16:33:17 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,6 +24,8 @@ int		main(void)
 	int		b;
 	int		i;
 	char	*p = "tata";
+	int		int1;
+	int		int2;
 	char	*p_null = NULL;
 	wchar_t	s[4];
 
@@ -752,6 +754,23 @@ int		main(void)
 	printf("Test %d : printf(\"|%%g|\\n\", -8000.0)\n", i);
 	a = printf("|%g|\n", -8000.0);
 	b = ft_printf("|%g|\n", -8000.0);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|abc%%n|\\n\", p)\n", i);
+	a = printf("|abc%n|\n", &int1);
+	printf("%d\n", int1);
+	b = ft_printf("|abc%n|\n", &int2);
+	ft_printf("%d\n", int2);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");

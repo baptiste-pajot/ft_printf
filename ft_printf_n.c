@@ -6,21 +6,17 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:32:13 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 16:48:57 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 16:29:31 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		ft_printf_n(t_field *cur, va_list *va)
+void		ft_printf_n(va_list *va, int *ret)
 {
-	char		c;
-	int			ret;
+	int*	p_int;
 
-	ret = 0;
-	if (cur)
-	{
-		c = va_arg(*va, int);
-	}
+	p_int = va_arg(*va, int*);
+	*p_int = *ret;
 }

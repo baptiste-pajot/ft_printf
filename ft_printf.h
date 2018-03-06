@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/06 16:06:56 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 16:29:43 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -114,7 +114,7 @@ t_field				*ft_sizem(t_field *cur, const char *str, int i);
 t_field				*ft_type(t_field *cur, const char *str, int i,
 		va_list *va);
 int					ft_printf(const char *format, ...);
-int					ft_printf_type(t_field *cur, va_list *va);
+int					ft_printf_type(t_field *cur, va_list *va, int *ret);
 void				ft_printf_percent(t_field *cur);
 void				ft_printf_c(t_field *cur, va_list *va);
 void				ft_printf_cc(t_field *cur, va_list *va);
@@ -168,7 +168,7 @@ void				ft_printf_g(t_field *cur, va_list *va);
 void				ft_printf_lg(t_field *cur, va_list *va);
 void				ft_printf_a(t_field *cur, va_list *va);
 void				ft_printf_aa(t_field *cur, va_list *va);
-void				ft_printf_n(t_field *cur, va_list *va);
+void				ft_printf_n(va_list *va, int *ret);
 int					ft_putwchar(wchar_t c);
 int					ft_wcharlen(wchar_t c);
 int					ft_putstr_size(char *str);

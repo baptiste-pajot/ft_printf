@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/26 10:37:00 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 13:25:17 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 16:14:06 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -33,7 +33,7 @@ static t_field	*ft_printf_arg(t_field *cur, va_list *va, int *i, int *ret)
 		va_arg(*va, int);
 	if (cur->preci_ast)
 		va_arg(*va, int);
-	*ret += ft_printf_type(cur, va);
+	*ret += ft_printf_type(cur, va, ret);
 	*i += cur->len;
 	cur = cur->next;
 	return (cur);

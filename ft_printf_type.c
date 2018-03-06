@@ -6,14 +6,14 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 15:21:04 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/06 16:05:27 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 16:29:54 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void		ft_printf_type4(t_field *cur, va_list *va)
+static void		ft_printf_type4(t_field *cur, va_list *va, int *ret)
 {
 	if (cur->type & POINTER)
 		ft_printf_p(cur, va);
@@ -29,13 +29,26 @@ static void		ft_printf_type4(t_field *cur, va_list *va)
 		ft_printf_g(cur, va);
 	if (((cur->type & G_MIN) || (cur->type & G_MAJ)) && (cur->flag & L_MAJ))
 		ft_printf_lg(cur, va);
-	if (cur->type & N_FLAG)
-		ft_printf_n(cur, va);
+//	if ((cur->type & N_FLAG) && (cur->conv & H_FLAG))
+//		ft_printf_hn(cur, va, ret);
+//	if ((cur->type & N_FLAG) && (cur->conv & HH_FLAG))
+//		ft_printf_hhn(cur, va, ret);
+	if ((cur->type & N_FLAG) && !(cur->conv & (H_FLAG + HH_FLAG + L_FLAG +
+		LL_FLAG + J_FLAG + Z_FLAG)))
+		ft_printf_n(va, ret);
+//	if ((cur->type & N_FLAG) && (cur->conv & L_FLAG))
+//		ft_printf_ln(cur, va, ret);
+//	if ((cur->type & N_FLAG) && (cur->conv & LL_FLAG))
+//		ft_printf_lln(cur, va, ret);
+//	if ((cur->type & N_FLAG) && (cur->conv & J_FLAG))
+//		ft_printf_jn(cur, va, ret);
+//	if ((cur->type & N_FLAG) && (cur->conv & Z_FLAG))
+//		ft_printf_zn(cur, va, ret);
 	if (!cur->type && cur->letter)
 		ft_printf_z(cur);
 }
 
-static void		ft_printf_type3(t_field *cur, va_list *va)
+static void		ft_printf_type3(t_field *cur, va_list *va, int *ret)
 {
 	if ((cur->type & O_MAJ) || ((cur->type & O_MIN) && (cur->conv & L_FLAG)))
 		ft_printf_lo(cur, va);
@@ -60,10 +73,10 @@ static void		ft_printf_type3(t_field *cur, va_list *va)
 		ft_printf_jx(cur, va);
 	if (((cur->type & X_MIN) || (cur->type & X_MAJ)) && (cur->conv & Z_FLAG))
 		ft_printf_zx(cur, va);
-	ft_printf_type4(cur, va);
+	ft_printf_type4(cur, va, ret);
 }
 
-static void		ft_printf_type2(t_field *cur, va_list *va)
+static void		ft_printf_type2(t_field *cur, va_list *va, int *ret)
 {
 	if ((cur->type & D_MIN) && (cur->conv & Z_FLAG))
 		ft_printf_zd(cur, va);
@@ -89,10 +102,10 @@ static void		ft_printf_type2(t_field *cur, va_list *va)
 	if ((cur->type & O_MIN) && !(cur->conv & (H_FLAG + HH_FLAG + L_FLAG +
 		LL_FLAG + J_FLAG + Z_FLAG)))
 		ft_printf_o(cur, va);
-	ft_printf_type3(cur, va);
+	ft_printf_type3(cur, va, ret);
 }
 
-int				ft_printf_type(t_field *cur, va_list *va)
+int				ft_printf_type(t_field *cur, va_list *va, int *ret)
 {
 	if (cur->type & PERCENT)
 		ft_printf_percent(cur);
@@ -117,6 +130,6 @@ int				ft_printf_type(t_field *cur, va_list *va)
 		ft_printf_lld(cur, va);
 	if ((cur->type & D_MIN) && (cur->conv & J_FLAG))
 		ft_printf_jd(cur, va);
-	ft_printf_type2(cur, va);
+	ft_printf_type2(cur, va, ret);
 	return (cur->ret);
 }
