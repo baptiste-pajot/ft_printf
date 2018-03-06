@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/20 09:56:11 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/06 14:35:16 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 15:46:28 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -93,7 +93,7 @@ int				ft_putnbr_double(t_double *d, t_field *cur)
 	}
 	else
 	{
-		buf = (d->e == -1023 ) ? ft_char_double_denormalized(d, cur->preci, cur)
+		buf = (d->e == -1023) ? ft_char_double_denormalized(d, cur->preci, cur)
 			: ft_char_double(d, cur->preci, cur);
 		ret += ft_putstr_size(buf);
 		ft_memdel((void**)&buf);
@@ -114,7 +114,7 @@ int				ft_doublelen(t_double *d, t_field *cur)
 			? cur->preci + 2 : 1;
 	else
 	{
-		buf = (d->e == -1023 ) ? ft_char_double_denormalized(d, cur->preci, cur)
+		buf = (d->e == -1023) ? ft_char_double_denormalized(d, cur->preci, cur)
 			: ft_char_double(d, cur->preci, cur);
 		ret += ft_strlen(buf);
 		ft_memdel((void**)&buf);

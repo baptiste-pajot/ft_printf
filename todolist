@@ -6,7 +6,7 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/02/06 12:09:16 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/03/06 12:04:05 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/03/06 15:59:19 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -23,9 +23,9 @@ Nb erreurs restantes :
 
 Reste a faire :
 - double e E reste qlqs erreurs arrondi
-- double g G gestion precision differente + enlever les zeros et point si besoin
+- double g G reste pb avec width sur unit test 
 - a A
-- long double L
+- long double L OK
 - gestion free des *char en cours OK
 - flag n with prefix resize hh h l ll j z
 - flags bonus $ '

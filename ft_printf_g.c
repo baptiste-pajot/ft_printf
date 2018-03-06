@@ -6,14 +6,29 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:31:49 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/06 15:17:35 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 15:56:05 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		ft_printf_g(t_field *cur, va_list *va)
+static void		ft_printf_g2(t_field *cur, t_double *d, int e)
+{
+	if (e < -4 || e >= cur->preci + 1)
+	{
+		cur->preci--;
+		ft_printf_e2(cur, d);
+	}
+	else
+	{
+		cur->preci = (d->e == -1023 && d->m == 0) ? 0 : cur->preci;
+		cur->preci = (d->e >= 0) ? cur->preci - e - 1 : cur->preci;
+		ft_printf_f2(d, cur);
+	}
+}
+
+void			ft_printf_g(t_field *cur, va_list *va)
 {
 	double		g;
 	t_double	*d;
@@ -33,20 +48,25 @@ void		ft_printf_g(t_field *cur, va_list *va)
 		e = ft_get_exponent(buf);
 		ft_memdel((void**)&buf);
 	}
+	ft_printf_g2(cur, d, e);
+}
+
+static void		ft_printf_lg2(t_field *cur, t_double *d, int e)
+{
 	if (e < -4 || e >= cur->preci + 1)
 	{
 		cur->preci--;
-		ft_printf_e2(cur, d);
+		ft_printf_le2(cur, d);
 	}
 	else
 	{
-		cur->preci = (d->e == -1023 && d->m == 0) ? 0 : cur->preci;
+		cur->preci = (d->e == -16384 && d->m == 0) ? 0 : cur->preci;
 		cur->preci = (d->e >= 0) ? cur->preci - e - 1 : cur->preci;
-		ft_printf_f2(d, cur);
+		ft_printf_lf2(d, cur);
 	}
 }
 
-void		ft_printf_lg(t_field *cur, va_list *va)
+void			ft_printf_lg(t_field *cur, va_list *va)
 {
 	long double		lg;
 	t_double		*d;
@@ -66,15 +86,5 @@ void		ft_printf_lg(t_field *cur, va_list *va)
 		e = ft_get_exponent(buf);
 		ft_memdel((void**)&buf);
 	}
-	if (e < -4 || e >= cur->preci + 1)
-	{
-		cur->preci--;
-		ft_printf_le2(cur, d);
-	}
-	else
-	{
-		cur->preci = (d->e == -16384 && d->m == 0) ? 0 : cur->preci;
-		cur->preci = (d->e >= 0) ? cur->preci - e - 1 : cur->preci;
-		ft_printf_lf2(d, cur);
-	}
+	ft_printf_lg2(cur, d, e);
 }
