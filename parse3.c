@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 10:14:27 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 10:49:49 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 16:08:25 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -96,10 +96,6 @@ static t_field			*ft_type2(t_field *cur, const char *str, int i,
 		cur->type = G_MIN;
 	if (str[i] == 'G')
 		cur->type = G_MAJ;
-	if (str[i] == 'a')
-		cur->type = A_MIN;
-	if (str[i] == 'A')
-		cur->type = A_MAJ;
 	cur = ft_type3(cur, str, i, va);
 	return (cur);
 }

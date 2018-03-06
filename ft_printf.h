@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/06 13:42:11 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 16:06:56 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,7 +27,7 @@
 # define FLAG		"#0-+ $'brk"
 # define WIDTH		"123456789*"
 # define CONV		"hljzL"
-# define TYPE		"sSpdDioOuUxXcCeEfFgGaAn%"
+# define TYPE		"sSpdDioOuUxXcCeEfFgGn%"
 
 # define SHARP		0x1
 # define ZERO		0x2
@@ -36,10 +36,10 @@
 # define SPACE		0x10
 # define ASTERIX	0x20
 # define DOLLAR		0x40
-# define APOSTROPHE	0x100
-# define B_FLAG		0x200
-# define R_FLAG		0x400
-# define K_FLAG		0x800
+# define APOSTROPHE	0x80
+# define B_FLAG		0x100
+# define R_FLAG		0x200
+# define K_FLAG		0x400
 
 # define HH_FLAG	0x1
 # define H_FLAG		0x2
@@ -69,9 +69,7 @@
 # define F_MAJ		0x20000
 # define G_MIN		0x40000
 # define G_MAJ		0x80000
-# define A_MIN		0x100000
-# define A_MAJ		0x200000
-# define N_FLAG		0x400000
+# define N_FLAG		0x100000
 
 typedef struct		s_field
 {

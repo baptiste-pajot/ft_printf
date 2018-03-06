@@ -6,7 +6,7 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/12/21 14:37:00 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/03/06 11:41:56 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/03/06 16:07:55 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -23,7 +23,7 @@ PATH_SRCS = ./
 PATH_OBJS = ./
 PATH_LIBFT = ./libft/
 PATH_INCS = ./
-FILES = ft_printf.c ft_printf_type.c ft_printf_a.c ft_printf_c.c \
+FILES = ft_printf.c ft_printf_type.c ft_printf_c.c \
 		ft_printf_d1.c ft_printf_d2.c ft_printf_e.c ft_printf_f.c \
 		ft_printf_g.c ft_printf_n.c ft_printf_o1.c ft_printf_o2.c \
 		ft_printf_p.c \
@@ -64,7 +64,6 @@ $(NAME): $(OBJS) $(OBJS_LIBFT)
 	make -C libft
 	@echo "CREATION DE LA LIBFTPRINTF.A "
 	ar rcs $@ $^
-#	libtool -static -o $(NAME) $(NAME) $(LIBS)
 	@echo "👍  COMPILATION REUSSIE 👍\ "
 
 $(TEST): $(OBJS) $(OBJS_TEST)
