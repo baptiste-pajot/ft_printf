@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/06 15:28:26 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 15:41:00 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -644,9 +644,9 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%20.10g|\\n\", -141616181811111.0)\n", i);
-	a = printf("|%20.10g|\n", -141616181811111.0);
-	b = ft_printf("|%20.10g|\n", -141616181811111.0);
+	printf("Test %d : printf(\"|%%20.10G|\\n\", -141616181811111.0)\n", i);
+	a = printf("|%20.10G|\n", -141616181811111.0);
+	b = ft_printf("|%20.10G|\n", -141616181811111.0);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");

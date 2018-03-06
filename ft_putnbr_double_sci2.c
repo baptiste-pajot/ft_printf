@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/05 17:41:42 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/06 13:34:56 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 15:39:23 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,7 +20,7 @@ char			*ft_char_exp_double(int e, t_field *cur)
 
 	l = (e * e >= 100 * 100) ? 5 : 4;
 	exp = ft_strnew(l);
-	exp[0] = (cur->type & E_MAJ) ? 'E' : 'e';
+	exp[0] = (cur->type & E_MAJ || cur->type & G_MAJ) ? 'E' : 'e';
 	exp[1] = (e < 0) ? '-' : '+';
 	if (e >= 0)
 	{
