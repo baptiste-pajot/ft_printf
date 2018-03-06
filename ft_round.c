@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/27 17:29:36 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/01 15:21:06 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 13:18:52 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -90,4 +90,15 @@ char			*ft_round(char *s, int preci)
 	ft_memdel((void**)&res_int);
 	ft_memdel((void**)&res_frac_new);
 	return (res_frac);
+}
+
+void			ft_cut_end(char *s)
+{
+	int		i;
+
+	i = ft_strlen(s) - 1;
+	while (s[i] == '0' || s[i] == '.')
+		i--;
+	i++;
+	s[i] = 0;
 }

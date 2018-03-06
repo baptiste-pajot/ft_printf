@@ -6,23 +6,27 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/06 11:37:39 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/06 11:55:50 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 13:44:26 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char		*ft_char_double_denormalized2(char *res, int preci)
+static char		*ft_char_double_denormalized2(char *res, int preci, 
+		t_field *cur)
 {
 	char	*buf;
 
 	buf = ft_round(res, preci);
+	if (cur->type & G_MIN || cur->type & G_MAJ)
+		ft_cut_end(buf);
 	ft_memdel((void**)&res);
 	return (buf);
 }
 
-char			*ft_char_double_denormalized(t_double *d, int preci)
+char			*ft_char_double_denormalized(t_double *d, int preci,
+		t_field *cur)
 {
 	char	*res;
 	char	*buf;
@@ -48,6 +52,6 @@ char			*ft_char_double_denormalized(t_double *d, int preci)
 		ft_memdel((void**)&buf);
 	}
 	ft_memdel((void**)&pow);
-	buf = ft_char_double_denormalized2(res, preci);
+	buf = ft_char_double_denormalized2(res, preci, cur);
 	return (buf);
 }

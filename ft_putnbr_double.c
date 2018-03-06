@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/20 09:56:11 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/06 11:46:38 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 14:35:16 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,7 +28,7 @@ t_double		*ft_double_info(double d)
 	return (d_info);
 }
 
-static char		*ft_char_double2(char *res, char *pow, int preci)
+static char		*ft_char_double2(char *res, char *pow, int preci, t_field *cur)
 {
 	char	*buf;
 
@@ -38,11 +38,13 @@ static char		*ft_char_double2(char *res, char *pow, int preci)
 	ft_memdel((void**)&buf);
 	ft_memdel((void**)&pow);
 	buf = ft_round(res, preci);
+	if (cur->type & G_MIN || cur->type & G_MAJ)
+		ft_cut_end(buf);
 	ft_memdel((void**)&res);
 	return (buf);
 }
 
-char			*ft_char_double(t_double *d, int preci)
+char			*ft_char_double(t_double *d, int preci, t_field *cur)
 {
 	char	*res;
 	char	*buf;
@@ -67,7 +69,7 @@ char			*ft_char_double(t_double *d, int preci)
 		pow = ft_strdup(buf);
 		ft_memdel((void**)&buf);
 	}
-	buf = ft_char_double2(res, pow, preci);
+	buf = ft_char_double2(res, pow, preci, cur);
 	return (buf);
 }
 
@@ -86,20 +88,20 @@ int				ft_putnbr_double(t_double *d, t_field *cur)
 	else if (d->e == -1023 && d->m == 0)
 	{
 		ret += ft_putnbr_size(0);
-		ret += (cur->preci) ? ft_putchar_size('.') : 0;
-		ret += (cur->preci) ? ft_putchar_sizel('0', cur->preci) : 0;
+		ret += (cur->preci && !(cur->type & G_MIN) && !(cur->type & G_MAJ)) ?
+			ft_putchar_size('.') + ft_putchar_sizel('0', cur->preci) : 0;
 	}
 	else
 	{
-		buf = (d->e == -1023 ) ? ft_char_double_denormalized(d, cur->preci)
-			: ft_char_double(d, cur->preci);
+		buf = (d->e == -1023 ) ? ft_char_double_denormalized(d, cur->preci, cur)
+			: ft_char_double(d, cur->preci, cur);
 		ret += ft_putstr_size(buf);
 		ft_memdel((void**)&buf);
 	}
 	return (ret);
 }
 
-int				ft_doublelen(t_double *d, int preci)
+int				ft_doublelen(t_double *d, t_field *cur)
 {
 	int		ret;
 	char	*buf;
@@ -108,11 +110,12 @@ int				ft_doublelen(t_double *d, int preci)
 	if (d->e == 1024)
 		ret = 3;
 	else if (d->e == -1023 && d->m == 0)
-		ret = (preci) ? preci + 2 : 1;
+		ret = (cur->preci && !(cur->type & G_MIN) && !(cur->type & G_MAJ))
+			? cur->preci + 2 : 1;
 	else
 	{
-		buf = (d->e == -1023 ) ? ft_char_double_denormalized(d, preci)
-			: ft_char_double(d, preci);
+		buf = (d->e == -1023 ) ? ft_char_double_denormalized(d, cur->preci, cur)
+			: ft_char_double(d, cur->preci, cur);
 		ret += ft_strlen(buf);
 		ft_memdel((void**)&buf);
 	}

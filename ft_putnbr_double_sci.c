@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 18:58:48 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/06 11:49:37 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 13:34:52 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,11 +32,11 @@ static char		*ft_char_double_sci(t_double *d, t_field *cur)
 	e = ft_get_exponent(buf);
 	ft_memdel((void**)&buf);
 	if (d->e == -1023)
-		buf = (e < 0) ? ft_char_double_denormalized(d, cur->preci - e + 1) :
-			ft_char_double_denormalized(d, cur->preci + 1);
+		buf = (e < 0) ? ft_char_double_denormalized(d, cur->preci - e + 1, cur)
+			: ft_char_double_denormalized(d, cur->preci + 1, cur);
 	else
-		buf = (e < 0) ? ft_char_double(d, cur->preci - e + 1) :
-			ft_char_double(d, cur->preci + 1);
+		buf = (e < 0) ? ft_char_double(d, cur->preci - e + 1, cur) :
+			ft_char_double(d, cur->preci + 1, cur);
 	e = ft_get_exponent(buf);
 	res = ft_char_dec_to_sci(buf, cur->preci + 1, e);
 	buf = ft_round(res, cur->preci);

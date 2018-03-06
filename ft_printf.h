@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/06 11:41:16 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 13:42:11 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -194,15 +194,16 @@ int					ft_putnbr_double(t_double *d, t_field *cur);
 int					ft_putnbr_double_sci(t_double *d, t_field *cur);
 int					ft_putnbr_longdouble_sci(t_double *d, t_field *cur);
 int					ft_putnbr_longdouble(t_double *d, t_field *cur);
-int					ft_doublelen(t_double *d, int preci);
-int					ft_longdoublelen(t_double *d, int preci);
+int					ft_doublelen(t_double *d, t_field *cur);
+int					ft_longdoublelen(t_double *d, t_field *cur);
 int					ft_doublelen_sci(t_double *d, t_field *cur);
 int					ft_longdoublelen_sci(t_double *d, t_field *cur);
 t_double			*ft_double_info(double d);
 t_double			*ft_longdouble_info(long double d);
-char				*ft_char_double(t_double *d, int preci);
-char				*ft_char_double_denormalized(t_double *d, int preci);
-char				*ft_char_longdouble(t_double *d, int preci);
+char				*ft_char_double(t_double *d, int preci, t_field *cur);
+char				*ft_char_double_denormalized(t_double *d, int preci,
+		t_field *cur);
+char				*ft_char_longdouble(t_double *d, int preci, t_field *cur);
 int					ft_get_exponent(char *res);
 char				*ft_char_dec_to_sci(char *dec, int preci, int e);
 char				*ft_char_exp_double(int e, t_field *cur);
@@ -225,5 +226,6 @@ int					ft_dot(char *s);
 char				*ft_integer(char *s);
 char				*ft_fraction(char *s);
 char				*ft_round(char *s, int preci);
+void				ft_cut_end(char *s);
 
 #endif

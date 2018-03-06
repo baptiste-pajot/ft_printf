@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 15:24:45 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/05 18:45:04 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 14:35:08 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,16 +30,18 @@ t_double		*ft_longdouble_info(long double d)
 	return (d_info);
 }
 
-static char		*ft_char_longdouble2(char *res, int preci)
+static char		*ft_char_longdouble2(char *res, int preci, t_field *cur)
 {
 	char	*buf;
 
 	buf = ft_round(res, preci);
+	if (cur->type & G_MIN || cur->type & G_MAJ)
+		ft_cut_end(buf);
 	ft_memdel((void**)&res);
 	return (buf);
 }
 
-char			*ft_char_longdouble(t_double *d, int preci)
+char			*ft_char_longdouble(t_double *d, int preci, t_field *cur)
 {
 	char	*res;
 	char	*buf;
@@ -65,7 +67,7 @@ char			*ft_char_longdouble(t_double *d, int preci)
 		ft_memdel((void**)&buf);
 	}
 	ft_memdel((void**)&pow);
-	return (ft_char_longdouble2(res, preci));
+	return (ft_char_longdouble2(res, preci, cur));
 }
 
 int				ft_putnbr_longdouble(t_double *d, t_field *cur)
@@ -83,19 +85,19 @@ int				ft_putnbr_longdouble(t_double *d, t_field *cur)
 	else if (d->e == -16384 && d->m == 0)
 	{
 		ret += ft_putnbr_size(0);
-		ret += (cur->preci) ? ft_putchar_size('.') : 0;
-		ret += (cur->preci) ? ft_putchar_sizel('0', cur->preci) : 0;
+		ret += (cur->preci && !(cur->type & G_MIN) && !(cur->type & G_MAJ)) ?
+			ft_putchar_size('.') + ft_putchar_sizel('0', cur->preci) : 0;
 	}
 	else
 	{
-		buf = ft_char_longdouble(d, cur->preci);
+		buf = ft_char_longdouble(d, cur->preci, cur);
 		ret += ft_putstr_size(buf);
 		ft_memdel((void**)&buf);
 	}
 	return (ret);
 }
 
-int				ft_longdoublelen(t_double *d, int preci)
+int				ft_longdoublelen(t_double *d, t_field *cur)
 {
 	int		ret;
 	char	*buf;
@@ -104,10 +106,11 @@ int				ft_longdoublelen(t_double *d, int preci)
 	if (d->e == 16385)
 		ret = 3;
 	else if (d->e == -16384 && d->m == 0)
-		ret = (preci) ? preci + 2 : 1;
+		ret = (cur->preci && !(cur->type & G_MIN) && !(cur->type & G_MAJ))
+			? cur->preci + 2 : 1;
 	else
 	{
-		buf = ft_char_longdouble(d, preci);
+		buf = ft_char_longdouble(d, cur->preci, cur);
 		ret += ft_strlen(buf);
 		ft_memdel((void**)&buf);
 	}

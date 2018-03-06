@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/06 12:03:00 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 14:33:29 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -659,7 +659,7 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%g|\\n\", 0.0 )\n", i);
+	printf("Test %d : printf(\"|%%g|\\n\", 0.0)\n", i);
 	a = printf("|%g|\n", 0.0);
 	b = ft_printf("|%g|\n", 0.0);
 	ft_putstr("return value printf : ");
@@ -674,9 +674,69 @@ int		main(void)
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
 	i++;
-	printf("Test %d : printf(\"|%%.10g|\\n\", 0.0 )\n", i);
-	a = printf("|%.10g|\n", 0.0);
-	b = ft_printf("|%.10g|\n", 0.0);
+	printf("Test %d : printf(\"|%%20.10g|\\n\", 0.0)\n", i);
+	a = printf("|%20.10g|\n", 0.0);
+	b = ft_printf("|%20.10g|\n", 0.0);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%20.10Lg|\\n\", 0.0L)\n", i);
+	a = printf("|%20.10Lg|\n", 0.0L);
+	b = ft_printf("|%20.10Lg|\n", 0.0L);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%.2g|\\n\", 42.2)\n", i);
+	a = printf("|%.2g|\n", 42.2);
+	b = ft_printf("|%.2g|\n", 42.2);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%.4g|\\n\", 421.231)\n", i);
+	a = printf("|%.4g|\n", 421.231);
+	b = ft_printf("|%.4g|\n", 421.231);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	ft_putendl("");
+	i++;
+	printf("Test %d : printf(\"|%%.10g|\\n\", 42.2)\n", i);
+	a = printf("|%.10g|\n", 42.2);
+	b = ft_printf("|%.10g|\n", 42.2);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");

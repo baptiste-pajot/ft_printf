@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 16:30:13 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/05 18:50:42 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 15:15:54 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,9 +17,10 @@ static void			ft_printf_f_flag(t_field *cur, t_double *d, int long_double)
 {
 	if ((cur->flag & PLUS) && (cur->flag & SPACE))
 		cur->flag -= SPACE;
-	cur->preci = (cur->preci < 0) ? 6 : cur->preci;
-	cur->l = (long_double) ? ft_longdoublelen(d, cur->preci) :
-		ft_doublelen(d, cur->preci);
+	cur->preci = (cur->preci < 0 && !(cur->type & G_MIN) &&
+		!(cur->type & G_MAJ)) ? 6 : cur->preci;
+	cur->l = (long_double) ? ft_longdoublelen(d, cur) :
+		ft_doublelen(d, cur);
 	if (((cur->flag & PLUS) || (cur->flag & SPACE)) && !(d->s))
 	{
 		cur->plus = (cur->flag & PLUS) ? 1 : 2;
@@ -45,7 +46,8 @@ void				ft_printf_f2(t_double *d, t_field *cur)
 	cur->ret += (cur->plus == 1) ? ft_putchar_size('+') : 0;
 	cur->ret += (cur->plus == 2) ? ft_putchar_size(' ') : 0;
 	cur->ret += (cur->minus == 1) ? ft_putchar_size('-') : 0;
-	cur->ret += ft_putchar_sizel('0', cur->zero);
+	cur->ret += (!(cur->type & G_MIN) && !(cur->type & G_MAJ)) ?
+		ft_putchar_sizel('0', cur->zero) : 0;
 	cur->ret += ft_putnbr_double(d, cur);
 	cur->ret += ft_putchar_sizel(' ', cur->spc_aft);
 	ft_memdel((void**)&d);
@@ -79,7 +81,8 @@ void				ft_printf_lf2(t_double *d, t_field *cur)
 	cur->ret += (cur->plus == 1) ? ft_putchar_size('+') : 0;
 	cur->ret += (cur->plus == 2) ? ft_putchar_size(' ') : 0;
 	cur->ret += (cur->minus == 1) ? ft_putchar_size('-') : 0;
-	cur->ret += ft_putchar_sizel('0', cur->zero);
+	cur->ret += (!(cur->type & G_MIN) && !(cur->type & G_MAJ)) ?
+		ft_putchar_sizel('0', cur->zero) : 0;
 	cur->ret += ft_putnbr_longdouble(d, cur);
 	cur->ret += ft_putchar_sizel(' ', cur->spc_aft);
 	ft_memdel((void**)&d);

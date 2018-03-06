@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/05 15:36:35 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/05 18:46:29 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 13:43:53 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -53,8 +53,8 @@ static char		*ft_char_longdouble_sci(t_double *d, t_field *cur)
 	buf = ft_two_pow(d->e - 63);
 	e = ft_get_exponent(buf);
 	ft_memdel((void**)&buf);
-	buf = (e < 0) ? ft_char_longdouble(d, cur->preci - e + 1) :
-		ft_char_longdouble(d, cur->preci + 1);
+	buf = (e < 0) ? ft_char_longdouble(d, cur->preci - e + 1, cur) :
+		ft_char_longdouble(d, cur->preci + 1, cur);
 	e = ft_get_exponent(buf);
 	res = ft_char_dec_to_sci(buf, cur->preci + 1, e);
 	buf = ft_round(res, cur->preci);
