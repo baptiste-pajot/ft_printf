@@ -15,10 +15,8 @@
 
 static t_field			*ft_check_error_s(t_field *cur, wchar_t *p_wchar)
 {
-	int		ret;
 	int		i;
 
-	ret = 0;
 	i = 0;
 	if ((cur->type == S_MIN && cur->conv == L_FLAG) || cur->type == S_MAJ)
 	{

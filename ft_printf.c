@@ -51,7 +51,7 @@ static void		ft_printf_txt(t_field *cur, const char *format, int *i,
 {
 	*ret += (cur) ? ft_putstr_sizel((char*)&(format[*i]),
 		cur->text - *i + 1) : ft_putstr_size((char*)&format[*i]);
-	*i = (cur) ? cur->text : ft_strlen(format) - 1;
+	*i = (cur) ? (int)cur->text : (int)ft_strlen(format) - 1;
 }
 
 int				ft_printf(const char *format, ...)

@@ -34,10 +34,8 @@ int				ft_wstrlen(wchar_t *wstr)
 int				ft_wstrlen_single(wchar_t *wstr)
 {
 	size_t		i;
-	int			ret;
 
 	i = 0;
-	ret = 0;
 	if (wstr)
 	{
 		while (wstr[i])

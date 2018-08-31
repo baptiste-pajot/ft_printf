@@ -60,7 +60,7 @@ static int		copy_buff(char **line, char *rest_fd, char *buff, int ret_read)
 			ft_memdel((void**)&buff);
 		if (rest_fd != NULL && *line[0] == '\0')
 			ft_memdel((void**)&rest_fd);
-		if (*line != NULL && line[0] == '\0')
+		if (*line != NULL && *line[0] == '\0')
 			ft_memdel((void**)line);
 		return ((*line[0] == '\0') ? 0 : 1);
 	}
