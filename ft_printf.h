@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:03:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/15 16:36:08 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/17 12:55:28 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -231,5 +231,7 @@ char				*ft_fraction(char *s);
 char				*ft_round(char *s, int preci);
 void				ft_cut_end(char *s);
 char				*ft_two_pow_plus_data(int pow);
+char				*ft_two_pow_minus_data(int pow);
+char				*ft_two_pow_minus_data6(void);
 
 #endif

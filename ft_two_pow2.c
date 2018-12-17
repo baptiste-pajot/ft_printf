@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/27 13:19:34 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/28 17:10:31 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/17 13:38:44 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -46,25 +46,18 @@ char			*ft_two_pow_minus(int pow)
 	char	*result;
 	char	*buff;
 	int		i;
+	int		end;
 
-	if ((result = ft_strnew(3)) == NULL)
-		return (NULL);
-	result[0] = '0';
-	result[1] = '.';
-	result[2] = '5';
-	i = pow;
-	if (pow == -1)
-		return (result);
-	else
+	result = ft_strdup(ft_two_pow_minus_data(pow));
+	i = (pow <= -2000) ? pow + 1000 : pow % 100;
+	end = (pow > -100) ? -1 : 0;
+	while (++i <= end)
 	{
-		while (++i <= -1)
-		{
-			buff = ft_strdup(result);
-			ft_memdel((void**)&result);
-			if ((result = ft_two_divide(buff)) == NULL)
-				return (result);
-			ft_memdel((void**)&buff);
-		}
+		buff = ft_strdup(result);
+		ft_memdel((void**)&result);
+		if ((result = ft_two_divide(buff)) == NULL)
+			return (result);
+		ft_memdel((void**)&buff);
 	}
 	return (result);
 }
