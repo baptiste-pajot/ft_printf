@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/05 15:36:35 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/06 15:40:30 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/17 14:34:19 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,7 @@ static char		*ft_char_exp_longdouble(int e, t_field *cur)
 	l = (e * e >= 100 * 100) ? 5 : 4;
 	l += (e * e >= 1000 * 1000) ? 1 : 0;
 	exp = ft_strnew(l);
-	exp[0] = (cur->type & E_MAJ && cur->type & G_MAJ) ? 'E' : 'e';
+	exp[0] = ((cur->type & E_MAJ) || (cur->type & G_MAJ)) ? 'E' : 'e';
 	exp[1] = (e < 0) ? '-' : '+';
 	buf = (e >= 0) ? ft_itoa(e) : ft_itoa(-e);
 	if (e * e >= 10 * 10)

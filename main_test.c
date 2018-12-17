@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/08 11:09:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/17 13:40:39 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/17 14:25:11 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,7 +23,7 @@ int		main(void)
 	int		a;
 	int		b;
 	int		i;
-	char	*p = "tata";
+/*	char	*p = "tata";
 	int		int1;
 	int		int2;
 	char	*p_null = NULL;
@@ -814,7 +814,7 @@ int		main(void)
 	else
 		printf("Test %d : return value NOK !!!\n", i);
 	ft_putendl("");
-/*	printf("|%s|\n", ft_two_pow(100));
+	printf("|%s|\n", ft_two_pow(100));
 	ft_putendl("");
 	printf("|%s|\n", ft_two_pow(200));
 	ft_putendl("");
@@ -874,9 +874,23 @@ int		main(void)
 	ft_printf("|%f|\n", 2.0);
 	ft_printf("|%f|\n", 1267650600228229401496703205376.0);*/
 	i++;
-	printf("Test %d : printf(\"|%%29.4lE|\\n\", 130325.0)\n", i);
-	a = printf("|%29.4lE|\n", 130325.0);
-	b = ft_printf("|%29.4lE|\n", 130325.0);
+	printf("Test %d : printf(\"|%%29.5LE|\\n\", 130325.0L)\n", i);
+	a = printf("|%29.5LE|\n", 130325.0L);
+	b = ft_printf("|%29.5LE|\n", 130325.0L);
+	ft_putstr("return value printf : ");
+	ft_putnbr(a);
+	ft_putendl("");
+	ft_putstr("return value ft_printf : ");
+	ft_putnbr(b);
+	ft_putendl("");
+	if (a == b)
+		printf("Test %d : return value OK\n", i);
+	else
+		printf("Test %d : return value NOK !!!\n", i);
+	i++;
+	printf("Test %d : printf(\"|%%29.5E|\\n\", 130325.0)\n", i);
+	a = printf("|%29.5E|\n", 130325.0);
+	b = ft_printf("|%29.5E|\n", 130325.0);
 	ft_putstr("return value printf : ");
 	ft_putnbr(a);
 	ft_putendl("");
